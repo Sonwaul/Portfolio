@@ -1,32 +1,143 @@
-:root {
-  --color-primary: #007bff;
-  --color-secondary: #6c757d;
-  --color-success: #28a745;
-  --color-danger: #dc3545;
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8f9fa;
-  --color-text-primary: #212529;
-  --color-text-secondary: #6c757d;
-  --border-radius: 4px;
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* ---------------------------------------
+   1. RESET DE BASE
+   (on garde ça simple, pas besoin d'un gros reset)
+---------------------------------------- */
+
+* {
+  box-sizing: border-box;          /* padding+border inclus dans width/height */
+  margin: 0;
+  padding: 0;
 }
 
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #0d6efd;
-    --color-secondary: #495057;
-    --color-success: #198754;
-    --color-danger: #dc3545;
-    --color-bg-primary: #212529;
-    --color-bg-secondary: #343a40;
-    --color-text-primary: #f8f9fa;
-    --color-text-secondary: #adb5bd;
-  }
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+/* ---------------------------------------
+   2. VARIABLES GLOBALES (THEME CLAIR)
+   On définit les couleurs de ta charte.
+   Elles commencent par --c- pour "color".
+---------------------------------------- */
+
+:root {
+  /* Couleurs principales - thème clair */
+  --c-bg: #F8F9F6;         /* Couleur de fond */
+  --c-text: #1C2B21;       /* Couleur de texte */
+  --c-accent: #6C9A8B;     /* Couleur d'accent (boutons / liens) */
+  --c-surface: #D8E3DC;    /* Couleur secondaire (fonds de cartes, éléments posés au-dessus du bg) */
+  --c-hover: #3E7C59;      /* Couleur de survol / hover */
+  --c-bonus: #A9B7AD;      /* Couleur bonus (détails, bordures soft, icons, tags) */
+
+  /* Variables de police injectées par next/font
+     -> elles sont créées dans layout.tsx avec `variable: "--font-body"`
+     -> ici on les réutilise */
+  --font-body: var(--font-body);
+  --font-title: var(--font-title);
+
+  /* Rythme / rayons / autres tokens globaux */
+  --radius-card: 1rem;     /* coins arrondis doux */
+  --radius-pill: 999px;    /* pour les petits badges arrondis */
+  --border-soft: rgba(0, 0, 0, 0.08); /* bordure légère claire */
+
+  /* Ombres (légère brume sous la navbar par ex.) */
+  --shadow-header: 0 20px 40px -10px rgba(0,0,0,0.15);
+
+  /* Taille du conteneur principal */
+  --layout-max-width: 1100px;
+  --layout-padding-x: 1rem;
+  --navbar-height: 4rem; /* ~64px (on l'utilise pour le padding-top du hero) */
+}
+
+
+/* ---------------------------------------
+   3. VARIABLES GLOBALES (THEME SOMBRE)
+   Quand la classe "dark" est posée sur <html>,
+   on écrase les variables par celles du mode sombre.
+---------------------------------------- */
+
+.dark {
+  --c-bg: #0F1A16;         /* Couleur de fond sombre */
+  --c-text: #EAF1EB;       /* Couleur de texte clair */
+  --c-accent: #91C1A3;     /* Accent en mode sombre */
+  --c-surface: #2E3C34;    /* Surface sombre (cartes, blocs posés) */
+  --c-hover: #4FA678;      /* Hover sombre */
+  --c-bonus: #728C7A;      /* Bonus sombre */
+
+  --border-soft: rgba(255, 255, 255, 0.12); /* bordure légère sur fond sombre */
+  --shadow-header: 0 20px 40px -10px rgba(0,0,0,0.8);
+}
+
+
+/* ---------------------------------------
+   4. STYLES GLOBAUX DU DOCUMENT
+   Ici on applique les vars sur body, titres, liens...
+---------------------------------------- */
+
+html {
+  scroll-behavior: smooth; /* scroll fluide quand on clique sur la nav */
+  background-color: var(--c-bg);
+  color: var(--c-text);
 }
 
 body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Titres globaux */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--c-text);
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(2rem, 1vw + 1.5rem, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 0.5vw + 1rem, 2rem);
+}
+
+/* Liens par défaut */
+a {
+  color: var(--c-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+a:hover {
+  color: var(--c-hover);
+}
+
+/* Petite classe utilitaire pour centrer le contenu sur la largeur max du site */
+.container {
+  max-width: var(--layout-max-width);
+  padding-left: var(--layout-padding-x);
+  padding-right: var(--layout-padding-x);
+  margin-left: auto;
+  margin-right: auto;
 }

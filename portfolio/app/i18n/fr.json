@@ -1,0 +1,16 @@
+{
+  "brandName": "Elliot Infelta",
+  "nav": {
+    "about": "À propos",
+    "skills": "Compétences",
+    "experience": "Expériences",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "hero": {
+    "hello": "👋 Salut, moi c’est Elliot",
+    "title": "Je conçois et développe des expériences web naturelles, claires et utiles.",
+    "subtitle": "Développeur front passionné par la nature, l’esthétique et la performance."
+  },
+  "languageLabel": "FR"
+}
