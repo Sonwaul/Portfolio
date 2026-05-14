@@ -1,16 +1,63 @@
 {
   "brandName": "Elliot Infelta",
   "nav": {
-    "about": "À propos",
-    "skills": "Compétences",
-    "experience": "Expériences",
-    "projects": "Projets",
-    "contact": "Contact"
+    "sky": "Présentation",
+    "mountain": "Parcours",
+    "forest": "Compétences",
+    "river": "Projets",
+    "waterfall": "Avis",
+    "lake": "Contact"
   },
-  "hero": {
-    "hello": "👋 Salut, moi c’est Elliot",
-    "title": "Je conçois et développe des expériences web naturelles, claires et utiles.",
-    "subtitle": "Développeur front passionné par la nature, l’esthétique et la performance."
+  "sky": {
+    "greeting": "Bonjour, je suis",
+    "role": "Chef de projet web · Manager en devenir",
+    "location": "Métropole Lilloise · 23 ans",
+    "description": "Développeur de formation, j'évolue progressivement vers un rôle de chef de projet. Je pilote les projets de A à Z, gère la relation client, forme les équipes et crée des environnements de travail sereins et efficaces.",
+    "cta": "Explorer mon parcours",
+    "scrollHint": "Défiler pour explorer"
   },
-  "languageLabel": "FR"
+  "mountain": {
+    "title": "Mon Parcours",
+    "subtitle": "Chaque étape, une altitude supplémentaire",
+    "currentBadge": "En cours",
+    "experienceTab": "Expériences",
+    "educationTab": "Formations",
+    "missions": "Missions",
+    "seeDetails": "Voir le détail",
+    "present": "Aujourd'hui"
+  },
+  "forest": {
+    "title": "Mes Compétences",
+    "subtitle": "Une forêt de savoir, dense et diversifiée",
+    "levelLabel": "Maîtrise"
+  },
+  "river": {
+    "title": "Mes Projets",
+    "subtitle": "Des réalisations qui s'écoulent au fil du temps",
+    "viewDetails": "Voir les détails",
+    "visitSite": "Visiter",
+    "viewCode": "Code source",
+    "techStack": "Technologies",
+    "statusOngoing": "En cours",
+    "statusDone": "Livré"
+  },
+  "waterfall": {
+    "title": "Ce qu'ils disent",
+    "subtitle": "Des témoignages récoltés au fil de mes expériences"
+  },
+  "lake": {
+    "title": "Restons en contact",
+    "subtitle": "Démarrons une conversation",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "Votre email",
+    "messagePlaceholder": "Votre message...",
+    "submit": "Envoyer le message",
+    "success": "Message envoyé ! Je vous répondrai rapidement.",
+    "location": "Métropole Lilloise, France",
+    "linkedinLabel": "LinkedIn",
+    "emailLabel": "Email direct",
+    "otherLabel": "Autre réseau"
+  },
+  "languageLabel": "FR",
+  "close": "Fermer"
 }

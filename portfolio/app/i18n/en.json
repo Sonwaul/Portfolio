@@ -1,16 +1,63 @@
 {
   "brandName": "Elliot Infelta",
   "nav": {
-    "about": "About",
-    "skills": "Skills",
-    "experience": "Experience",
-    "projects": "Projects",
-    "contact": "Contact"
+    "sky": "About",
+    "mountain": "Journey",
+    "forest": "Skills",
+    "river": "Projects",
+    "waterfall": "Reviews",
+    "lake": "Contact"
   },
-  "hero": {
-    "hello": "👋 Hi, I’m Elliot",
-    "title": "I design and build web experiences that feel natural, clear, and useful.",
-    "subtitle": "Front-end developer focused on nature-inspired aesthetics and performance."
+  "sky": {
+    "greeting": "Hi, I'm",
+    "role": "Web Project Manager · Rising Leader",
+    "location": "Lille Area · 23 years old",
+    "description": "Trained as a developer, I'm evolving towards a project management role. I oversee projects from A to Z, manage client relationships, mentor new team members, and create efficient, serene work environments.",
+    "cta": "Explore my journey",
+    "scrollHint": "Scroll to explore"
   },
-  "languageLabel": "EN"
+  "mountain": {
+    "title": "My Journey",
+    "subtitle": "Every step brings a new altitude",
+    "currentBadge": "Ongoing",
+    "experienceTab": "Experience",
+    "educationTab": "Education",
+    "missions": "Missions",
+    "seeDetails": "See details",
+    "present": "Today"
+  },
+  "forest": {
+    "title": "My Skills",
+    "subtitle": "A dense and diverse forest of knowledge",
+    "levelLabel": "Proficiency"
+  },
+  "river": {
+    "title": "My Projects",
+    "subtitle": "Creations flowing through time",
+    "viewDetails": "View details",
+    "visitSite": "Visit",
+    "viewCode": "Source code",
+    "techStack": "Technologies",
+    "statusOngoing": "Ongoing",
+    "statusDone": "Delivered"
+  },
+  "waterfall": {
+    "title": "What they say",
+    "subtitle": "Testimonials collected throughout my experiences"
+  },
+  "lake": {
+    "title": "Let's stay in touch",
+    "subtitle": "Start a conversation",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "messagePlaceholder": "Your message...",
+    "submit": "Send message",
+    "success": "Message sent! I'll get back to you shortly.",
+    "location": "Lille Metropolitan Area, France",
+    "linkedinLabel": "LinkedIn",
+    "emailLabel": "Direct email",
+    "otherLabel": "Other"
+  },
+  "languageLabel": "EN",
+  "close": "Close"
 }
