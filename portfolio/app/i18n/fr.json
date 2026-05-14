@@ -9,10 +9,10 @@
     "lake": "Contact"
   },
   "sky": {
-    "greeting": "Bonjour, je suis",
-    "role": "Technicien Dev. Full Stack & Lead Projets",
+    "greeting": "",
+    "role": "De l'Expertise Technique au Pilotage de Projets Web.",
     "location": "Toufflers / Lille Métropole · 23 ans",
-    "description": "Initialement développeur Full Stack, j'ai choisi de prendre de la hauteur. Aujourd'hui, je ne me contente plus de coder ; je pilote. Mon ambition est d'être le pilier central de vos projets web : celui qui traduit les besoins clients en solutions concrètes, coordonne les talents et accompagne la montée en compétences des équipes.",
+    "description": "Bonjour, je suis Elliot. À 23 ans, j'évolue au cœur de la métropole lilloise. Mon parcours a débuté dans les lignes de code, là où la logique pure rencontre la création. Aujourd'hui, je m'élève pour devenir le pilier central du projet web : un manager capable de parler le langage des développeurs tout en traduisant les besoins business des clients. Ma vision ? Créer une fusion entre l'innovation technique et l'accompagnement humain.",
     "cta": "Explorer mon parcours",
     "scrollHint": "Défiler pour explorer"
   },
@@ -28,8 +28,11 @@
   },
   "forest": {
     "title": "Mes Compétences",
-    "subtitle": "Une forêt de savoir, dense et diversifiée",
-    "levelLabel": "Maîtrise"
+    "subtitle": "Un écosystème de savoir, dense et diversifié",
+    "intro": "Mon expertise est un écosystème. Si mes racines puisent leur force dans la logique algorithmique et le développement pur, ma canopée s'épanouit aujourd'hui dans le pilotage de projet et l'accompagnement humain. Voici les outils et savoir-faire que je mobilise pour porter vos ambitions.",
+    "toggleAll": "Vue globale",
+    "toggleTech": "Vue technique",
+    "toggleManagement": "Vue management"
   },
   "river": {
     "title": "Mes Projets",
@@ -47,9 +50,10 @@
   },
   "lake": {
     "title": "Restons en contact",
-    "subtitle": "Le projet web est un écosystème vivant. Si vous souhaitez échanger sur la gestion de projet, le management technique ou simplement partager une vision du web de demain, n'hésitez pas.",
+    "subtitle": "Le projet web est une aventure collective. Que vous ayez besoin d'un pilier technique ou d'un guide pour vos futurs projets, discutons-en autour d'un café (ou d'un écran).",
     "namePlaceholder": "Votre nom",
     "emailPlaceholder": "Votre email",
+    "subjectPlaceholder": "Objet",
     "messagePlaceholder": "Votre message...",
     "submit": "Envoyer le message",
     "success": "Message envoyé ! Je vous répondrai rapidement.",

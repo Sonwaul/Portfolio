@@ -1,48 +1,83 @@
 "use client";
 
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { reviews } from "@/app/data/reviewsData";
-import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="star-rating" aria-label={`${rating} étoiles sur 5`}>
       {[1, 2, 3, 4, 5].map((star) => (
-        <span key={star} className={star <= rating ? "star star-filled" : "star star-empty"}>
-          ★
-        </span>
+        <span key={star} className={star <= rating ? "star star-filled" : "star star-empty"}>★</span>
       ))}
     </div>
   );
 }
 
-function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
-  const { ref, isVisible } = useScrollReveal();
+const GAP = 24;
+const CLONE_COUNT = 2;
 
-  return (
-    <div ref={ref} className={`waterfall-card ${isVisible ? "reveal-visible" : "reveal-hidden"}`}>
-      <StarRating rating={review.rating} />
-      <p className="waterfall-text">"{review.text}"</p>
-      <div className="waterfall-author">
-        <div className="waterfall-avatar">
-          {review.author.charAt(0)}
-        </div>
-        <div>
-          <p className="waterfall-author-name">{review.author}</p>
-          <p className="waterfall-author-role">{review.role}</p>
-        </div>
-        <span className="waterfall-date">{review.date}</span>
-      </div>
-    </div>
-  );
-}
+const extended = [
+  ...reviews.slice(-CLONE_COUNT),
+  ...reviews,
+  ...reviews.slice(0, CLONE_COUNT),
+];
 
 export default function WaterfallSection() {
   const { messages } = useLanguage();
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [index, setIndex] = useState(CLONE_COUNT);
+  const [animated, setAnimated] = useState(true);
+
+  function computeCardWidth() {
+    if (!viewportRef.current) return;
+    const vw = viewportRef.current.offsetWidth;
+    setCardWidth(Math.floor((vw - GAP) / 1.18));
+  }
+
+  useEffect(() => {
+    computeCardWidth();
+    const ro = new ResizeObserver(computeCardWidth);
+    if (viewportRef.current) ro.observe(viewportRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!animated) {
+      const t = setTimeout(() => setAnimated(true), 50);
+      return () => clearTimeout(t);
+    }
+  }, [animated]);
+
+  function handleTransitionEnd() {
+    if (index >= reviews.length + CLONE_COUNT) {
+      setAnimated(false);
+      setIndex(CLONE_COUNT);
+    } else if (index < CLONE_COUNT) {
+      setAnimated(false);
+      setIndex(reviews.length + CLONE_COUNT - 1);
+    }
+  }
+
+  const slideTo = useCallback((i: number) => {
+    setAnimated(true);
+    setIndex(i);
+  }, []);
+
+  const next = useCallback(() => slideTo(index + 1), [index, slideTo]);
+  const prev = () => slideTo(index - 1);
+
+  useEffect(() => {
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  const realIndex = ((index - CLONE_COUNT) % reviews.length + reviews.length) % reviews.length;
+  const translateX = -(index * (cardWidth + GAP));
 
   return (
-    <section id="waterfall" className="waterfall-section">
-      {/* Cascade visuelle en fond */}
+    <section id="temoignages" className="waterfall-section">
       <div className="waterfall-streams" aria-hidden="true">
         {[...Array(6)].map((_, i) => (
           <div key={i} className={`waterfall-stream waterfall-stream-${i + 1}`} />
@@ -55,9 +90,73 @@ export default function WaterfallSection() {
           <p className="section-subtitle">{messages.waterfall.subtitle}</p>
         </div>
 
-        <div className="waterfall-grid">
-          {reviews.map((review) => (
-            <ReviewCard key={review.id} review={review} />
+        <div className="carousel-outer">
+          <button className="carousel-btn" onClick={prev} aria-label="Précédent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <div ref={viewportRef} className="carousel-viewport">
+            <div
+              className="carousel-track"
+              style={{
+                transform: cardWidth ? `translateX(${translateX}px)` : "none",
+                transition: animated ? "transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)" : "none",
+                opacity: cardWidth ? 1 : 0,
+              }}
+              onTransitionEnd={handleTransitionEnd}
+            >
+              {extended.map((review, i) => (
+                <div
+                  key={i}
+                  className="waterfall-card"
+                  style={{ width: cardWidth ? `${cardWidth}px` : undefined, flexShrink: 0 }}
+                >
+                  <StarRating rating={review.rating} />
+                  <p className="waterfall-text">"{review.text}"</p>
+                  <div className="waterfall-card-footer">
+                    <div className="waterfall-author">
+                      <div className="waterfall-avatar">{review.author.charAt(0)}</div>
+                      <div>
+                        <p className="waterfall-author-name">{review.author}</p>
+                        <p className="waterfall-author-role">{review.role}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={review.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="waterfall-review-link"
+                    >
+                      Source Google Maps
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button className="carousel-btn" onClick={next} aria-label="Suivant">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div className="carousel-dots">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              className={`carousel-dot ${i === realIndex ? "carousel-dot-active" : ""}`}
+              onClick={() => slideTo(CLONE_COUNT + i)}
+              aria-label={`Avis ${i + 1}`}
+            />
           ))}
         </div>
       </div>

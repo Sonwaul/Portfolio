@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
 export default function SkySection() {
   const { messages } = useLanguage();
 
   return (
-    <section id="sky" className="sky-section">
+    <section id="presentation" className="sky-section">
       {/* Nuages de fond flottants */}
       <div className="cloud cloud-1" aria-hidden="true" />
       <div className="cloud cloud-2" aria-hidden="true" />
@@ -30,13 +31,18 @@ export default function SkySection() {
       <div className="container sky-content">
         <div className="sky-photo-wrapper">
           <div className="sky-photo-frame">
-            <span className="sky-photo-initials">EI</span>
+            <Image
+              src="/moi-finlande.jpg"
+              alt="Elliot Infelta"
+              width={420}
+              height={600}
+              className="sky-photo-img"
+              priority
+            />
           </div>
-          <div className="sky-photo-glow" aria-hidden="true" />
         </div>
 
         <div className="sky-text">
-          <p className="sky-greeting">{messages.sky.greeting}</p>
           <h1 className="sky-name">Elliot Infelta</h1>
           <p className="sky-role">{messages.sky.role}</p>
           <p className="sky-location">
@@ -44,20 +50,13 @@ export default function SkySection() {
             {messages.sky.location}
           </p>
           <p className="sky-description">{messages.sky.description}</p>
-          <a href="#mountain" className="sky-cta">
+          <a href="#parcours" className="sky-cta">
             {messages.sky.cta}
             <span className="sky-cta-arrow">↓</span>
           </a>
         </div>
       </div>
 
-      {/* Indicateur de scroll */}
-      <div className="sky-scroll-hint">
-        <span>{messages.sky.scrollHint}</span>
-        <div className="sky-scroll-mouse">
-          <div className="sky-scroll-dot" />
-        </div>
-      </div>
     </section>
   );
 }

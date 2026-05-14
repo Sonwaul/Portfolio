@@ -1,59 +1,129 @@
 export interface Skill {
   name: string;
-  level: number;
 }
 
-export interface SkillCategory {
-  id: string;
-  label: string;
-  icon: string;
+export interface SkillGroup {
+  title: string;
   skills: Skill[];
 }
 
-export const skillCategories: SkillCategory[] = [
+export interface Bosquet {
+  id: "canopee" | "tronc" | "racines";
+  icon: string;
+  title: string;
+  subtitle: string;
+  groups: SkillGroup[];
+}
+
+export const bosquets: Bosquet[] = [
   {
-    id: "management",
-    label: "Gestion & Management",
+    id: "canopee",
     icon: "🌳",
-    skills: [
-      { name: "Relation commerciale", level: 88 },
-      { name: "Formation d'équipes", level: 85 },
-      { name: "Cahiers des charges", level: 82 },
-      { name: "UX / UI Design", level: 70 },
-      { name: "Gestion de planning", level: 80 },
+    title: "La Canopée",
+    subtitle: "Management & Humain",
+    groups: [
+      {
+        title: "Pilotage",
+        skills: [
+          { name: "ClickUp" },
+          { name: "Méthode Agile" },
+          { name: "Respect des deadlines" },
+          { name: "Arbitrage budgétaire" },
+        ],
+      },
+      {
+        title: "Relation Client",
+        skills: [
+          { name: "Avant-vente & Vulgarisation" },
+          { name: "Rédaction de CDC" },
+          { name: "Suivi stratégique" },
+        ],
+      },
+      {
+        title: "Pédagogie",
+        skills: [
+          { name: "Accompagnement à l'autonomie" },
+          { name: "Bilans de compétences" },
+        ],
+      },
+      {
+        title: "Soft Skills",
+        skills: [
+          { name: "Résistance au stress" },
+          { name: "Pédagogie" },
+          { name: "Joie de vivre" },
+          { name: "Écoute active" },
+        ],
+      },
     ],
   },
   {
-    id: "ecommerce",
-    label: "Expertise E-commerce",
+    id: "tronc",
     icon: "🌲",
-    skills: [
-      { name: "Shopify (CMS & API)", level: 90 },
-      { name: "Symfony", level: 82 },
-      { name: "Prestashop", level: 75 },
-      { name: "WordPress", level: 78 },
+    title: "Le Tronc",
+    subtitle: "Architecture & Tech",
+    groups: [
+      {
+        title: "Back-end",
+        skills: [
+          { name: "Symfony" },
+          { name: "Spring" },
+          { name: "PHP" },
+          { name: "Java" },
+          { name: "Python" },
+        ],
+      },
+      {
+        title: "Écosystème Shopify",
+        skills: [
+          { name: "Architecture Shopify" },
+          { name: "API Shopify" },
+          { name: "Liquid" },
+          { name: "Flux de données" },
+          { name: "JSON / XML" },
+        ],
+      },
+      {
+        title: "Front-end",
+        skills: [
+          { name: "HTML" },
+          { name: "CSS" },
+          { name: "JavaScript" },
+        ],
+      },
     ],
   },
   {
-    id: "technique",
-    label: "Technique",
+    id: "racines",
     icon: "🌱",
-    skills: [
-      { name: "PHP", level: 85 },
-      { name: "Java / Spring", level: 65 },
-      { name: "MySQL / PostgreSQL", level: 78 },
-      { name: "Liquid / Twig", level: 80 },
-    ],
-  },
-  {
-    id: "outils",
-    label: "Outils & Connecteurs",
-    icon: "🌿",
-    skills: [
-      { name: "API & WebServices", level: 85 },
-      { name: "ERP / CRM", level: 78 },
-      { name: "Import/Export CSV · XML · JSON", level: 82 },
-      { name: "Git / GitHub", level: 80 },
+    title: "Les Racines",
+    subtitle: "Logique & Outils",
+    groups: [
+      {
+        title: "Data",
+        skills: [
+          { name: "SQL" },
+          { name: "MySQL" },
+          { name: "PostgreSQL" },
+        ],
+      },
+      {
+        title: "DevOps & Outils",
+        skills: [
+          { name: "Git / GitHub" },
+          { name: "Docker" },
+          { name: "Maintenance serveurs" },
+          { name: "Gestion de logs" },
+        ],
+      },
+      {
+        title: "Conception",
+        skills: [
+          { name: "UX/UI Design" },
+          { name: "Figma" },
+          { name: "Logique algorithmique" },
+        ],
+      },
     ],
   },
 ];

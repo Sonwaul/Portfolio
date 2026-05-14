@@ -40,7 +40,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${cormorant.variable}`}
       suppressHydrationWarning
     >
-      <body>
+      <body suppressHydrationWarning>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

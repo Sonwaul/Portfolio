@@ -44,7 +44,9 @@ export default function RiverSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="river" className="river-section">
+    <section id="projets" className="river-section">
+      {/* Brume bleue de transition depuis la forêt */}
+      <div className="forest-to-river-mist-blue" aria-hidden="true" />
       {/* Ondulations décoratives */}
       <div className="river-waves" aria-hidden="true">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="river-wave-svg">

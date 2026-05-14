@@ -5,12 +5,12 @@ import styles from "./Navbar.module.css";
 import { useThemeToggle } from "./useThemeToggle";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
-const SECTIONS = ["sky", "mountain", "forest", "river", "waterfall", "lake"] as const;
+const SECTIONS = ["presentation", "parcours", "competences", "projets", "temoignages", "contact"] as const;
 type SectionId = typeof SECTIONS[number];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen]     = useState(false);
-  const [activeSection, setActiveSection] = useState<SectionId>("sky");
+  const [activeSection, setActiveSection] = useState<SectionId>("presentation");
   const { isDark, toggleTheme }         = useThemeToggle();
   const { messages }                    = useLanguage();
 
@@ -38,12 +38,12 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   const navItems = [
-    { id: "sky",        label: messages.nav.sky },
-    { id: "mountain",   label: messages.nav.mountain },
-    { id: "forest",     label: messages.nav.forest },
-    { id: "river",      label: messages.nav.river },
-    { id: "waterfall",  label: messages.nav.waterfall },
-    { id: "lake",       label: messages.nav.lake },
+    { id: "presentation",  label: messages.nav.sky },
+    { id: "parcours",      label: messages.nav.mountain },
+    { id: "competences",   label: messages.nav.forest },
+    { id: "projets",       label: messages.nav.river },
+    { id: "temoignages",   label: messages.nav.waterfall },
+    { id: "contact",       label: messages.nav.lake },
   ] as const;
 
   return (

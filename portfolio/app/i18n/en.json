@@ -9,10 +9,10 @@
     "lake": "Contact"
   },
   "sky": {
-    "greeting": "Hi, I'm",
-    "role": "Full Stack Dev. & Project Lead",
+    "greeting": "",
+    "role": "From Technical Expertise to Web Project Management.",
     "location": "Toufflers / Lille Area · 23 y.o.",
-    "description": "Originally a Full Stack developer, I chose to step back and see the bigger picture. Today, I don't just code — I lead. My goal is to be the central pillar of your web projects: translating client needs into concrete solutions, coordinating talent, and supporting team growth.",
+    "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where pure logic meets creation. Today, I'm rising to become the central pillar of web projects: a manager who speaks the language of developers while translating clients' business needs. My vision? Creating a fusion between technical innovation and human-centered support.",
     "cta": "Explore my journey",
     "scrollHint": "Scroll to explore"
   },
@@ -28,8 +28,11 @@
   },
   "forest": {
     "title": "My Skills",
-    "subtitle": "A dense and diverse forest of knowledge",
-    "levelLabel": "Proficiency"
+    "subtitle": "A dense and diverse ecosystem of knowledge",
+    "intro": "My expertise is an ecosystem. While my roots draw strength from algorithmic logic and pure development, my canopy thrives today in project management and human support. Here are the tools and know-how I mobilise to drive your ambitions.",
+    "toggleAll": "Full view",
+    "toggleTech": "Technical view",
+    "toggleManagement": "Management view"
   },
   "river": {
     "title": "My Projects",
@@ -47,9 +50,10 @@
   },
   "lake": {
     "title": "Let's stay in touch",
-    "subtitle": "A web project is a living ecosystem. If you'd like to discuss project management, technical leadership, or simply share a vision of tomorrow's web, feel free to reach out.",
+    "subtitle": "A web project is a collective adventure. Whether you need a technical backbone or a guide for your next projects, let's talk over a coffee (or a screen).",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Your email",
+    "subjectPlaceholder": "Subject",
     "messagePlaceholder": "Your message...",
     "submit": "Send message",
     "success": "Message sent! I'll get back to you shortly.",

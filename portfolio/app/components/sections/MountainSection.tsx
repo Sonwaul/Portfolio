@@ -47,12 +47,30 @@ function TimelineCard({ item, onOpen }: { item: TimelineItem; onOpen: (item: Tim
 export default function MountainSection() {
   const { messages } = useLanguage();
   const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
+  const [displayedTab, setDisplayedTab] = useState<"experience" | "education">("experience");
+  const [fading, setFading] = useState(false);
   const [selectedItem, setSelectedItem] = useState<TimelineItem | null>(null);
+  const [modalTab, setModalTab] = useState(0);
 
-  const items = activeTab === "experience" ? timelineItems : educationItems;
+  const items = displayedTab === "experience" ? timelineItems : educationItems;
+
+  function handleTabChange(tab: "experience" | "education") {
+    if (tab === activeTab || fading) return;
+    setActiveTab(tab);
+    setFading(true);
+    setTimeout(() => {
+      setDisplayedTab(tab);
+      setFading(false);
+    }, 220);
+  }
+
+  function handleOpen(item: TimelineItem) {
+    setSelectedItem(item);
+    setModalTab(0);
+  }
 
   return (
-    <section id="mountain" className="mountain-section">
+    <section id="parcours" className="mountain-section">
       {/* Silhouette montagne pleine hauteur — pics émergent dans le ciel bleu */}
       <div className="mountain-bg" aria-hidden="true">
         <svg viewBox="0 0 1440 900" preserveAspectRatio="none" className="mountain-svg">
@@ -104,27 +122,36 @@ export default function MountainSection() {
         <div className="mountain-tabs">
           <button
             className={`mountain-tab ${activeTab === "experience" ? "mountain-tab-active" : ""}`}
-            onClick={() => setActiveTab("experience")}
+            onClick={() => handleTabChange("experience")}
           >
             🏔️ {messages.mountain.experienceTab}
           </button>
           <button
             className={`mountain-tab ${activeTab === "education" ? "mountain-tab-active" : ""}`}
-            onClick={() => setActiveTab("education")}
+            onClick={() => handleTabChange("education")}
           >
             🎓 {messages.mountain.educationTab}
           </button>
         </div>
 
         {/* Timeline */}
-        <div className="timeline-wrapper">
+        <div className={`timeline-wrapper${fading ? " timeline-fading" : ""}`}>
           <div className="timeline-line" />
           <div className="timeline-items">
             {items.map((item) => (
-              <TimelineCard key={item.id} item={item} onOpen={setSelectedItem} />
+              <TimelineCard key={item.id} item={item} onOpen={handleOpen} />
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Brume à la lisière de la forêt */}
+      <div className="mountain-to-forest-mist" aria-hidden="true" />
+      {/* Transition vers la forêt — cimes d'arbres en vert forêt */}
+      <div className="mountain-to-forest-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,150 L0,115 L12,115 L28,68 L44,115 L58,115 L72,48 L86,115 L100,115 L116,75 L130,115 L144,115 L158,35 L172,115 L188,115 L202,58 L216,115 L230,115 L248,22 L266,115 L280,115 L295,62 L308,115 L322,115 L338,40 L354,115 L368,115 L382,70 L396,115 L410,115 L428,18 L446,115 L460,115 L474,52 L488,115 L502,115 L516,42 L530,115 L544,115 L558,75 L572,115 L586,115 L600,28 L614,115 L628,115 L642,58 L656,115 L670,115 L684,45 L698,115 L712,115 L730,15 L748,115 L762,115 L776,65 L790,115 L804,115 L818,38 L832,115 L846,115 L860,60 L874,115 L888,115 L902,25 L916,115 L930,115 L944,55 L958,115 L972,115 L986,42 L1000,115 L1014,115 L1028,70 L1042,115 L1056,115 L1070,20 L1084,115 L1098,115 L1112,50 L1126,115 L1140,115 L1154,38 L1168,115 L1182,115 L1196,65 L1210,115 L1224,115 L1238,28 L1252,115 L1266,115 L1280,55 L1294,115 L1308,115 L1322,45 L1336,115 L1350,115 L1364,72 L1378,115 L1392,115 L1410,35 L1428,115 L1440,88 L1440,150 Z" />
+        </svg>
       </div>
 
       {/* Modal détail */}
@@ -145,12 +172,37 @@ export default function MountainSection() {
               )}
             </div>
             <p className="modal-short-desc">{selectedItem.shortDescription}</p>
-            <h4 className="modal-missions-title">{messages.mountain.missions}</h4>
-            <ul className="modal-missions-list">
-              {selectedItem.missions.map((mission, i) => (
-                <li key={i}>{mission}</li>
-              ))}
-            </ul>
+
+            {selectedItem.tabs ? (
+              <>
+                <div className="modal-inner-tabs">
+                  {selectedItem.tabs.map((tab, i) => (
+                    <button
+                      key={i}
+                      className={`modal-inner-tab ${modalTab === i ? "modal-inner-tab-active" : ""}`}
+                      onClick={() => setModalTab(i)}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+                <ul className="modal-missions-list">
+                  {selectedItem.tabs[modalTab].missions.map((mission, i) => (
+                    <li key={i}>{mission}</li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <>
+                <h4 className="modal-missions-title">{messages.mountain.missions}</h4>
+                <ul className="modal-missions-list">
+                  {selectedItem.missions.map((mission, i) => (
+                    <li key={i}>{mission}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+
             <div className="timeline-tags" style={{ marginTop: "1rem" }}>
               {selectedItem.tags.map((tag) => (
                 <span key={tag} className="timeline-tag">{tag}</span>

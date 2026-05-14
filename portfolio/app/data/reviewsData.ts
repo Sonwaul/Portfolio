@@ -5,39 +5,53 @@ export interface Review {
   rating: number;
   text: string;
   date: string;
+  url: string;
 }
 
 export const reviews: Review[] = [
   {
     id: "rev1",
-    author: "Marie Dupont",
-    role: "Directrice, Agence XYZ",
+    author: "Nemrod",
+    role: "Avis Google · huggii.com ⭐⭐⭐⭐⭐",
     rating: 5,
-    text: "Elliot est un collaborateur exceptionnel. Sa capacité à jongler entre le technique et le relationnel est vraiment rare. Il a su gérer les attentes de nos clients tout en guidant notre équipe de développement avec brio.",
-    date: "Nov. 2024",
+    text: "Accompagnement sur-mesure de la part de Huggii. Ils ont réussi à trouver des solutions à tous nos besoins et toutes problématiques. Mention spéciale à Elliot pour sa réactivité et sa bonne humeur, c'était un réel plaisir de travailler ensemble !",
+    date: "",
+    url: "https://share.google/MrzwN7KWDyuUBWWov",
   },
   {
     id: "rev2",
-    author: "Thomas Bernard",
-    role: "Client entrepreneur",
+    author: "TANDEM · Fragrances & Ombres Portées",
+    role: "Avis Google · huggii.com ⭐⭐⭐⭐⭐",
     rating: 5,
-    text: "Très professionnel, à l'écoute et réactif. Elliot a su transformer notre vision floue en un projet web concret. Il a expliqué chaque étape sans jargon technique, ce qui a été vraiment appréciable.",
-    date: "Août 2024",
+    text: "Un sans faute dans ce partenariat où nous avons été accompagnés par Elliot sur la création de nos 2 sites marchands. Nos objectifs techniques, esthétiques et graphiques qui étaient ambitieux ont été atteints, dans les temps, tout en intégrant les contraintes de Shopify. Nous avons particulièrement apprécié la compétence, la disponibilité, la réactivité, la patience et l'état d'esprit toujours positif de notre interlocuteur. Alors OUI nous recommandons sans réserve Huggii pour la création de sites internet sur Shopify !",
+    date: "",
+    url: "https://share.google/RCHUC7GPjqGhFdT56",
   },
   {
     id: "rev3",
-    author: "Sophie Martin",
-    role: "Alternante, Agence Web",
+    author: "Fondation des Possibles",
+    role: "Avis Google · huggii.com ⭐⭐⭐⭐⭐",
     rating: 5,
-    text: "Elliot m'a formée lors de mon alternance avec une patience et une pédagogie remarquables. Il sait adapter son niveau d'explication et rend la montée en compétence naturelle et progressive.",
-    date: "Juin 2024",
+    text: "La Fondation des Possibles est ravie d'avoir fait appel à Huggii pour la refonte de son site. Guillaume et Elliot ont su comprendre notre demande très vite et le résultat est vraiment à la hauteur de nos attentes ! N'hésitez plus si vous avez un site à faire.",
+    date: "",
+    url: "https://share.google/KzGjYzKa9Q569j6Qo",
   },
   {
     id: "rev4",
-    author: "Lucas Petit",
-    role: "Développeur, équipe projet",
+    author: "Skintips",
+    role: "Avis Google · huggii.com ⭐⭐⭐⭐⭐",
     rating: 5,
-    text: "Travailler avec Elliot c'est avoir un chef d'orchestre bienveillant. Il comprend les contraintes techniques, fait le lien avec le client et crée un environnement de travail serein. Je recommande sans hésiter.",
-    date: "Fév. 2025",
+    text: "Elliot notre développeur a été d'une patience et d'un professionnalisme exceptionnel. Je recommande Huggii.",
+    date: "",
+    url: "https://share.google/BsuyosP6qtknfYFzR",
+  },
+  {
+    id: "rev5",
+    author: "Automatic Technologies",
+    role: "Avis Google · huggii.com ⭐⭐⭐⭐⭐",
+    rating: 5,
+    text: "Nous avons fait appel à HUGGII pour la réalisation de notre nouveau site Internet. L'équipe HUGGII a réussi à faire une passerelle EBP/Shopify qui nous simplifie le travail de mise à jour des produits ainsi que des commandes. Elliot, qui était en charge de notre dossier, a été à l'écoute et d'une grande réactivité. C'est un véritable plaisir de travailler avec des personnes compétentes et à l'écoute des attentes. Bravo à toute l'équipe HUGGII !",
+    date: "",
+    url: "https://share.google/CZyilnyDcRhjhXoNW",
   },
 ];
