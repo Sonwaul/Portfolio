@@ -53,16 +53,43 @@ export default function MountainSection() {
 
   return (
     <section id="mountain" className="mountain-section">
-      {/* Silhouette montagne SVG en fond */}
+      {/* Silhouette montagne pleine hauteur — pics émergent dans le ciel bleu */}
       <div className="mountain-bg" aria-hidden="true">
-        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="mountain-svg">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="none" className="mountain-svg">
+          {/* Chaîne lointaine */}
           <path
-            d="M0,320 L0,220 L180,80 L360,200 L540,40 L720,180 L900,60 L1080,160 L1260,100 L1440,200 L1440,320 Z"
-            className="mountain-path-back"
+            d="M0,900 L0,340 L190,210 L370,310 L520,140 L700,220 L860,90 L1040,210 L1200,140 L1390,260 L1440,230 L1440,900 Z"
+            className="mountain-path-far"
           />
+          {/* Chaîne intermédiaire */}
           <path
-            d="M0,320 L0,280 L240,140 L480,260 L660,120 L840,240 L1020,160 L1200,280 L1440,200 L1440,320 Z"
-            className="mountain-path-front"
+            d="M0,900 L0,400 L220,270 L410,370 L575,185 L720,55 L865,165 L1065,320 L1185,215 L1365,340 L1440,305 L1440,900 Z"
+            className="mountain-path-mid"
+          />
+          {/* Chaîne de premier plan — pic central à y=0 */}
+          <path
+            d="M0,900 L0,460 L255,330 L450,435 L615,240 L720,0 L825,215 L1005,390 L1120,285 L1305,415 L1440,380 L1440,900 Z"
+            className="mountain-path-near"
+          />
+          {/* Neige — pic central (720, 0) */}
+          <path
+            d="M702,85 L711,38 L720,0 L729,38 L738,85 L730,68 L720,28 L710,68 Z"
+            fill="white" fillOpacity="0.93"
+          />
+          {/* Neige — pic gauche (615, 240) */}
+          <path
+            d="M605,278 L611,256 L615,240 L619,256 L625,278 L620,266 L615,252 L610,266 Z"
+            fill="white" fillOpacity="0.88"
+          />
+          {/* Neige — pic droit (825, 215) */}
+          <path
+            d="M815,253 L821,232 L825,215 L829,232 L835,253 L830,241 L825,228 L820,241 Z"
+            fill="white" fillOpacity="0.88"
+          />
+          {/* Neige — pic intermédiaire gauche (860, 90) */}
+          <path
+            d="M853,122 L857,103 L860,90 L863,103 L867,122 L863,112 L860,98 L857,112 Z"
+            fill="white" fillOpacity="0.82"
           />
         </svg>
       </div>

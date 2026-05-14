@@ -1,9 +1,79 @@
-/* === NAVBAR STYLE CAPSULE NATURE (v2) === */
+/* === NAVBAR — ADAPTIVE SECTION COLORS === */
 
-/* HEADER GLOBAL FIXÉ EN HAUT */
+/* Couleurs par section (variables CSS en cascade) */
+.navbarContainer {
+  --nav-bg:   var(--c-surface);
+  --nav-text: var(--c-text);
+  --nav-fill: var(--c-accent);
+  --nav-border: color-mix(in srgb, var(--c-bonus) 40%, transparent);
+}
+
+.navbarContainer[data-section="sky"] {
+  --nav-bg:   rgba(110, 190, 225, 0.82);
+  --nav-text: #062030;
+  --nav-fill: rgba(6, 50, 90, 0.70);
+}
+.navbarContainer[data-section="mountain"] {
+  --nav-bg:   rgba(235, 222, 205, 0.90);
+  --nav-text: #2C1A0A;
+  --nav-fill: rgba(120, 95, 65, 0.65);
+}
+.navbarContainer[data-section="forest"] {
+  --nav-bg:   rgba(18, 46, 10, 0.92);
+  --nav-text: rgba(215, 240, 200, 0.95);
+  --nav-fill: rgba(70, 160, 110, 0.65);
+}
+.navbarContainer[data-section="river"] {
+  --nav-bg:   rgba(18, 55, 105, 0.90);
+  --nav-text: rgba(200, 230, 255, 0.95);
+  --nav-fill: rgba(120, 190, 230, 0.60);
+}
+.navbarContainer[data-section="waterfall"] {
+  --nav-bg:   rgba(195, 225, 242, 0.90);
+  --nav-text: #0A1E30;
+  --nav-fill: rgba(20, 65, 110, 0.60);
+}
+.navbarContainer[data-section="lake"] {
+  --nav-bg:   rgba(16, 52, 98, 0.90);
+  --nav-text: rgba(200, 230, 255, 0.95);
+  --nav-fill: rgba(120, 190, 230, 0.60);
+}
+
+/* Dark mode overrides */
+.dark .navbarContainer[data-section="sky"] {
+  --nav-bg:   rgba(5, 15, 35, 0.88);
+  --nav-text: rgba(180, 210, 240, 0.95);
+  --nav-fill: rgba(60, 120, 190, 0.55);
+}
+.dark .navbarContainer[data-section="mountain"] {
+  --nav-bg:   rgba(30, 18, 8, 0.92);
+  --nav-text: rgba(220, 200, 175, 0.95);
+  --nav-fill: rgba(160, 130, 90, 0.55);
+}
+.dark .navbarContainer[data-section="forest"] {
+  --nav-bg:   rgba(8, 22, 5, 0.94);
+  --nav-text: rgba(180, 230, 160, 0.95);
+  --nav-fill: rgba(60, 140, 90, 0.55);
+}
+.dark .navbarContainer[data-section="river"],
+.dark .navbarContainer[data-section="lake"] {
+  --nav-bg:   rgba(5, 12, 28, 0.92);
+  --nav-text: rgba(180, 215, 245, 0.95);
+  --nav-fill: rgba(80, 150, 200, 0.50);
+}
+.dark .navbarContainer[data-section="waterfall"] {
+  --nav-bg:   rgba(6, 16, 30, 0.90);
+  --nav-text: rgba(180, 215, 245, 0.95);
+  --nav-fill: rgba(80, 150, 200, 0.50);
+}
+
+/* ======================================
+   STRUCTURE
+====================================== */
+
 .header {
   position: fixed;
-  top: 0.5rem; /* espace entre le haut et la capsule */
+  top: 0.5rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,46 +81,45 @@
   background: transparent;
 }
 
-/* CAPSULE DE NAVIGATION */
 .navbarContainer {
-  /* CHANGEMENT: largeur plus grande pour desktop */
   width: 96%;
-  max-width: 1400px; /* avant: var(--layout-max-width) ≈1100px */
-
+  max-width: 1400px;
   height: calc(var(--navbar-height) + 0.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  background-color: var(--c-surface);
-  color: var(--c-text);
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
 
   border-radius: 2.5rem;
   padding: 0 1.5rem;
 
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid color-mix(in srgb, var(--c-bonus) 40%, transparent);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: blur(14px) saturate(1.2);
 
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.4s ease,
+    box-shadow 0.3s ease;
 }
 
-.dark .navbarContainer {
-  background-color: color-mix(in srgb, var(--c-surface) 80%, var(--c-bg));
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-}
+/* ======================================
+   LOGO
+====================================== */
 
-/* LOGO / NOM */
 .logo {
   font-family: var(--font-title);
   font-weight: 600;
   font-size: 1.1rem;
-  color: var(--c-text);
+  color: var(--nav-text);
   letter-spacing: -0.03em;
   text-decoration: none;
-
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  transition: color 0.4s ease;
 }
 
 .logo::after {
@@ -58,18 +127,21 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--c-accent);
+  background-color: var(--nav-fill);
   opacity: 0.9;
+  transition: background-color 0.4s ease;
 }
 
-/* SECTION DROITE (LIENS + ACTIONS) */
+/* ======================================
+   LIENS DE NAVIGATION (DESKTOP)
+====================================== */
+
 .rightSection {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* LIENS DE NAVIGATION (DESKTOP) */
 .navLinks {
   display: none;
 }
@@ -77,34 +149,71 @@
 @media (min-width: 768px) {
   .navLinks {
     display: flex;
-    gap: 1rem;
-  }
-
-  .navLinks a {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--c-text);
-    text-decoration: none;
-
-    padding: 0.4rem 0.8rem;
-    border-radius: var(--radius-card);
-    line-height: 1.2;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-
-  .navLinks a:hover {
-    background-color: var(--c-hover);
-    color: var(--c-bg);
+    gap: 0.25rem;
   }
 }
 
-/* BOUTONS UTILITAIRES (LANGUE / THÈME / BURGER VISUEL SIMILAIRE) */
+.navLink {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--nav-text);
+  text-decoration: none;
+
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  line-height: 1.2;
+
+  transition: color 0.3s ease;
+}
+
+/* Fond de remplissage (::before) */
+.navLink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--nav-fill);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: -1;
+  transition: transform 0s ease; /* pas de transition au départ */
+}
+
+/* Lien actif : remplissage animé */
+.navLinkActive::before {
+  transform: scaleX(1);
+  transition: transform 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLinkActive {
+  color: white;
+  font-weight: 600;
+}
+
+/* Retrait rapide quand on quitte la section */
+.navLink:not(.navLinkActive)::before {
+  transition: transform 0.35s ease;
+}
+
+/* Hover sur les liens inactifs */
+.navLink:not(.navLinkActive):hover {
+  background-color: color-mix(in srgb, var(--nav-fill) 20%, transparent);
+}
+
+/* ======================================
+   BOUTONS UTILITAIRES
+====================================== */
+
 .utilityButton {
   width: 38px;
   height: 38px;
   border-radius: 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--c-bonus) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--nav-fill) 50%, transparent);
 
   display: flex;
   align-items: center;
@@ -115,61 +224,36 @@
   font-size: 0.75rem;
   line-height: 1;
 
-  background-color: var(--c-accent);
-  color: var(--c-bg);
+  background-color: var(--nav-fill);
+  color: white;
 
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.1s ease;
+    background-color 0.3s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
 }
 
 .utilityButton:hover {
-  background-color: var(--c-hover);
-  color: var(--c-bg);
+  opacity: 0.85;
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.22);
 }
 
-/* --- WRAPPER LANGUE --- */
+/* ======================================
+   LANGUE
+====================================== */
+
 .langWrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-/* On garde .utilityButton et .langButton existants :
-   .utilityButton = style pill vert
-   .langButton    = largeur plus large etc.
-   On les réutilise pour le trigger du menu langue.
-*/
 .langButton {
   width: 44px;
   min-width: 44px;
   height: 38px;
   border-radius: 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--c-bonus) 40%, transparent);
-  background-color: var(--c-accent);
-  color: var(--c-bg);
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.1s ease;
-}
-
-.langButton:hover {
-  background-color: var(--c-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.22);
 }
 
 .langFlag {
@@ -177,25 +261,21 @@
   line-height: 1;
 }
 
-/* --- LE MENU DÉROULANT LANGUES --- */
 .langDropdown {
   position: absolute;
-  top: calc(100% + 0.5rem); /* sous le bouton langue */
+  top: calc(100% + 0.5rem);
   right: 0;
-
   min-width: 140px;
   background-color: var(--c-surface);
   color: var(--c-text);
-
   border-radius: 1rem;
   padding: 0.5rem;
   border: 1px solid color-mix(in srgb, var(--c-bonus) 40%, transparent);
   box-shadow: 0 20px 40px rgba(0,0,0,0.22);
-
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  z-index: 999; /* au-dessus du reste */
+  z-index: 999;
 }
 
 .dark .langDropdown {
@@ -203,25 +283,20 @@
   box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
-/* chaque bouton d'option de langue */
 .langDropdownItem {
   width: 100%;
   background: transparent;
   border: 0;
   border-radius: 0.8rem;
-
   padding: 0.6rem 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--c-text);
   text-align: left;
-  line-height: 1.2;
-
   cursor: pointer;
   transition: background-color 0.18s ease, color 0.18s ease;
 }
@@ -231,51 +306,38 @@
   color: var(--c-bg);
 }
 
-.langDropdownFlag {
-  font-size: 1rem;
-  line-height: 1;
-}
+.langDropdownFlag  { font-size: 1rem; line-height: 1; }
+.langDropdownLabel { flex: 1; }
 
-.langDropdownLabel {
-  flex: 1;
-}
+/* ======================================
+   BURGER
+====================================== */
 
-/* BURGER (MOBILE) */
 .burgerButton {
-  /* CHANGEMENT: on unifie visuellement le burger avec utilityButton */
   width: 38px;
   height: 38px;
   border-radius: 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--c-bonus) 40%, transparent);
-  background-color: var(--c-accent);
-  color: var(--c-bg);
-
+  border: 1px solid color-mix(in srgb, var(--nav-fill) 50%, transparent);
+  background-color: var(--nav-fill);
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;    /* CHANGEMENT: centrage horizontal */
-  justify-content: center;/* CHANGEMENT: centrage vertical */
+  align-items: center;
+  justify-content: center;
   gap: 5px;
-
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.1s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .burgerButton:hover {
-  background-color: var(--c-hover);
+  opacity: 0.85;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.22);
 }
 
 @media (min-width: 768px) {
-  .burgerButton {
-    display: none;
-  }
+  .burgerButton { display: none; }
 }
 
-/* Les 3 barres du burger */
 .burgerLine {
   width: 18px;
   height: 2px;
@@ -284,77 +346,50 @@
   transition: transform 0.2s, opacity 0.2s;
 }
 
-/* État ouvert du burger */
-.topOpen {
-  transform: translateY(7px) rotate(45deg);
-}
-.middleOpen {
-  opacity: 0;
-}
-.bottomOpen {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.topOpen    { transform: translateY(7px) rotate(45deg); }
+.middleOpen { opacity: 0; }
+.bottomOpen { transform: translateY(-7px) rotate(-45deg); }
 
-/* MENU MOBILE PLEIN ÉCRAN */
+/* ======================================
+   MENU MOBILE
+====================================== */
+
 .mobileMenu {
   position: fixed;
   inset: 0;
   z-index: 40;
-
-  /* CHANGEMENT:
-     Avant: c'était presque blanc.
-     Maintenant: un panneau cosy plus dense
-     basé sur c-surface (ton vert clair / vert sombre),
-     pas un voile blanc pété les yeux.
-  */
   background-color: var(--c-surface);
   color: var(--c-text);
-
-  /* On garde du blur pour le côté organique / brume, mais moins translucide */
   backdrop-filter: blur(12px) saturate(1.1);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-
   font-family: var(--font-body);
   font-size: 1.4rem;
   font-weight: 500;
   text-align: center;
-
-  /* CHANGEMENT:
-     On ajoute une bordure douce et une ombre interne
-     pour rappeler une "cabane" et pas un overlay blanc dur.
-  */
   border: 1px solid color-mix(in srgb, var(--c-bonus) 40%, transparent);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.4),
-    inset 0 0 40px rgba(0,0,0,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 0 40px rgba(0,0,0,0.08);
 }
 
 .dark .mobileMenu {
   background-color: color-mix(in srgb, var(--c-surface) 80%, var(--c-bg));
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.8),
-    inset 0 0 40px rgba(0,0,0,0.3);
 }
 
-/* Liens du menu mobile */
 .mobileMenu a {
   color: var(--c-text);
   text-decoration: none;
   padding: 0.6rem 1rem;
   border-radius: var(--radius-card);
-  line-height: 1.2;
   transition: background-color 0.2s ease, color 0.2s ease;
   border: 1px solid transparent;
 }
 
-/* Hover sur mobile menu */
-.mobileMenu a:hover {
-  background-color: var(--c-hover);
-  color: var(--c-bg);
-  border: 1px solid color-mix(in srgb, var(--c-hover) 60%, transparent);
+.mobileMenu a:hover,
+.mobileNavLinkActive {
+  background-color: var(--c-accent) !important;
+  color: var(--c-bg) !important;
+  border-color: color-mix(in srgb, var(--c-accent) 60%, transparent) !important;
 }

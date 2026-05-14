@@ -5,41 +5,67 @@ import styles from "./Navbar.module.css";
 import { useThemeToggle } from "./useThemeToggle";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
-export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const { isDark, toggleTheme } = useThemeToggle();
-  const { messages } = useLanguage();
+const SECTIONS = ["sky", "mountain", "forest", "river", "waterfall", "lake"] as const;
+type SectionId = typeof SECTIONS[number];
 
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen]     = useState(false);
+  const [activeSection, setActiveSection] = useState<SectionId>("sky");
+  const { isDark, toggleTheme }         = useThemeToggle();
+  const { messages }                    = useLanguage();
+
+  // Scroll → détecte la section dans la zone centrale du viewport
   useEffect(() => {
-    function handleScroll() {
-      setHasScrolled(window.scrollY > 8);
-    }
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id as SectionId);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+    SECTIONS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
   }, [isMenuOpen]);
 
+  const navItems = [
+    { id: "sky",        label: messages.nav.sky },
+    { id: "mountain",   label: messages.nav.mountain },
+    { id: "forest",     label: messages.nav.forest },
+    { id: "river",      label: messages.nav.river },
+    { id: "waterfall",  label: messages.nav.waterfall },
+    { id: "lake",       label: messages.nav.lake },
+  ] as const;
+
   return (
     <>
       <header className={styles.header}>
-        <nav className={styles.navbarContainer}>
+        <nav className={styles.navbarContainer} data-section={activeSection}>
           <a href="#top" className={styles.logo}>
             {messages.brandName}
           </a>
 
           <div className={styles.rightSection}>
             <ul className={styles.navLinks}>
-              <li><a href="#sky">{messages.nav.sky}</a></li>
-              <li><a href="#mountain">{messages.nav.mountain}</a></li>
-              <li><a href="#forest">{messages.nav.forest}</a></li>
-              <li><a href="#river">{messages.nav.river}</a></li>
-              <li><a href="#waterfall">{messages.nav.waterfall}</a></li>
-              <li><a href="#lake">{messages.nav.lake}</a></li>
+              {navItems.map(({ id, label }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    className={`${styles.navLink} ${activeSection === id ? styles.navLinkActive : ""}`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
 
             <LanguageSelector />
@@ -66,13 +92,17 @@ export default function Navbar() {
       </header>
 
       {isMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <a href="#sky" onClick={() => setIsMenuOpen(false)}>{messages.nav.sky}</a>
-          <a href="#mountain" onClick={() => setIsMenuOpen(false)}>{messages.nav.mountain}</a>
-          <a href="#forest" onClick={() => setIsMenuOpen(false)}>{messages.nav.forest}</a>
-          <a href="#river" onClick={() => setIsMenuOpen(false)}>{messages.nav.river}</a>
-          <a href="#waterfall" onClick={() => setIsMenuOpen(false)}>{messages.nav.waterfall}</a>
-          <a href="#lake" onClick={() => setIsMenuOpen(false)}>{messages.nav.lake}</a>
+        <div className={styles.mobileMenu} data-section={activeSection}>
+          {navItems.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={activeSection === id ? styles.mobileNavLinkActive : ""}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {label}
+            </a>
+          ))}
         </div>
       )}
     </>
@@ -93,9 +123,9 @@ function LanguageSelector() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const availableLanguages: { code: "fr" | "en"; label: string; flag: string }[] = [
-    { code: "fr", label: "Français", flag: "🇫🇷" },
-    { code: "en", label: "English", flag: "🇬🇧" },
+  const langs = [
+    { code: "fr" as const, label: "Français", flag: "🇫🇷" },
+    { code: "en" as const, label: "English",  flag: "🇬🇧" },
   ];
 
   return (
@@ -114,7 +144,7 @@ function LanguageSelector() {
 
       {open && (
         <ul className={styles.langDropdown} role="listbox">
-          {availableLanguages.map((lang) => (
+          {langs.map((lang) => (
             <li key={lang.code}>
               <button
                 className={styles.langDropdownItem}

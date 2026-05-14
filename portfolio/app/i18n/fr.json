@@ -10,9 +10,9 @@
   },
   "sky": {
     "greeting": "Bonjour, je suis",
-    "role": "Chef de projet web · Manager en devenir",
-    "location": "Métropole Lilloise · 23 ans",
-    "description": "Développeur de formation, j'évolue progressivement vers un rôle de chef de projet. Je pilote les projets de A à Z, gère la relation client, forme les équipes et crée des environnements de travail sereins et efficaces.",
+    "role": "Technicien Dev. Full Stack & Lead Projets",
+    "location": "Toufflers / Lille Métropole · 23 ans",
+    "description": "Initialement développeur Full Stack, j'ai choisi de prendre de la hauteur. Aujourd'hui, je ne me contente plus de coder ; je pilote. Mon ambition est d'être le pilier central de vos projets web : celui qui traduit les besoins clients en solutions concrètes, coordonne les talents et accompagne la montée en compétences des équipes.",
     "cta": "Explorer mon parcours",
     "scrollHint": "Défiler pour explorer"
   },
@@ -47,16 +47,16 @@
   },
   "lake": {
     "title": "Restons en contact",
-    "subtitle": "Démarrons une conversation",
+    "subtitle": "Le projet web est un écosystème vivant. Si vous souhaitez échanger sur la gestion de projet, le management technique ou simplement partager une vision du web de demain, n'hésitez pas.",
     "namePlaceholder": "Votre nom",
     "emailPlaceholder": "Votre email",
     "messagePlaceholder": "Votre message...",
     "submit": "Envoyer le message",
     "success": "Message envoyé ! Je vous répondrai rapidement.",
-    "location": "Métropole Lilloise, France",
+    "location": "Toufflers / Lille Métropole",
     "linkedinLabel": "LinkedIn",
-    "emailLabel": "Email direct",
-    "otherLabel": "Autre réseau"
+    "emailLabel": "Email",
+    "phoneLabel": "Téléphone"
   },
   "languageLabel": "FR",
   "close": "Fermer"

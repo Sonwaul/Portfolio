@@ -78,7 +78,16 @@ export default function LakeSection() {
           {/* Réseaux sociaux */}
           <div className="lake-socials">
             <a
-              href="https://linkedin.com/in/elliot-infelta"
+              href="https://github.com/Sonwaul"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lake-social-link"
+            >
+              <span className="lake-social-icon">⌥</span>
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/elliot-infelta/"
               target="_blank"
               rel="noopener noreferrer"
               className="lake-social-link"
@@ -87,18 +96,18 @@ export default function LakeSection() {
               <span>{messages.lake.linkedinLabel}</span>
             </a>
             <a
-              href="mailto:elliot@exemple.com"
+              href="mailto:infeltaelliot@gmail.com"
               className="lake-social-link"
             >
               <span className="lake-social-icon">@</span>
               <span>{messages.lake.emailLabel}</span>
             </a>
             <a
-              href="#"
+              href="tel:+33640795263"
               className="lake-social-link"
             >
-              <span className="lake-social-icon">+</span>
-              <span>{messages.lake.otherLabel}</span>
+              <span className="lake-social-icon">☎</span>
+              <span>{messages.lake.phoneLabel}</span>
             </a>
           </div>
         </div>
@@ -106,7 +115,7 @@ export default function LakeSection() {
 
       {/* Footer */}
       <div className="lake-footer">
-        <p>© {new Date().getFullYear()} Elliot Infelta · Fait avec ♥ depuis la métropole Lilloise</p>
+        <p suppressHydrationWarning>© {new Date().getFullYear()} Elliot Infelta · Fait avec ♥ depuis la métropole Lilloise</p>
       </div>
     </section>
   );

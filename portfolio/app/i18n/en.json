@@ -10,9 +10,9 @@
   },
   "sky": {
     "greeting": "Hi, I'm",
-    "role": "Web Project Manager · Rising Leader",
-    "location": "Lille Area · 23 years old",
-    "description": "Trained as a developer, I'm evolving towards a project management role. I oversee projects from A to Z, manage client relationships, mentor new team members, and create efficient, serene work environments.",
+    "role": "Full Stack Dev. & Project Lead",
+    "location": "Toufflers / Lille Area · 23 y.o.",
+    "description": "Originally a Full Stack developer, I chose to step back and see the bigger picture. Today, I don't just code — I lead. My goal is to be the central pillar of your web projects: translating client needs into concrete solutions, coordinating talent, and supporting team growth.",
     "cta": "Explore my journey",
     "scrollHint": "Scroll to explore"
   },
@@ -47,16 +47,16 @@
   },
   "lake": {
     "title": "Let's stay in touch",
-    "subtitle": "Start a conversation",
+    "subtitle": "A web project is a living ecosystem. If you'd like to discuss project management, technical leadership, or simply share a vision of tomorrow's web, feel free to reach out.",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Your email",
     "messagePlaceholder": "Your message...",
     "submit": "Send message",
     "success": "Message sent! I'll get back to you shortly.",
-    "location": "Lille Metropolitan Area, France",
+    "location": "Toufflers / Lille Metropolitan Area",
     "linkedinLabel": "LinkedIn",
-    "emailLabel": "Direct email",
-    "otherLabel": "Other"
+    "emailLabel": "Email",
+    "phoneLabel": "Phone"
   },
   "languageLabel": "EN",
   "close": "Close"

@@ -7,14 +7,27 @@ export default function SkySection() {
 
   return (
     <section id="sky" className="sky-section">
-      {/* Nuages animés */}
+      {/* Nuages de fond flottants */}
       <div className="cloud cloud-1" aria-hidden="true" />
       <div className="cloud cloud-2" aria-hidden="true" />
       <div className="cloud cloud-3" aria-hidden="true" />
+      <div className="cloud cloud-4" aria-hidden="true" />
+      <div className="cloud cloud-5" aria-hidden="true" />
+
+      {/* Opening style Simpsons — deux masses de nuages qui s'écartent */}
+      <div className="sky-intro-left" aria-hidden="true">
+        <div className="sky-intro-bump sky-intro-bump-1" />
+        <div className="sky-intro-bump sky-intro-bump-2" />
+        <div className="sky-intro-bump sky-intro-bump-3" />
+      </div>
+      <div className="sky-intro-right" aria-hidden="true">
+        <div className="sky-intro-bump sky-intro-bump-4" />
+        <div className="sky-intro-bump sky-intro-bump-5" />
+        <div className="sky-intro-bump sky-intro-bump-6" />
+      </div>
 
       {/* Contenu principal */}
       <div className="container sky-content">
-        {/* Photo de profil */}
         <div className="sky-photo-wrapper">
           <div className="sky-photo-frame">
             <span className="sky-photo-initials">EI</span>
@@ -22,7 +35,6 @@ export default function SkySection() {
           <div className="sky-photo-glow" aria-hidden="true" />
         </div>
 
-        {/* Texte */}
         <div className="sky-text">
           <p className="sky-greeting">{messages.sky.greeting}</p>
           <h1 className="sky-name">Elliot Infelta</h1>
@@ -46,9 +58,6 @@ export default function SkySection() {
           <div className="sky-scroll-dot" />
         </div>
       </div>
-
-      {/* Transition vers la montagne */}
-      <div className="sky-bottom-fade" aria-hidden="true" />
     </section>
   );
 }
