@@ -1,5 +1,6 @@
 export interface Skill {
   name: string;
+  color?: string;
 }
 
 export interface SkillGroup {
@@ -12,6 +13,7 @@ export interface Bosquet {
   icon: string;
   title: string;
   subtitle: string;
+  description: string;
   groups: SkillGroup[];
 }
 
@@ -21,38 +23,26 @@ export const bosquets: Bosquet[] = [
     icon: "🌳",
     title: "La Canopée",
     subtitle: "Management & Humain",
+    description: "L'art de diriger et de transmettre.",
     groups: [
       {
-        title: "Pilotage",
+        title: "Pilotage d'équipe",
         skills: [
-          { name: "ClickUp" },
-          { name: "Méthode Agile" },
-          { name: "Respect des deadlines" },
-          { name: "Arbitrage budgétaire" },
+          { name: "Agile",             color: "#78d48e" },
+          { name: "ClickUp",           color: "#c084fc" },
+          { name: "Jira",              color: "#60a5fa" },
+          { name: "Relation Client",   color: "#fcd34d" },
+          { name: "Négociation",       color: "#fcd34d" },
+          { name: "Rédaction de CDC",  color: "#fcd34d" },
         ],
       },
       {
-        title: "Relation Client",
+        title: "Pédagogie & Soft Skills",
         skills: [
-          { name: "Avant-vente & Vulgarisation" },
-          { name: "Rédaction de CDC" },
-          { name: "Suivi stratégique" },
-        ],
-      },
-      {
-        title: "Pédagogie",
-        skills: [
-          { name: "Accompagnement à l'autonomie" },
-          { name: "Bilans de compétences" },
-        ],
-      },
-      {
-        title: "Soft Skills",
-        skills: [
-          { name: "Résistance au stress" },
-          { name: "Pédagogie" },
-          { name: "Joie de vivre" },
-          { name: "Écoute active" },
+          { name: "Mentorat",              color: "#86efac" },
+          { name: "Bilans de compétences", color: "#86efac" },
+          { name: "Écoute active",         color: "#fde68a" },
+          { name: "Joie de vivre",         color: "#fde68a" },
         ],
       },
     ],
@@ -62,33 +52,35 @@ export const bosquets: Bosquet[] = [
     icon: "🌲",
     title: "Le Tronc",
     subtitle: "Architecture & Tech",
+    description: "La structure et la robustesse logicielle.",
     groups: [
       {
         title: "Back-end",
         skills: [
-          { name: "Symfony" },
-          { name: "Spring" },
-          { name: "PHP" },
-          { name: "Java" },
-          { name: "Python" },
+          { name: "PHP",              color: "#c084fc" },
+          { name: "Symfony",         color: "#c084fc" },
+          { name: "Java",            color: "#fb923c" },
+          { name: "Spring",          color: "#86efac" },
+          { name: "Python",          color: "#60a5fa" },
+          { name: "Architecture flux", color: "#a3a3a3" },
         ],
       },
       {
         title: "Écosystème Shopify",
         skills: [
-          { name: "Architecture Shopify" },
-          { name: "API Shopify" },
-          { name: "Liquid" },
-          { name: "Flux de données" },
-          { name: "JSON / XML" },
+          { name: "Shopify",       color: "#86efac" },
+          { name: "Liquid",        color: "#86efac" },
+          { name: "API Shopify",   color: "#86efac" },
+          { name: "Apps Shopify",  color: "#86efac" },
         ],
       },
       {
         title: "Front-end",
         skills: [
-          { name: "HTML" },
-          { name: "CSS" },
-          { name: "JavaScript" },
+          { name: "HTML",          color: "#fb923c" },
+          { name: "CSS",           color: "#60a5fa" },
+          { name: "JavaScript",    color: "#fde047" },
+          { name: "Twig",          color: "#86efac" },
         ],
       },
     ],
@@ -98,30 +90,31 @@ export const bosquets: Bosquet[] = [
     icon: "🌱",
     title: "Les Racines",
     subtitle: "Logique & Outils",
+    description: "Le socle invisible et indispensable.",
     groups: [
       {
         title: "Data",
         skills: [
-          { name: "SQL" },
-          { name: "MySQL" },
-          { name: "PostgreSQL" },
+          { name: "SQL",        color: "#60a5fa" },
+          { name: "MySQL",      color: "#60a5fa" },
+          { name: "PostgreSQL", color: "#818cf8" },
         ],
       },
       {
-        title: "DevOps & Outils",
+        title: "Ops & Outils",
         skills: [
-          { name: "Git / GitHub" },
-          { name: "Docker" },
-          { name: "Maintenance serveurs" },
-          { name: "Gestion de logs" },
+          { name: "Git",              color: "#f87171" },
+          { name: "Docker",           color: "#38bdf8" },
+          { name: "Serveurs",         color: "#a3a3a3" },
+          { name: "Maintenance & Logs", color: "#a3a3a3" },
         ],
       },
       {
         title: "Conception",
         skills: [
-          { name: "UX/UI Design" },
-          { name: "Figma" },
-          { name: "Logique algorithmique" },
+          { name: "UX/UI Design",    color: "#e879f9" },
+          { name: "Figma",           color: "#e879f9" },
+          { name: "Algorithmique",   color: "#a3a3a3" },
         ],
       },
     ],

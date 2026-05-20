@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "mcp__claude_ai_ClickUp__clickup_create_folder",
+      "mcp__claude_ai_ClickUp__clickup_create_list_in_folder",
+      "mcp__claude_ai_ClickUp__clickup_create_task",
+      "mcp__claude_ai_ClickUp__clickup_get_custom_fields",
+      "mcp__claude_ai_ClickUp__clickup_delete_task",
+      "mcp__claude_ai_ClickUp__clickup_get_list",
+      "mcp__claude_ai_ClickUp__clickup_filter_tasks"
     ]
   }
 }

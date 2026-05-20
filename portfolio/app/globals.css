@@ -500,15 +500,43 @@ a:hover { color: var(--c-hover); }
     #E0D5C5 100%
   );
   overflow: hidden;
-  padding: 6rem 0 calc(150px + 4rem);
+  padding: 6rem 0 calc(180px + 2rem);
   margin-top: -2px;
+}
+
+/* Brouillard de cluse — bas de la montagne */
+.mountain-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(245, 240, 224, 0.22) 40%,
+    rgba(252, 248, 235, 0.52) 70%,
+    rgba(254, 251, 240, 0.68) 100%
+  );
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  pointer-events: none;
+  z-index: 3;
+}
+.dark .mountain-section::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(22, 16, 6, 0.22) 40%,
+    rgba(14, 10, 3, 0.52) 70%,
+    rgba(10, 7, 2, 0.68) 100%
+  );
 }
 
 .dark .mountain-section {
   background: linear-gradient(180deg,
-    #0D2240  0%,   /* raccord exact avec le ciel */
+    #0D2240  0%,
     #111C30  5%,
-    #1A1408 15%,   /* bascule rapide vers chaud */
+    #1A1408 15%,
     #231608 28%,
     #2E1C0A 60%,
     #221208 100%
@@ -839,110 +867,124 @@ a:hover { color: var(--c-hover); }
   position: relative;
   min-height: 100vh;
   background: linear-gradient(180deg,
-    #0d2808 0%,
-    #153d08 12%,
-    #1e5210 28%,
-    #2a6418 52%,
-    #2e6e18 68%,
-    #245c14 82%,
-    #163808 100%
+    #2e6820  0%,
+    #3a7e2a 10%,
+    #428830 22%,
+    #478e34 38%,
+    #4a9038 55%,
+    #448a32 68%,
+    #3a8028 82%,
+    #2e6a20 100%
   );
   overflow: hidden;
   padding: 6rem 0 calc(8rem + 130px);
+  margin-top: -2px;
 }
 
 .dark .forest-section {
   background: linear-gradient(180deg,
-    #060f03 0%,
-    #0a1e05 12%,
-    #102808 28%,
-    #163510 52%,
-    #1a3e12 68%,
-    #122e0a 82%,
-    #091c04 100%
+    #14300a  0%,
+    #1a3e0e 10%,
+    #204a14 22%,
+    #245418 38%,
+    #26581a 55%,
+    #225216 68%,
+    #1c4410 82%,
+    #14300a 100%
   );
 }
 
-/* Lumière centrale + vignettes latérales */
+/* Lumière de clairière + vignettes latérales douces */
 .forest-ambiance {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 55% 50% at 50% 38%, rgba(110, 210, 45, 0.42) 0%, rgba(60, 150, 20, 0.12) 55%, transparent 100%),
-    radial-gradient(ellipse 80% 40% at 50% 80%, rgba(20, 80, 8, 0.30) 0%, transparent 100%),
-    linear-gradient(to right, rgba(5, 14, 2, 0.78) 0%, transparent 22%),
-    linear-gradient(to left,  rgba(5, 14, 2, 0.78) 0%, transparent 22%),
-    linear-gradient(to bottom, rgba(5, 14, 2, 0.82) 0%, transparent 15%);
+    radial-gradient(ellipse 44% 42% at 50% 40%, rgba(200, 255, 120, 0.22) 0%, rgba(120, 210, 40, 0.08) 55%, transparent 100%),
+    radial-gradient(ellipse 90% 30% at 50% 90%, rgba(10, 40, 5, 0.35) 0%, transparent 100%),
+    linear-gradient(to right, rgba(12, 40, 6, 0.72) 0%, rgba(16, 52, 8, 0.38) 14%, transparent 30%),
+    linear-gradient(to left,  rgba(12, 40, 6, 0.72) 0%, rgba(16, 52, 8, 0.38) 14%, transparent 30%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Rayons de lumière filtrés */
+/* Rayons de lumière filtrés à travers le feuillage */
 .forest-rays {
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
-    -18deg,
+    -22deg,
     transparent 0px,
-    transparent 55px,
-    rgba(170, 245, 65, 0.045) 55px,
-    rgba(170, 245, 65, 0.045) 95px,
-    transparent 95px,
-    transparent 165px,
-    rgba(170, 245, 65, 0.025) 165px,
-    rgba(170, 245, 65, 0.025) 192px
+    transparent 48px,
+    rgba(160, 240, 60, 0.055) 48px,
+    rgba(160, 240, 60, 0.055) 82px,
+    transparent 82px,
+    transparent 148px,
+    rgba(160, 240, 60, 0.030) 148px,
+    rgba(160, 240, 60, 0.030) 175px,
+    transparent 175px,
+    transparent 230px,
+    rgba(160, 240, 60, 0.018) 230px,
+    rgba(160, 240, 60, 0.018) 248px
   );
   pointer-events: none;
   z-index: 1;
 }
 
-/* Troncs latéraux */
-.forest-trunks {
+/* Sapins latéraux SVG */
+.forest-side-trees {
   position: absolute;
-  inset: 0;
+  top: 0;
+  height: 100%;
+  width: 23vw;
+  max-width: 360px;
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
+  overflow: visible;
 }
 
-.forest-trunk {
-  position: absolute;
-  bottom: 0;
-  background: linear-gradient(
-    to right,
-    rgba(3, 10, 2, 0.0) 0%,
-    rgba(3, 10, 2, 0.75) 30%,
-    rgba(5, 14, 3, 0.85) 50%,
-    rgba(3, 10, 2, 0.75) 70%,
-    rgba(3, 10, 2, 0.0) 100%
-  );
-  border-radius: 3px;
-}
+.forest-side-trees-left  { left: 0; }
+.forest-side-trees-right { right: 0; transform: scaleX(-1); }
 
-/* Brume verte à la lisière forêt (bas de la montagne) */
-.mountain-to-forest-mist {
+/* Sol de sous-bois */
+.forest-floor {
   position: absolute;
-  bottom: 0;
+  bottom: 128px;
   left: 0;
   right: 0;
-  height: 240px;
+  height: 120px;
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(80, 175, 30, 0.08) 38%,
-    rgba(45, 120, 14, 0.30) 72%,
-    rgba(13, 45, 6, 0.58) 100%
+    rgba(6, 20, 3, 0.18) 40%,
+    rgba(4, 14, 2, 0.45) 100%
   );
   pointer-events: none;
   z-index: 2;
 }
 
-.dark .mountain-to-forest-mist {
+/* Brouillard de cluse — entrée de la forêt */
+.forest-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 160px;
   background: linear-gradient(
     to bottom,
-    transparent 0%,
-    rgba(18, 48, 6, 0.10) 38%,
-    rgba(6, 20, 2, 0.28) 72%,
-    rgba(2, 6, 1, 0.52) 100%
+    rgba(230, 248, 215, 0.55) 0%,
+    rgba(170, 215, 130, 0.25) 45%,
+    transparent 100%
+  );
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 2;
+}
+.dark .forest-section::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 18, 5, 0.55) 0%,
+    rgba(16, 32, 8, 0.25) 45%,
+    transparent 100%
   );
 }
 
@@ -989,112 +1031,77 @@ a:hover { color: var(--c-hover); }
   );
 }
 
-/* Silhouette d'arbres forêt → rivière */
+/* Silhouette de cimes — forêt → rivière */
 .forest-to-river-divider {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 130px;
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
 }
 
-.forest-to-river-divider svg {
-  width: 100%;
-  height: 100%;
-}
+.forest-to-river-divider svg { width: 100%; height: 100%; }
+.forest-to-river-divider path { fill: #1A4A7A; }
+.dark .forest-to-river-divider path { fill: #06101C; }
 
-.forest-to-river-divider path {
-  fill: #1A4A7A;
-}
+/* Silhouette montagne → forêt */
 
-.dark .forest-to-river-divider path {
-  fill: #06101C;
-}
-
-/* Silhouette d'arbres en bas de la section montagne */
-.mountain-to-forest-divider {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.mountain-to-forest-divider svg {
-  width: 100%;
-  height: 100%;
-}
-
-.mountain-to-forest-divider path {
-  fill: #0d2808;
-}
-
-.dark .mountain-to-forest-divider path {
-  fill: #060f03;
-}
-
-
-
-/* Contenu forêt */
+/* ── Contenu forêt ─────────────────────────────────────────── */
 .forest-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* Forest intro */
 .forest-intro {
   text-align: center;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.96rem;
   max-width: 680px;
   margin: 0 auto 2.5rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-/* Toggle bar */
+/* ── Toggle de vue ─────────────────────────────────────────── */
 .forest-toggle-bar {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0.4rem;
+  margin-bottom: 3.5rem;
+  background: rgba(0, 0, 0, 0.30);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-pill);
   padding: 0.3rem;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  backdrop-filter: blur(8px);
 }
 
 .forest-toggle-btn {
-  padding: 0.55rem 1.4rem;
+  padding: 0.5rem 1.35rem;
   border-radius: var(--radius-pill);
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.22s ease, color 0.22s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
   letter-spacing: 0.01em;
 }
 
-.forest-toggle-btn:hover {
-  color: rgba(255, 255, 255, 0.85);
-}
+.forest-toggle-btn:hover { color: rgba(255, 255, 255, 0.82); }
 
 .forest-toggle-active {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.11);
   color: rgba(255, 255, 255, 0.95);
 }
 
 .forest-toggle-tech.forest-toggle-active {
-  background: rgba(100, 200, 100, 0.18);
+  background: rgba(80, 200, 90, 0.20);
   color: #8EE8A0;
 }
 
@@ -1103,165 +1110,261 @@ a:hover { color: var(--c-hover); }
   color: #F5D060;
 }
 
-/* Strates pleine largeur */
-.strates-container {
+/* ── Pyramide (canopée étroite → racines pleine largeur) ───── */
+.forest-zones {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.strate {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  padding: 2.5rem 2rem;
+/* Base commune des cartes */
+.forest-zone {
+  width: 100%;
+  padding: 2.25rem 2.5rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid transparent;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    opacity  0.38s ease,
+    filter   0.38s ease,
+    box-shadow 0.38s ease,
+    transform  0.38s ease;
   position: relative;
-  border-radius: 1.25rem;
-  transition: opacity 0.35s ease, filter 0.35s ease;
 }
 
-.strate + .strate {
-  margin-top: 0.5rem;
+/* ── Largeur pyramidale ────── */
+.forest-zone-canopee { max-width: 62%; }
+.forest-zone-tronc   { max-width: 82%; }
+.forest-zone-racines { max-width: 100%; }
+
+/* ── Couleurs et fonds par niveau ─────────────────────────── */
+
+/* Canopée : ambre chaud */
+.forest-zone-canopee {
+  background: linear-gradient(140deg,
+    rgba(42, 28, 4,  0.92) 0%,
+    rgba(28, 18, 2,  0.96) 100%
+  );
+  border-color: rgba(218, 165, 32, 0.38);
+  box-shadow:
+    0 0 40px rgba(218, 165, 32, 0.08),
+    0 6px 30px rgba(0, 0, 0, 0.50),
+    inset 0 1px 0 rgba(218, 165, 32, 0.14);
 }
 
-.strate-dimmed {
-  opacity: 0.15;
-  filter: grayscale(0.6);
+/* Tronc : forêt profonde */
+.forest-zone-tronc {
+  background: linear-gradient(140deg,
+    rgba(6,  24, 8,  0.92) 0%,
+    rgba(3,  14, 4,  0.96) 100%
+  );
+  border-color: rgba(72, 200, 80, 0.32);
+  box-shadow:
+    0 0 40px rgba(60, 180, 70, 0.07),
+    0 8px 36px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(72, 200, 80, 0.12);
+}
+
+/* Racines : terre sombre */
+.forest-zone-racines {
+  background: linear-gradient(140deg,
+    rgba(22, 13, 4,  0.92) 0%,
+    rgba(12,  7, 2,  0.96) 100%
+  );
+  border-color: rgba(192, 140, 72, 0.30);
+  box-shadow:
+    0 0 40px rgba(160, 108, 48, 0.07),
+    0 10px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(192, 140, 72, 0.10);
+}
+
+/* ── États toggle ──────────────────────────────────────────── */
+.zone-dimmed {
+  opacity: 0.12;
+  filter: grayscale(0.80);
   pointer-events: none;
+  transform: scale(0.985);
 }
 
-/* Fond atmosphérique par strate */
-.strate-canopee {
-  background: linear-gradient(105deg, rgba(200, 145, 20, 0.18) 0%, rgba(200, 145, 20, 0.07) 40%, transparent 70%);
-  border-left: 2px solid rgba(218, 165, 32, 0.35);
+.forest-zone-canopee.zone-lit {
+  border-color: rgba(218, 165, 32, 0.70);
+  box-shadow:
+    0 0 60px rgba(218, 165, 32, 0.18),
+    0 8px 36px rgba(0, 0, 0, 0.50),
+    inset 0 1px 0 rgba(218, 165, 32, 0.22);
+}
+.forest-zone-tronc.zone-lit {
+  border-color: rgba(72, 200, 80, 0.68);
+  box-shadow:
+    0 0 60px rgba(60, 180, 70, 0.16),
+    0 8px 36px rgba(0, 0, 0, 0.50),
+    inset 0 1px 0 rgba(72, 200, 80, 0.20);
+}
+.forest-zone-racines.zone-lit {
+  border-color: rgba(192, 140, 72, 0.68);
+  box-shadow:
+    0 0 60px rgba(160, 108, 48, 0.16),
+    0 10px 40px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(192, 140, 72, 0.18);
 }
 
-.strate-tronc {
-  background: linear-gradient(105deg, rgba(50, 155, 50, 0.16) 0%, rgba(50, 155, 50, 0.06) 40%, transparent 70%);
-  border-left: 2px solid rgba(80, 200, 80, 0.3);
-}
-
-.strate-racines {
-  background: linear-gradient(105deg, rgba(130, 85, 30, 0.2) 0%, rgba(130, 85, 30, 0.07) 40%, transparent 70%);
-  border-left: 2px solid rgba(180, 130, 70, 0.3);
-}
-
-/* Panneau identité */
-.strate-identity {
-  flex-shrink: 0;
-  width: 210px;
-  padding-right: 2rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+/* ── En-tête de zone ────────────────────────────────────────── */
+.zone-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.strate-icon {
-  font-size: 2.75rem;
+.zone-icon {
+  font-size: 2rem;
   line-height: 1;
-  display: block;
-  margin-bottom: 0.6rem;
+  flex-shrink: 0;
 }
 
-.strate-name {
-  font-size: 1.1rem;
+.zone-title {
   font-family: var(--font-title);
-  color: rgba(255, 255, 255, 0.93);
-  margin: 0;
-  letter-spacing: 0.01em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 0.1rem;
+  letter-spacing: 0.02em;
 }
 
-.strate-desc {
-  font-size: 0.74rem;
-  color: rgba(255, 255, 255, 0.32);
+.zone-subtitle-text {
+  font-size: 0.70rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+/* Couleur d'accent sur les titres par niveau */
+.forest-zone-canopee .zone-title { color: rgba(252, 211, 120, 0.96); }
+.forest-zone-tronc   .zone-title { color: rgba(140, 235, 150, 0.96); }
+.forest-zone-racines .zone-title { color: rgba(228, 190, 140, 0.96); }
+
+.zone-desc {
+  font-size: 0.80rem;
+  color: rgba(255, 255, 255, 0.35);
   font-style: italic;
-  margin: 0;
+  margin: 0 0 0 auto;
+  text-align: right;
 }
 
-/* Zone groupes */
-.strate-content {
-  flex: 1;
-  padding-left: 2rem;
+/* ── Groupes de compétences ─────────────────────────────────── */
+.zone-groups {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem 2.5rem;
+  gap: 1.75rem 3rem;
   align-items: flex-start;
 }
 
-.strate-group-title {
-  font-size: 0.66rem;
+.badge-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 110px;
+}
+
+.badge-group-label {
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: rgba(255, 255, 255, 0.26);
-  margin: 0 0 0.5rem;
+  letter-spacing: 0.11em;
+  color: rgba(255, 255, 255, 0.28);
+  margin: 0;
 }
 
-.strate-badges {
+/* Séparateur coloré sous le label selon la zone parente */
+.forest-zone-canopee .badge-group-label {
+  color: rgba(218, 165, 32, 0.65);
+}
+.forest-zone-tronc .badge-group-label {
+  color: rgba(80, 210, 90, 0.60);
+}
+.forest-zone-racines .badge-group-label {
+  color: rgba(192, 148, 85, 0.65);
+}
+
+.badge-cluster {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.38rem;
+  gap: 0.42rem;
+  align-items: flex-start;
 }
 
-/* Badge base */
+/* ── Badge de compétence ────────────────────────────────────── */
 .skill-badge {
-  display: inline-block;
-  padding: 0.27rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.78rem;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.79rem;
+  font-size: 0.81rem;
   font-weight: 500;
-  transition: opacity 0.2s ease;
+  line-height: 1;
+  cursor: default;
+  white-space: nowrap;
+  transition:
+    transform  0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.20s ease,
+    background 0.20s ease;
 }
 
-.strate-badges .skill-badge:nth-child(3n+1) { transform: rotate(-0.35deg); }
-.strate-badges .skill-badge:nth-child(3n+2) { transform: rotate(0.25deg); }
-.strate-badges .skill-badge:nth-child(3n)   { transform: rotate(-0.2deg); }
+/* Rotations subtiles pour l'effet organique */
+.badge-pos-0 { transform: rotate(-0.7deg); }
+.badge-pos-1 { transform: rotate( 0.5deg); }
+.badge-pos-2 { transform: rotate(-1.0deg); }
+.badge-pos-3 { transform: rotate( 0.3deg); }
+.badge-pos-4 { transform: rotate(-0.6deg); }
 
-/* Teinte badge par strate */
-.strate-canopee .skill-badge {
-  background: rgba(218, 165, 32, 0.13);
-  border-color: rgba(218, 165, 32, 0.3);
-  color: rgba(248, 218, 110, 0.9);
+.skill-badge:hover {
+  transform: translateY(-3px) rotate(0deg) scale(1.08) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.50);
+  position: relative;
+  z-index: 2;
 }
 
-.strate-tronc .skill-badge {
-  background: rgba(80, 190, 80, 0.1);
-  border-color: rgba(80, 190, 80, 0.22);
-  color: rgba(165, 235, 165, 0.9);
+/* Badge coloré */
+.skill-badge-colored {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid color-mix(in srgb, var(--badge-color) 52%, transparent);
+  color: var(--badge-color);
 }
 
-.strate-racines .skill-badge {
-  background: rgba(160, 120, 65, 0.14);
-  border-color: rgba(195, 155, 100, 0.26);
-  color: rgba(228, 198, 148, 0.9);
+.skill-badge-colored:hover {
+  background: color-mix(in srgb, var(--badge-color) 16%, rgba(0, 0, 0, 0.20));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--badge-color) 22%, transparent),
+              0 6px 20px rgba(0, 0, 0, 0.50);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .forest-zone-canopee { max-width: 72%; }
+  .forest-zone-tronc   { max-width: 88%; }
 }
 
 @media (max-width: 768px) {
-  .strate {
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 1.75rem 1.25rem;
-  }
-  .strate-identity {
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    padding-right: 0;
-    padding-bottom: 1rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  }
-  .strate-icon { font-size: 2rem; margin-bottom: 0; }
-  .strate-content { padding-left: 0; }
+  .forest-zone-canopee,
+  .forest-zone-tronc,
+  .forest-zone-racines { max-width: 100%; }
+  .forest-zone { padding: 1.75rem 1.5rem; }
+  .zone-groups { gap: 1.25rem 2rem; }
+  .zone-desc   { display: none; }
 }
 
 @media (max-width: 640px) {
   .forest-toggle-bar { width: 100%; }
   .forest-toggle-btn { flex: 1; text-align: center; }
+  .zone-header { gap: 0.75rem; }
 }
 
 /* =============================================

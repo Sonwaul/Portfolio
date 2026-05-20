@@ -7,31 +7,68 @@ import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 
 type Mode = "technique" | "management" | "all";
 
-function Strate({ bosquet, mode }: { bosquet: Bosquet; mode: Mode }) {
+/* ── Sapin SVG latéral ─────────────────────────────────────── */
+function PineTree({ cx, baseY, scale = 1, fill = "#030a02", opacity = 1 }: {
+  cx: number; baseY: number; scale?: number; fill?: string; opacity?: number;
+}) {
+  const s = scale;
+  return (
+    <g transform={`translate(${cx}, ${baseY})`} opacity={opacity} fill={fill}>
+      <rect x={-5 * s} y={-50 * s} width={10 * s} height={55 * s} />
+      <polygon points={`0,${-95 * s} ${-62 * s},${-48 * s} ${62 * s},${-48 * s}`} />
+      <polygon points={`0,${-132 * s} ${-50 * s},${-88 * s} ${50 * s},${-88 * s}`} />
+      <polygon points={`0,${-163 * s} ${-38 * s},${-124 * s} ${38 * s},${-124 * s}`} />
+      <polygon points={`0,${-188 * s} ${-26 * s},${-154 * s} ${26 * s},${-154 * s}`} />
+      <polygon points={`0,${-208 * s} ${-14 * s},${-183 * s} ${14 * s},${-183 * s}`} />
+    </g>
+  );
+}
+
+/* ── Zone (canopée / tronc / racines) ──────────────────────── */
+function ForestZone({ bosquet, mode }: { bosquet: Bosquet; mode: Mode }) {
   const { ref, isVisible } = useScrollReveal();
 
   const dimmed =
-    (mode === "technique" && bosquet.id === "canopee") ||
+    (mode === "technique"  && bosquet.id === "canopee") ||
     (mode === "management" && (bosquet.id === "tronc" || bosquet.id === "racines"));
+
+  const lit =
+    (mode === "technique"  && (bosquet.id === "tronc" || bosquet.id === "racines")) ||
+    (mode === "management" && bosquet.id === "canopee");
 
   return (
     <div
       ref={ref}
-      className={`strate strate-${bosquet.id} ${isVisible ? "reveal-visible" : "reveal-hidden"} ${dimmed ? "strate-dimmed" : ""}`}
+      className={[
+        "forest-zone",
+        `forest-zone-${bosquet.id}`,
+        dimmed ? "zone-dimmed" : "",
+        lit    ? "zone-lit"    : "",
+        isVisible ? "reveal-visible" : "reveal-hidden",
+      ].join(" ").trim()}
     >
-      <div className="strate-identity">
-        <span className="strate-icon">{bosquet.icon}</span>
-        <h3 className="strate-name">{bosquet.title}</h3>
-        <p className="strate-desc">{bosquet.subtitle}</p>
+      {/* En-tête de zone */}
+      <div className="zone-header">
+        <span className="zone-icon">{bosquet.icon}</span>
+        <div>
+          <h3 className="zone-title">{bosquet.title}</h3>
+          <p className="zone-subtitle-text">{bosquet.subtitle}</p>
+        </div>
+        <p className="zone-desc">{bosquet.description}</p>
       </div>
 
-      <div className="strate-content">
+      {/* Groupes de badges flottants */}
+      <div className="zone-groups">
         {bosquet.groups.map((group, gi) => (
-          <div key={gi} className="strate-group">
-            <p className="strate-group-title">{group.title}</p>
-            <div className="strate-badges">
+          <div key={gi} className="badge-group">
+            <p className="badge-group-label">{group.title}</p>
+            <div className="badge-cluster">
               {group.skills.map((skill, si) => (
-                <span key={si} className="skill-badge">
+                <span
+                  key={si}
+                  className={`skill-badge skill-badge-colored badge-pos-${(si % 5)}`}
+                  style={{ "--badge-color": skill.color ?? "rgba(255,255,255,0.65)" } as React.CSSProperties}
+                >
                   {skill.name}
                 </span>
               ))}
@@ -43,6 +80,7 @@ function Strate({ bosquet, mode }: { bosquet: Bosquet; mode: Mode }) {
   );
 }
 
+/* ── Section principale ─────────────────────────────────────── */
 export default function ForestSection() {
   const { messages } = useLanguage();
   const [mode, setMode] = useState<Mode>("all");
@@ -50,29 +88,47 @@ export default function ForestSection() {
   return (
     <section id="competences" className="forest-section">
       <div className="forest-ambiance" aria-hidden="true" />
-      <div className="forest-rays" aria-hidden="true" />
-      <div className="forest-trunks" aria-hidden="true">
-        {[
-          { left: "2%",  h: "82%", w: 14 },
-          { left: "6%",  h: "95%", w: 20 },
-          { left: "11%", h: "70%", w: 12 },
-          { left: "16%", h: "88%", w: 16 },
-          { right: "2%",  h: "78%", w: 14 },
-          { right: "7%",  h: "93%", w: 20 },
-          { right: "12%", h: "68%", w: 12 },
-          { right: "17%", h: "85%", w: 16 },
-        ].map((t, i) => (
-          <div
-            key={i}
-            className="forest-trunk"
-            style={{ [t.left ? "left" : "right"]: t.left ?? t.right, height: t.h, width: t.w }}
-          />
-        ))}
-      </div>
+      <div className="forest-rays"    aria-hidden="true" />
+
+      {/* Sapins latéraux — gauche */}
+      <svg
+        className="forest-side-trees forest-side-trees-left"
+        viewBox="0 0 340 920"
+        preserveAspectRatio="xMinYMax slice"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <PineTree cx={-20}  baseY={980} scale={4.5} fill="#010301" opacity={0.98} />
+        <PineTree cx={78}   baseY={980} scale={3.6} fill="#020602" opacity={0.94} />
+        <PineTree cx={162}  baseY={980} scale={2.6} fill="#030902" opacity={0.84} />
+        <PineTree cx={232}  baseY={980} scale={1.8} fill="#050c03" opacity={0.70} />
+        <PineTree cx={290}  baseY={980} scale={1.2} fill="#071004" opacity={0.54} />
+        <PineTree cx={330}  baseY={980} scale={0.8} fill="#091304" opacity={0.38} />
+      </svg>
+
+      {/* Sapins latéraux — droite */}
+      <svg
+        className="forest-side-trees forest-side-trees-right"
+        viewBox="0 0 340 920"
+        preserveAspectRatio="xMaxYMax slice"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <PineTree cx={360}  baseY={980} scale={4.5} fill="#010301" opacity={0.98} />
+        <PineTree cx={262}  baseY={980} scale={3.6} fill="#020602" opacity={0.94} />
+        <PineTree cx={178}  baseY={980} scale={2.6} fill="#030902" opacity={0.84} />
+        <PineTree cx={108}  baseY={980} scale={1.8} fill="#050c03" opacity={0.70} />
+        <PineTree cx={50}   baseY={980} scale={1.2} fill="#071004" opacity={0.54} />
+        <PineTree cx={10}   baseY={980} scale={0.8} fill="#091304" opacity={0.38} />
+      </svg>
+
+      <div className="forest-floor"             aria-hidden="true" />
       <div className="forest-to-river-mist-green" aria-hidden="true" />
+
+      {/* Transition forêt → rivière */}
       <div className="forest-to-river-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,130 L0,100 L14,100 L30,55 L46,100 L60,100 L74,72 L88,100 L102,100 L118,38 L134,100 L148,100 L162,62 L176,100 L190,100 L205,25 L220,100 L234,100 L248,50 L262,100 L276,100 L292,65 L308,100 L322,100 L336,35 L350,100 L364,100 L378,55 L392,100 L406,100 L422,42 L438,100 L452,100 L468,65 L484,100 L498,100 L512,28 L526,100 L540,100 L554,50 L568,100 L582,100 L598,40 L614,100 L628,100 L644,65 L660,100 L674,100 L688,20 L702,100 L716,100 L732,52 L748,100 L762,100 L776,42 L790,100 L804,100 L820,62 L836,100 L850,100 L864,32 L878,100 L892,100 L908,55 L924,100 L938,100 L952,45 L966,100 L980,100 L994,68 L1008,100 L1022,100 L1038,25 L1054,100 L1068,100 L1082,50 L1096,100 L1110,100 L1124,40 L1138,100 L1152,100 L1168,65 L1184,100 L1198,100 L1212,28 L1226,100 L1240,100 L1256,52 L1272,100 L1286,100 L1300,42 L1314,100 L1328,100 L1342,62 L1356,100 L1370,100 L1386,35 L1402,100 L1416,100 L1430,55 L1440,78 L1440,130 Z" />
+          <path d="M0,130 L0,108 Q8,82 16,108 L22,108 Q30,62 38,108 L44,108 Q56,36 68,108 L74,108 Q84,74 94,108 L100,108 Q112,18 124,108 L132,108 Q142,54 152,108 L160,108 Q170,40 180,108 L188,108 Q200,26 212,108 L220,108 Q230,60 240,108 L248,108 Q260,12 272,108 L280,108 Q290,48 300,108 L308,108 Q318,33 328,108 L336,108 Q346,70 356,108 L364,108 Q376,20 388,108 L396,108 Q406,56 416,108 L424,108 Q434,38 444,108 L452,108 Q464,10 476,108 L484,108 Q494,50 504,108 L512,108 Q524,30 536,108 L544,108 Q554,72 564,108 L572,108 Q582,16 592,108 L600,108 Q612,50 624,108 L632,108 Q642,36 652,108 L660,108 Q670,66 680,108 L688,108 Q700,6 712,108 L720,108 Q730,44 740,108 L748,108 Q760,28 772,108 L780,108 Q790,64 800,108 L808,108 Q820,18 832,108 L840,108 Q850,54 860,108 L868,108 Q878,38 888,108 L896,108 Q908,14 920,108 L928,108 Q938,58 948,108 L956,108 Q968,26 980,108 L988,108 Q998,68 1008,108 L1016,108 Q1026,20 1036,108 L1044,108 Q1056,54 1068,108 L1076,108 Q1086,34 1096,108 L1104,108 Q1114,74 1124,108 L1132,108 Q1144,16 1156,108 L1164,108 Q1174,50 1184,108 L1192,108 Q1204,36 1216,108 L1224,108 Q1234,64 1244,108 L1252,108 Q1264,10 1276,108 L1284,108 Q1294,46 1304,108 L1312,108 Q1322,30 1332,108 L1340,108 Q1352,66 1364,108 L1372,108 Q1382,22 1392,108 L1400,108 Q1412,54 1424,108 L1432,108 Q1436,40 1440,88 L1440,130 Z" />
         </svg>
       </div>
 
@@ -84,6 +140,7 @@ export default function ForestSection() {
 
         <p className="forest-intro">{messages.forest.intro}</p>
 
+        {/* Toggle */}
         <div className="forest-toggle-bar">
           <button
             className={`forest-toggle-btn ${mode === "all" ? "forest-toggle-active" : ""}`}
@@ -105,9 +162,10 @@ export default function ForestSection() {
           </button>
         </div>
 
-        <div className="strates-container">
+        {/* Zones */}
+        <div className="forest-zones">
           {bosquets.map((bosquet) => (
-            <Strate key={bosquet.id} bosquet={bosquet} mode={mode} />
+            <ForestZone key={bosquet.id} bosquet={bosquet} mode={mode} />
           ))}
         </div>
       </div>
