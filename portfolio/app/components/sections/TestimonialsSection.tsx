@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { reviews } from "@/app/data/reviewsData";
 
@@ -23,7 +24,7 @@ const extended = [
   ...reviews.slice(0, CLONE_COUNT),
 ];
 
-export default function WaterfallSection() {
+export default function TestimonialsSection() {
   const { messages } = useLanguage();
   const viewportRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
@@ -77,17 +78,11 @@ export default function WaterfallSection() {
   const translateX = -(index * (cardWidth + GAP));
 
   return (
-    <section id="temoignages" className="waterfall-section">
-      <div className="waterfall-streams" aria-hidden="true">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className={`waterfall-stream waterfall-stream-${i + 1}`} />
-        ))}
-      </div>
-
-      <div className="container waterfall-content">
-        <div className="section-header section-header-light">
-          <h2 className="section-title">{messages.waterfall.title}</h2>
-          <p className="section-subtitle">{messages.waterfall.subtitle}</p>
+    <section id="temoignages" className="testimonials-section">
+      <div className="container testimonials-content">
+        <div className="section-header">
+          <h2 className="section-title">{messages.testimonials.title}</h2>
+          <p className="section-subtitle">{messages.testimonials.subtitle}</p>
         </div>
 
         <div className="carousel-outer">
@@ -110,32 +105,59 @@ export default function WaterfallSection() {
               {extended.map((review, i) => (
                 <div
                   key={i}
-                  className="waterfall-card"
+                  className="testimonial-card"
                   style={{ width: cardWidth ? `${cardWidth}px` : undefined, flexShrink: 0 }}
                 >
                   <StarRating rating={review.rating} />
-                  <p className="waterfall-text">"{review.text}"</p>
-                  <div className="waterfall-card-footer">
-                    <div className="waterfall-author">
-                      <div className="waterfall-avatar">{review.author.charAt(0)}</div>
+                  <p className="testimonial-text">"{review.text}"</p>
+                  <div className="testimonial-footer">
+                    <div className="testimonial-author">
+                      {review.logo ? (
+                        <Image
+                          src={review.logo}
+                          alt={review.author}
+                          width={80}
+                          height={36}
+                          className="testimonial-logo"
+                        />
+                      ) : (
+                        <div className="testimonial-avatar">{review.author.charAt(0)}</div>
+                      )}
                       <div>
-                        <p className="waterfall-author-name">{review.author}</p>
-                        <p className="waterfall-author-role">{review.role}</p>
+                        <p className="testimonial-author-name">{review.author}</p>
+                        <p className="testimonial-author-role">{review.role}</p>
                       </div>
                     </div>
-                    <a
-                      href={review.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="waterfall-review-link"
-                    >
-                      Source Google Maps
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                      </svg>
-                    </a>
+                    <div className="testimonial-actions">
+                      {review.siteUrl && (
+                        <a
+                          href={review.siteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="testimonial-link testimonial-link-site"
+                        >
+                          Voir le site
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                          </svg>
+                        </a>
+                      )}
+                      <a
+                        href={review.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="testimonial-link"
+                      >
+                        Avis Google
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}

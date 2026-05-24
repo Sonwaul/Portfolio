@@ -1,27 +1,22 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
-import { useThemeToggle } from "./useThemeToggle";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
 const SECTIONS = ["presentation", "parcours", "competences", "projets", "temoignages", "contact"] as const;
 type SectionId = typeof SECTIONS[number];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen]     = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionId>("presentation");
-  const { isDark, toggleTheme }         = useThemeToggle();
-  const { messages }                    = useLanguage();
+  const { messages } = useLanguage();
 
-  // Scroll → détecte la section dans la zone centrale du viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id as SectionId);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id as SectionId);
         });
       },
       { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
@@ -38,21 +33,19 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   const navItems = [
-    { id: "presentation",  label: messages.nav.sky },
-    { id: "parcours",      label: messages.nav.mountain },
-    { id: "competences",   label: messages.nav.forest },
-    { id: "projets",       label: messages.nav.river },
-    { id: "temoignages",   label: messages.nav.waterfall },
-    { id: "contact",       label: messages.nav.lake },
+    { id: "presentation", label: messages.nav.hero },
+    { id: "parcours",     label: messages.nav.experience },
+    { id: "competences",  label: messages.nav.skills },
+    { id: "projets",      label: messages.nav.projects },
+    { id: "temoignages",  label: messages.nav.testimonials },
+    { id: "contact",      label: messages.nav.contact },
   ] as const;
 
   return (
     <>
       <header className={styles.header}>
         <nav className={styles.navbarContainer} data-section={activeSection}>
-          <a href="#top" className={styles.logo}>
-            {messages.brandName}
-          </a>
+          <a href="#top" className={styles.logo}>{messages.brandName}</a>
 
           <div className={styles.rightSection}>
             <ul className={styles.navLinks}>
@@ -68,15 +61,7 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <LanguageSelector />
-
-            <button
-              onClick={toggleTheme}
-              className={`${styles.utilityButton} ${styles.themeButton}`}
-              aria-label="Changer le thème clair / sombre"
-            >
-              {isDark ? "🌙" : "☀️"}
-            </button>
+            <LanguageToggle />
 
             <button
               className={styles.burgerButton}
@@ -109,56 +94,26 @@ export default function Navbar() {
   );
 }
 
-function LanguageSelector() {
+function LanguageToggle() {
   const { currentLang, setLang } = useLanguage();
-  const [open, setOpen] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (!wrapperRef.current) return;
-      if (!wrapperRef.current.contains(e.target as Node)) setOpen(false);
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const langs = [
-    { code: "fr" as const, label: "Français", flag: "🇫🇷" },
-    { code: "en" as const, label: "English",  flag: "🇬🇧" },
-  ];
 
   return (
-    <div className={styles.langWrapper} ref={wrapperRef}>
+    <div className={styles.langToggle}>
       <button
-        className={`${styles.utilityButton} ${styles.langButton}`}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}
-        title="Changer de langue"
+        className={`${styles.langBtn} ${currentLang === "fr" ? styles.langBtnActive : ""}`}
+        onClick={() => setLang("fr")}
+        aria-label="Passer en français"
       >
-        <span className={styles.langFlag}>
-          {currentLang === "fr" ? "🇫🇷" : "🇬🇧"}
-        </span>
+        FR
       </button>
-
-      {open && (
-        <ul className={styles.langDropdown} role="listbox">
-          {langs.map((lang) => (
-            <li key={lang.code}>
-              <button
-                className={styles.langDropdownItem}
-                onClick={() => { setLang(lang.code); setOpen(false); }}
-                role="option"
-                aria-selected={currentLang === lang.code}
-              >
-                <span className={styles.langDropdownFlag}>{lang.flag}</span>
-                <span className={styles.langDropdownLabel}>{lang.label}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <span className={styles.langSep} aria-hidden="true">|</span>
+      <button
+        className={`${styles.langBtn} ${currentLang === "en" ? styles.langBtnActive : ""}`}
+        onClick={() => setLang("en")}
+        aria-label="Switch to English"
+      >
+        EN
+      </button>
     </div>
   );
 }

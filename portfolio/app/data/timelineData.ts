@@ -8,14 +8,18 @@ export interface TimelineItem {
   type: "experience" | "education";
   company: string;
   role: string;
+  roleEn?: string;
   location: string;
   startDate: string;
   endDate: string | null;
   current: boolean;
   shortDescription: string;
+  shortDescriptionEn?: string;
   missions: string[];
+  missionsEn?: string[];
   tabs?: TimelineTab[];
   tags: string[];
+  logo?: string;
 }
 
 export const timelineItems: TimelineItem[] = [
@@ -23,73 +27,105 @@ export const timelineItems: TimelineItem[] = [
     id: "exp1",
     type: "experience",
     company: "HUGGII",
-    role: "CDI Technicien Développeur Full Stack & Lead Projet",
+    role: "Lead Projet & Développeur Full Stack",
+    roleEn: "Project Lead & Full Stack Developer",
     location: "Roubaix",
     startDate: "Sept. 2023",
     endDate: null,
     current: true,
-    shortDescription: "Pilier central des projets web : du client à l'équipe, de l'analyse à la livraison.",
+    shortDescription: "Pilier central des projets web de l'agence. J'assure le lien direct entre les besoins business des clients et l'équipe technique, de la phase d'analyse initiale jusqu'à la livraison. Mes missions incluent le pilotage de projet, la rédaction des devis et cahiers des charges, la formation et le mentorat des collaborateurs, ainsi que le développement d'architectures et de flux complexes.",
+    shortDescriptionEn: "Central pillar of the agency's web projects. I ensure a direct connection between clients' business needs and the technical team, from initial analysis to final delivery. My responsibilities include project management, drafting specifications and quotes, onboarding and mentoring team members, as well as developing robust architectures and complex workflows.",
     missions: [
-      "Pilotage de projets de A à Z via ClickUp (Agile)",
+      "Pilotage de projets de A à Z via ClickUp en méthode Agile",
       "Relation client directe : analyse des besoins, devis, réunions de suivi",
-      "Mentorat des alternants via la méthode « back-up »",
+      "Formation et mentorat des collaborateurs",
       "Connexion Shopify aux CRM/ERP via API, WebServices, CSV et JSON",
       "Maintenance serveurs internes, logs et scripts fonctionnels",
     ],
-    tabs: [
-      {
-        label: "Management & Pilotage",
-        missions: [
-          "Gestion de projets : Pilotage de A à Z via ClickUp en méthode Agile (définition des tâches, deadlines et priorités).",
-          "Relation Client : Interlocuteur direct pour l'analyse des besoins métier, la rédaction de devis et les réunions de suivi.",
-          "Formation : Mentorat des alternants via la méthode « back-up » : transmission du savoir et accompagnement vers l'autonomie.",
-          "Accompagnement : Suivi après-vente, maintenance informative et conseils stratégiques pour booster les ventes clients.",
-        ],
-      },
-      {
-        label: "Expertise Technique",
-        missions: [
-          "Architecture Shopify : Développement de thèmes (Liquid), d'applications sur-mesure et configuration avancée.",
-          "Flux de données : Utilisation d'API, WebServices, CSV et JSON pour connecter Shopify aux CRM/ERP.",
-          "Infrastructure : Maintenance des serveurs internes, gestion des logs et déploiement de scripts fonctionnels.",
-        ],
-      },
+    missionsEn: [
+      "End-to-end project management using ClickUp and Agile methodology",
+      "Direct client communication: requirements analysis, quoting, follow-up meetings",
+      "Onboarding and mentoring of team members",
+      "Shopify integrations with CRM/ERP via API, WebServices, CSV and JSON",
+      "Internal server maintenance, log monitoring and functional scripting",
     ],
-    tags: ["Lead Projet", "ClickUp", "Agile", "Shopify", "API", "Formation"],
+    tags: ["Lead Projet", "ClickUp", "Agile", "Shopify", "API", "Symfony", "Formation", "Relation Client"],
+    logo: "/Logo-Huggii.png",
   },
   {
     id: "exp2",
     type: "experience",
     company: "HUGGII",
-    role: "Alternant Développeur Web PHP",
+    role: "Développeur Web PHP (Alternant)",
+    roleEn: "PHP Web Developer (Apprenticeship)",
     location: "Roubaix",
-    startDate: "2022",
-    endDate: "2023",
+    startDate: "Sept. 2022",
+    endDate: "Août 2023",
     current: false,
-    shortDescription: "Architecture e-commerce multi-sites et migration stratégique vers l'écosystème Shopify.",
+    shortDescription: "Conception, réalisation et déploiement d'une solution multi-site e-commerce sécurisée sous Symfony. Gestion et automatisation de flux de données complexes (tarifs, produits, commandes) entre l'application et les différents ERP/CRM des clients via des connecteurs API et CSV. Pilotage technique de la migration de projets vers l'écosystème Shopify.",
+    shortDescriptionEn: "Design, development, and deployment of a secure multi-site e-commerce solution using Symfony. Managed and automated complex data workflows (pricing, products, orders) between the application and clients' ERP/CRM systems via API and CSV connectors. Technical lead on project migrations to the Shopify ecosystem.",
     missions: [
       "Conception d'une solution multi-site e-commerce sécurisée sous Symfony",
-      "Migration stratégique de projets vers Shopify",
-      "Développement de connecteurs flux de données complexes (API/CSV/JSON)",
+      "Automatisation de flux de données (tarifs, produits, commandes) via API et CSV",
+      "Pilotage technique de la migration de projets vers Shopify",
     ],
-    tags: ["PHP", "Symfony", "Shopify", "API", "E-commerce"],
+    missionsEn: [
+      "Design of a secure multi-site e-commerce solution using Symfony",
+      "Automated data workflows (pricing, products, orders) via API and CSV connectors",
+      "Technical lead on project migrations to the Shopify ecosystem",
+    ],
+    tags: ["PHP", "Symfony", "Shopify", "API", "E-commerce", "Flux de données", "Migrations"],
+    logo: "/Logo-Huggii.png",
   },
   {
     id: "exp3",
     type: "experience",
-    company: "Proditex · Anetmo",
-    role: "Développeur Web — Stages",
-    location: "Métropole Lilloise",
-    startDate: "2021",
-    endDate: "2022",
+    company: "Anetmo",
+    role: "Stagiaire Développeur Web",
+    roleEn: "Web Developer Intern",
+    location: "Hem",
+    startDate: "Jan. 2022",
+    endDate: "Fév. 2022",
     current: false,
-    shortDescription: "Immersion dans le monde pro : HTML, CSS, JavaScript et respect des cahiers des charges.",
+    shortDescription: "Création, déploiement et maintenance de sites vitrines et e-commerce basés sur WordPress et PrestaShop. Prise en charge directe de la relation client technique pour la présentation des maquettes et l'adaptation des livrables en fonction des spécifications du cahier des charges.",
+    shortDescriptionEn: "Creation, deployment, and maintenance of showcase and e-commerce websites based on WordPress and PrestaShop. Directly managed technical client relations for mockup presentations and adjusted deliverables based on project specifications.",
     missions: [
-      "Création d'une application de gestion de commandes en PHP/MySQL (Proditex)",
-      "Premier contact avec le relationnel client et analyse des besoins métier",
-      "Maîtrise des fondamentaux du Web (HTML/CSS/JS)",
+      "Création et déploiement de sites vitrines et e-commerce (WordPress, PrestaShop)",
+      "Maintenance et évolutions des sites existants",
+      "Relation client technique : présentation des maquettes et adaptation des livrables",
     ],
-    tags: ["HTML/CSS", "JS", "PHP", "Relation Client"],
+    missionsEn: [
+      "Creation and deployment of showcase and e-commerce websites (WordPress, PrestaShop)",
+      "Maintenance and updates of existing websites",
+      "Technical client relations: mockup presentations and deliverable adjustments",
+    ],
+    tags: ["WordPress", "PrestaShop", "Relation Client", "E-commerce"],
+    logo: "/Logo-Anetmo.png",
+  },
+  {
+    id: "exp4",
+    type: "experience",
+    company: "Proditex",
+    role: "Stagiaire Développeur Web",
+    roleEn: "Web Developer Intern",
+    location: "Leers",
+    startDate: "Mai 2021",
+    endDate: "Juin 2021",
+    current: false,
+    shortDescription: "Développement complet d'une application interne dédiée à la gestion des commandes. Conception de la logique algorithmique, modélisation et administration de la base de données relationnelle SQL, et mise en production de la solution.",
+    shortDescriptionEn: "Full development of an internal order management application. Designed the algorithmic logic, modeled and administered the SQL relational database, and deployed the solution live.",
+    missions: [
+      "Développement d'une application interne de gestion des commandes",
+      "Conception de la logique algorithmique et modélisation SQL",
+      "Mise en production de la solution",
+    ],
+    missionsEn: [
+      "Development of an internal order management application",
+      "Algorithmic logic design and SQL database modeling",
+      "Live deployment of the solution",
+    ],
+    tags: ["HTML/CSS", "JavaScript", "PHP", "MySQL", "Algorithmique"],
+    logo: "/Logo-Proditex.png",
   },
 ];
 
@@ -111,6 +147,7 @@ export const educationItems: TimelineItem[] = [
       "Projet tuteuré en entreprise",
     ],
     tags: ["Java", "Spring", "Architecture", "Agile"],
+    logo: "/Logo-IUT.png",
   },
   {
     id: "edu2",
@@ -128,6 +165,7 @@ export const educationItems: TimelineItem[] = [
       "Projets de développement en équipe",
     ],
     tags: ["Java", "Python", "PHP", "Symfony"],
+    logo: "/Logo-Saint_Remi.png",
   },
   {
     id: "edu3",
@@ -144,5 +182,6 @@ export const educationItems: TimelineItem[] = [
       "Spécialisation ISN : logique algorithmique et résolution de problèmes",
     ],
     tags: ["Maths", "Sciences", "ISN", "Algorithmique"],
+    logo: "/Logo-Saint_Remi.png",
   },
 ];

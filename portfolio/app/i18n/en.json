@@ -1,24 +1,24 @@
 {
   "brandName": "Elliot Infelta",
   "nav": {
-    "sky": "About",
-    "mountain": "Journey",
-    "forest": "Skills",
-    "river": "Projects",
-    "waterfall": "Reviews",
-    "lake": "Contact"
+    "hero": "About",
+    "experience": "Background",
+    "skills": "Skills",
+    "projects": "Projects",
+    "testimonials": "Reviews",
+    "contact": "Contact"
   },
-  "sky": {
-    "greeting": "",
-    "role": "From Technical Expertise to Web Project Management.",
-    "location": "Toufflers / Lille Area · 23 y.o.",
+  "hero": {
+    "role": "Project Lead & Full Stack Developer",
+    "badgeLocation": "Toufflers · Lille Area",
+    "badgeAge": "23 y.o.",
+    "badgeRole": "Project Lead · HUGGII",
     "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where pure logic meets creation. Today, I'm rising to become the central pillar of web projects: a manager who speaks the language of developers while translating clients' business needs. My vision? Creating a fusion between technical innovation and human-centered support.",
-    "cta": "Explore my journey",
-    "scrollHint": "Scroll to explore"
+    "cta": "See my background"
   },
-  "mountain": {
-    "title": "My Journey",
-    "subtitle": "Every step brings a new altitude",
+  "experience": {
+    "title": "Professional & Academic Background",
+    "subtitle": "Experiences and training that shaped my profile",
     "currentBadge": "Ongoing",
     "experienceTab": "Experience",
     "educationTab": "Education",
@@ -26,17 +26,17 @@
     "seeDetails": "See details",
     "present": "Today"
   },
-  "forest": {
-    "title": "My Skills",
-    "subtitle": "A dense and diverse ecosystem of knowledge",
-    "intro": "My expertise is an ecosystem. While my roots draw strength from algorithmic logic and pure development, my canopy thrives today in project management and human support. Here are the tools and know-how I mobilise to drive your ambitions.",
+  "skills": {
+    "title": "Expertise & Skills",
+    "subtitle": "From technical development to project management",
+    "intro": "From technical design to project management, my skills cover the full web development lifecycle. Here are the areas of expertise I bring to make your ambitions a reality.",
     "toggleAll": "Full view",
     "toggleTech": "Technical view",
     "toggleManagement": "Management view"
   },
-  "river": {
-    "title": "My Projects",
-    "subtitle": "Creations flowing through time",
+  "projects": {
+    "title": "Completed Projects",
+    "subtitle": "A selection of professional and personal work",
     "viewDetails": "View details",
     "visitSite": "Visit",
     "viewCode": "Source code",
@@ -44,23 +44,29 @@
     "statusOngoing": "Ongoing",
     "statusDone": "Delivered"
   },
-  "waterfall": {
-    "title": "What they say",
-    "subtitle": "Testimonials collected throughout my experiences"
+  "testimonials": {
+    "title": "Testimonials & Recommendations",
+    "subtitle": "Feedback from clients and collaborators"
   },
-  "lake": {
-    "title": "Let's stay in touch",
-    "subtitle": "A web project is a collective adventure. Whether you need a technical backbone or a guide for your next projects, let's talk over a coffee (or a screen).",
+  "contact": {
+    "title": "Contact & Collaboration",
+    "subtitle": "A web project or collaboration opportunity? Let's talk directly.",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Your email",
     "subjectPlaceholder": "Subject",
     "messagePlaceholder": "Your message...",
+    "socialsTitle": "Find me",
     "submit": "Send message",
     "success": "Message sent! I'll get back to you shortly.",
     "location": "Toufflers / Lille Metropolitan Area",
     "linkedinLabel": "LinkedIn",
     "emailLabel": "Email",
-    "phoneLabel": "Phone"
+    "phoneLabel": "Phone",
+    "cvLabel": "View my Resume",
+    "cvModalTitle": "Curriculum Vitae",
+    "cvDownload": "Download",
+    "sending": "Sending…",
+    "error": "Something went wrong. Please try again or contact me directly."
   },
   "languageLabel": "EN",
   "close": "Close"

@@ -1,23 +1,23 @@
 "use client";
 
 import Navbar from "./components/header/Navbar";
-import SkySection from "./components/sections/SkySection";
-import MountainSection from "./components/sections/MountainSection";
-import ForestSection from "./components/sections/ForestSection";
-import RiverSection from "./components/sections/RiverSection";
-import WaterfallSection from "./components/sections/WaterfallSection";
-import LakeSection from "./components/sections/LakeSection";
+import HeroSection from "./components/sections/HeroSection";
+import ExperienceSection from "./components/sections/ExperienceSection";
+import SkillsSection from "./components/sections/SkillsSection";
+import ProjectsSection from "./components/sections/ProjectsSection";
+import TestimonialsSection from "./components/sections/TestimonialsSection";
+import ContactSection from "./components/sections/ContactSection";
 
 export default function HomePage() {
   return (
     <main id="top">
       <Navbar />
-      <SkySection />
-      <MountainSection />
-      <ForestSection />
-      <RiverSection />
-      <WaterfallSection />
-      <LakeSection />
+      <HeroSection />
+      <ExperienceSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <TestimonialsSection />
+      <ContactSection />
     </main>
   );
 }
