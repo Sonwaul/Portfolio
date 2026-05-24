@@ -1,5 +1,6 @@
 export interface Skill {
   name: string;
+  logo?: string;
 }
 
 export interface SkillGroup {
@@ -24,12 +25,10 @@ export const skillZones: SkillZone[] = [
         title: "Pilotage & Outils",
         skills: [
           { name: "Agile / Scrum" },
-          { name: "ClickUp" },
-          { name: "Jira" },
-          { name: "Rédaction de CDC" },
+          { name: "ClickUp", logo: "/skills/clickup.svg" },
+          { name: "Compréhension de CDC" },
           { name: "Devis & Chiffrage" },
           { name: "Relation Client" },
-          { name: "Négociation" },
         ],
       },
       {
@@ -51,27 +50,27 @@ export const skillZones: SkillZone[] = [
       {
         title: "Back-end",
         skills: [
-          { name: "PHP / Symfony" },
-          { name: "Java / Spring" },
-          { name: "Python" },
+          { name: "PHP / Symfony", logo: "/skills/symfony.svg" },
+          { name: "Java / Spring", logo: "/skills/spring.svg" },
+          { name: "Python", logo: "/skills/python.svg" },
           { name: "Architecture flux" },
         ],
       },
       {
         title: "Écosystème Shopify",
         skills: [
-          { name: "Shopify" },
+          { name: "Shopify", logo: "/skills/shopify.svg" },
           { name: "Liquid" },
-          { name: "API Shopify" },
-          { name: "Apps Shopify" },
+          { name: "API Shopify", logo: "/skills/shopify.svg" },
+          { name: "Apps Shopify", logo: "/skills/shopify.svg" },
         ],
       },
       {
         title: "Front-end",
         skills: [
-          { name: "HTML / CSS" },
-          { name: "JavaScript" },
-          { name: "React / Next.js" },
+          { name: "HTML / CSS", logo: "/skills/html5.svg" },
+          { name: "JavaScript", logo: "/skills/javascript.svg" },
+          { name: "React / Next.js", logo: "/skills/react.svg" },
           { name: "Twig" },
         ],
       },
@@ -85,25 +84,29 @@ export const skillZones: SkillZone[] = [
       {
         title: "Bases de données",
         skills: [
-          { name: "SQL / MySQL" },
-          { name: "PostgreSQL" },
+          { name: "SQL / MySQL", logo: "/skills/mysql.svg" },
+          { name: "PostgreSQL", logo: "/skills/postgresql.svg" },
         ],
       },
       {
         title: "DevOps & Ops",
         skills: [
-          { name: "Git / GitHub" },
-          { name: "Docker" },
-          { name: "Serveurs Linux" },
+          { name: "Git / GitHub", logo: "/skills/github.svg" },
           { name: "Maintenance & Logs" },
+        ],
+      },
+      {
+        title: "Support & Accès distant",
+        skills: [
+          { name: "TeamViewer", logo: "/skills/teamviewer.svg" },
+          { name: "AnyDesk", logo: "/skills/anydesk.svg" },
         ],
       },
       {
         title: "Design & Conception",
         skills: [
-          { name: "Figma" },
+          { name: "Figma", logo: "/skills/figma.svg" },
           { name: "UX/UI Design" },
-          { name: "Algorithmique" },
         ],
       },
     ],

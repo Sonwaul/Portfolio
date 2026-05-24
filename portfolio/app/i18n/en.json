@@ -65,6 +65,8 @@
     "cvLabel": "View my Resume",
     "cvModalTitle": "Curriculum Vitae",
     "cvDownload": "Download",
+    "cvDownloadFull": "Download my Resume",
+    "cvEnlarge": "Enlarge",
     "sending": "Sending…",
     "error": "Something went wrong. Please try again or contact me directly."
   },

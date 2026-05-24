@@ -50,7 +50,7 @@ export const timelineItems: TimelineItem[] = [
       "Internal server maintenance, log monitoring and functional scripting",
     ],
     tags: ["Lead Projet", "ClickUp", "Agile", "Shopify", "API", "Symfony", "Formation", "Relation Client"],
-    logo: "/Logo-Huggii.png",
+    logo: "/experiences/huggii.png",
   },
   {
     id: "exp2",
@@ -75,7 +75,7 @@ export const timelineItems: TimelineItem[] = [
       "Technical lead on project migrations to the Shopify ecosystem",
     ],
     tags: ["PHP", "Symfony", "Shopify", "API", "E-commerce", "Flux de données", "Migrations"],
-    logo: "/Logo-Huggii.png",
+    logo: "/experiences/huggii.png",
   },
   {
     id: "exp3",
@@ -100,7 +100,7 @@ export const timelineItems: TimelineItem[] = [
       "Technical client relations: mockup presentations and deliverable adjustments",
     ],
     tags: ["WordPress", "PrestaShop", "Relation Client", "E-commerce"],
-    logo: "/Logo-Anetmo.png",
+    logo: "/experiences/anetmo.png",
   },
   {
     id: "exp4",
@@ -124,8 +124,8 @@ export const timelineItems: TimelineItem[] = [
       "Algorithmic logic design and SQL database modeling",
       "Live deployment of the solution",
     ],
-    tags: ["HTML/CSS", "JavaScript", "PHP", "MySQL", "Algorithmique"],
-    logo: "/Logo-Proditex.png",
+    tags: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
+    logo: "/experiences/proditex.png",
   },
 ];
 
@@ -147,7 +147,7 @@ export const educationItems: TimelineItem[] = [
       "Projet tuteuré en entreprise",
     ],
     tags: ["Java", "Spring", "Architecture", "Agile"],
-    logo: "/Logo-IUT.png",
+    logo: "/experiences/iut.png",
   },
   {
     id: "edu2",
@@ -165,7 +165,7 @@ export const educationItems: TimelineItem[] = [
       "Projets de développement en équipe",
     ],
     tags: ["Java", "Python", "PHP", "Symfony"],
-    logo: "/Logo-Saint_Remi.png",
+    logo: "/experiences/saint-remi.png",
   },
   {
     id: "edu3",
@@ -182,6 +182,6 @@ export const educationItems: TimelineItem[] = [
       "Spécialisation ISN : logique algorithmique et résolution de problèmes",
     ],
     tags: ["Maths", "Sciences", "ISN", "Algorithmique"],
-    logo: "/Logo-Saint_Remi.png",
+    logo: "/experiences/saint-remi.png",
   },
 ];

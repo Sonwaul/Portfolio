@@ -23,7 +23,8 @@
       "Read(//mnt/c/Users/infel/Documents/GitHub/Portfolio/**)",
       "Bash(rm -f app/components/sections/SkySection.tsx app/components/sections/MountainSection.tsx app/components/sections/ForestSection.tsx app/components/sections/RiverSection.tsx app/components/sections/WaterfallSection.tsx app/components/sections/LakeSection.tsx)",
       "Bash(dir C:\\\\Users\\\\infel\\\\Documents\\\\GitHub\\\\Portfolio\\\\portfolio\\\\public *)",
-      "Bash(Select-String -Pattern \"\\(?i\\)\\(iut|lille|saint|remi|rémi|lycee|lycée\\)\")"
+      "Bash(Select-String -Pattern \"\\(?i\\)\\(iut|lille|saint|remi|rémi|lycee|lycée\\)\")",
+      "WebFetch(domain:ethan-croenne.com)"
     ]
   }
 }

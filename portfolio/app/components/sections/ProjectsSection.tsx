@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { projects, Project } from "@/app/data/projectsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 import Modal from "@/app/components/ui/Modal";
 
 function ProjectCard({ project, onOpen, index }: { project: Project; onOpen: (p: Project) => void; index: number }) {
-  const { messages } = useLanguage();
+  const { messages, currentLang } = useLanguage();
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -25,7 +26,12 @@ function ProjectCard({ project, onOpen, index }: { project: Project; onOpen: (p:
           <span className="project-year">{project.year}</span>
         </div>
         <h3 className="project-card-title">{project.title}</h3>
-        <p className="project-card-desc">{project.shortDescription}</p>
+        <p className="project-card-role">
+          {currentLang === "en" && project.roleEn ? project.roleEn : project.role}
+        </p>
+        <p className="project-card-desc">
+          {currentLang === "en" && project.shortDescriptionEn ? project.shortDescriptionEn : project.shortDescription}
+        </p>
         <div className="project-tags">
           {project.tags.map((tag) => (
             <span key={tag} className="project-tag">{tag}</span>
@@ -40,7 +46,7 @@ function ProjectCard({ project, onOpen, index }: { project: Project; onOpen: (p:
 }
 
 export default function ProjectsSection() {
-  const { messages } = useLanguage();
+  const { messages, currentLang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
@@ -65,13 +71,25 @@ export default function ProjectsSection() {
       >
         {selectedProject && (
           <div className="modal-detail">
+            {selectedProject.logo && (
+              <div className="modal-company-logos">
+                <Image src={selectedProject.logo} alt={selectedProject.title} width={180} height={56} className="modal-company-logo" />
+              </div>
+            )}
             <div className="modal-meta">
               <span>📅 {selectedProject.year}</span>
               <span className={`project-status ${selectedProject.status === "ongoing" ? "status-ongoing" : "status-done"}`}>
                 {selectedProject.status === "ongoing" ? messages.projects.statusOngoing : messages.projects.statusDone}
               </span>
             </div>
-            <p className="modal-full-desc">{selectedProject.description}</p>
+            <p className="modal-project-role">
+              {currentLang === "en" && selectedProject.roleEn ? selectedProject.roleEn : selectedProject.role}
+            </p>
+            <p className="modal-full-desc">
+              {currentLang === "en" && selectedProject.descriptionEn
+                ? selectedProject.descriptionEn
+                : selectedProject.description}
+            </p>
             <h4 className="modal-missions-title">{messages.projects.techStack}</h4>
             <div className="project-tags" style={{ marginTop: "0.5rem" }}>
               {selectedProject.tags.map((tag) => (
@@ -88,9 +106,6 @@ export default function ProjectsSection() {
                 <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
                   💻 {messages.projects.viewCode}
                 </a>
-              )}
-              {!selectedProject.link && !selectedProject.github && (
-                <p className="modal-no-link">Liens disponibles prochainement.</p>
               )}
             </div>
           </div>

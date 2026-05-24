@@ -6,6 +6,37 @@ import { useLanguage } from "@/app/i18n/LanguageContext";
 import { timelineItems, educationItems, TimelineItem } from "@/app/data/timelineData";
 import Modal from "@/app/components/ui/Modal";
 
+const TAG_LOGOS: Record<string, string> = {
+  "ClickUp":      "/skills/clickup.svg",
+  "Shopify":      "/skills/shopify.svg",
+  "API Shopify":  "/skills/shopify.svg",
+  "Symfony":      "/skills/symfony.svg",
+  "PHP":          "/skills/php.svg",
+  "JavaScript":   "/skills/javascript.svg",
+  "MySQL":        "/skills/mysql.svg",
+  "Java":         "/skills/java.svg",
+  "Spring":       "/skills/spring.svg",
+  "Python":       "/skills/python.svg",
+  "React":        "/skills/react.svg",
+  "Next.js":      "/skills/nextjs.svg",
+  "Figma":        "/skills/figma.svg",
+  "GitHub":       "/skills/github.svg",
+  "Git":          "/skills/git.svg",
+  "WordPress":    "/skills/wordpress.svg",
+  "PrestaShop":   "/skills/prestashop.svg",
+  "HTML/CSS":     "/skills/html5.svg",
+  "PostgreSQL":   "/skills/postgresql.svg",
+};
+
+function TagBadge({ tag, size = 14 }: { tag: string; size?: number }) {
+  const logo = TAG_LOGOS[tag];
+  return (
+    <span className="timeline-tag">
+      {logo && <Image src={logo} alt="" width={size} height={size} className="timeline-tag-logo" />}
+      {tag}
+    </span>
+  );
+}
 
 export default function ExperienceSection() {
   const { messages, currentLang } = useLanguage();
@@ -79,7 +110,7 @@ export default function ExperienceSection() {
                   </p>
                   <div className="timeline-h-tags">
                     {item.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className="timeline-tag">{tag}</span>
+                      <TagBadge key={tag} tag={tag} size={13} />
                     ))}
                   </div>
                   <button className="timeline-btn" onClick={() => handleOpen(item)}>
@@ -154,7 +185,7 @@ export default function ExperienceSection() {
 
             <div className="timeline-tags" style={{ marginTop: "1rem" }}>
               {selectedItem.tags.map((tag) => (
-                <span key={tag} className="timeline-tag">{tag}</span>
+                <TagBadge key={tag} tag={tag} size={15} />
               ))}
             </div>
           </div>

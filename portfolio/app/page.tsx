@@ -7,6 +7,7 @@ import SkillsSection from "./components/sections/SkillsSection";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import TestimonialsSection from "./components/sections/TestimonialsSection";
 import ContactSection from "./components/sections/ContactSection";
+import CvFloatingButton from "./components/ui/CvFloatingButton";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <ProjectsSection />
       <TestimonialsSection />
       <ContactSection />
+      <CvFloatingButton />
     </main>
   );
 }

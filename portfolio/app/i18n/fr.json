@@ -65,6 +65,8 @@
     "cvLabel": "Consulter mon CV",
     "cvModalTitle": "Curriculum Vitae",
     "cvDownload": "Télécharger",
+    "cvDownloadFull": "Télécharger mon CV",
+    "cvEnlarge": "Agrandir",
     "sending": "Envoi en cours…",
     "error": "Une erreur est survenue. Réessayez ou contactez-moi directement."
   },

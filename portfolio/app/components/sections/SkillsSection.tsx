@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { skillZones, SkillZone } from "@/app/data/skillsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
@@ -34,7 +35,12 @@ function SkillColCard({ zone, mode }: { zone: SkillZone; mode: Mode }) {
             <p className="skill-col-group-label">{group.title}</p>
             <div className="skill-col-badges">
               {group.skills.map((skill, si) => (
-                <span key={si} className="skill-badge">{skill.name}</span>
+                <span key={si} className="skill-badge">
+                  {skill.logo && (
+                    <Image src={skill.logo} alt="" width={16} height={16} className="skill-badge-logo" />
+                  )}
+                  {skill.name}
+                </span>
               ))}
             </div>
           </div>
