@@ -1,23 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { projects, Project } from "@/app/data/projectsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 import Modal from "@/app/components/ui/Modal";
 
-function ProjectCard({ project, onOpen, index }: { project: Project; onOpen: (p: Project) => void; index: number }) {
+function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Project) => void }) {
   const { messages, currentLang } = useLanguage();
   const { ref, isVisible } = useScrollReveal();
 
   return (
     <div
       ref={ref}
-      className={`project-card project-card-${index + 1} ${isVisible ? "reveal-visible" : "reveal-hidden"}`}
+      className={`project-card ${isVisible ? "reveal-visible" : "reveal-hidden"}`}
       style={{ "--card-accent": project.accentColor } as React.CSSProperties}
     >
-      <div className="project-card-accent" />
+      <div className="project-card-header">
+        {project.logo
+          ? <Image src={project.logo} alt={project.title} width={0} height={0} sizes="240px" style={{ width: "auto", height: "auto", maxHeight: "120px", maxWidth: "100%", objectFit: "contain" }} />
+          : <span className="project-card-header-initials">{project.title.charAt(0)}</span>
+        }
+      </div>
       <div className="project-card-body">
         <div className="project-card-top">
           <span className={`project-status ${project.status === "ongoing" ? "status-ongoing" : "status-done"}`}>
@@ -48,6 +53,20 @@ function ProjectCard({ project, onOpen, index }: { project: Project; onOpen: (p:
 export default function ProjectsSection() {
   const { messages, currentLang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    projects.forEach((p) => p.tags.forEach((t) => {
+      if (t !== "À compléter" && t !== "To be filled") tagSet.add(t);
+    }));
+    return Array.from(tagSet);
+  }, []);
+
+  const filtered = useMemo(() => {
+    if (activeFilter === "all") return projects;
+    return projects.filter((p) => p.tags.includes(activeFilter));
+  }, [activeFilter]);
 
   return (
     <section id="projets" className="projects-section">
@@ -57,9 +76,27 @@ export default function ProjectsSection() {
           <p className="section-subtitle">{messages.projects.subtitle}</p>
         </div>
 
+        <div className="projects-filter">
+          <button
+            className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
+            onClick={() => setActiveFilter("all")}
+          >
+            {currentLang === "en" ? "All" : "Tous"} ({projects.length})
+          </button>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`filter-btn ${activeFilter === tag ? "active" : ""}`}
+              onClick={() => setActiveFilter(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+
         <div className="projects-grid">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} index={i} />
+          {filtered.map((project) => (
+            <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} />
           ))}
         </div>
       </div>
@@ -73,7 +110,7 @@ export default function ProjectsSection() {
           <div className="modal-detail">
             {selectedProject.logo && (
               <div className="modal-company-logos">
-                <Image src={selectedProject.logo} alt={selectedProject.title} width={180} height={56} className="modal-company-logo" />
+                <Image src={selectedProject.logo} alt={selectedProject.title} width={0} height={0} sizes="180px" style={{ width: "auto", height: "56px", objectFit: "contain" }} className="modal-company-logo" />
               </div>
             )}
             <div className="modal-meta">
