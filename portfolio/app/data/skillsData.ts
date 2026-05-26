@@ -28,14 +28,22 @@ export const skillZones: SkillZone[] = [
     subtitleEn: "Project management & soft skills",
     groups: [
       {
-        title: "Pilotage & Outils",
-        titleEn: "Project Tools & Management",
+        title: "Pilotage de Projet",
+        titleEn: "Project Management",
         skills: [
           { name: "Agile / Scrum" },
           { name: "ClickUp", logo: "/skills/clickup.svg" },
           { name: "Compréhension de CDC", nameEn: "Spec Analysis" },
           { name: "Devis & Chiffrage", nameEn: "Quoting & Estimation" },
+        ],
+      },
+      {
+        title: "Relation Client",
+        titleEn: "Client Relations",
+        skills: [
           { name: "Relation Client", nameEn: "Client Relations" },
+          { name: "Écoute active", nameEn: "Active Listening" },
+          { name: "Communication", nameEn: "Communication" },
         ],
       },
       {
@@ -43,9 +51,8 @@ export const skillZones: SkillZone[] = [
         titleEn: "Pedagogy & Leadership",
         skills: [
           { name: "Mentorat", nameEn: "Mentoring" },
-          { name: "Bilans de compétences", nameEn: "Skills Assessment" },
-          { name: "Écoute active", nameEn: "Active Listening" },
           { name: "Formation", nameEn: "Training" },
+          { name: "Bilans de compétences", nameEn: "Skills Assessment" },
         ],
       },
     ],
@@ -93,7 +100,7 @@ export const skillZones: SkillZone[] = [
     id: "tools",
     title: "Outils & Environnement",
     titleEn: "Tools & Environment",
-    subtitle: "Data, DevOps & conception",
+    subtitle: "Data, DevOps & design",
     subtitleEn: "Data, DevOps & design",
     groups: [
       {
@@ -121,7 +128,7 @@ export const skillZones: SkillZone[] = [
         ],
       },
       {
-        title: "Design & Conception",
+        title: "Design & UX/UI",
         titleEn: "Design & UX/UI",
         skills: [
           { name: "Figma", logo: "/skills/figma.svg" },

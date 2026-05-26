@@ -11,9 +11,9 @@
   "hero": {
     "role": "Lead Projet & Développeur Full Stack",
     "badgeLocation": "Toufflers · Lille Métropole",
-    "badgeAge": "23 ans",
+    "badgeAge": "ans",
     "badgeRole": "Lead Projet · HUGGII",
-    "description": "Bonjour, je suis Elliot. À 23 ans, j'évolue au cœur de la métropole lilloise. Mon parcours a débuté dans les lignes de code, là où la logique pure rencontre la création. Aujourd'hui, je m'élève pour devenir le pilier central du projet web : un manager capable de parler le langage des développeurs tout en traduisant les besoins business des clients. Ma vision ? Créer une fusion entre l'innovation technique et l'accompagnement humain.",
+    "description": "Bonjour, je suis Elliot. À 23 ans, j'évolue au cœur de la métropole lilloise. Mon parcours a débuté dans les lignes de code, là où la logique pure rencontre la création. Aujourd'hui, je suis ce pilier central du projet web : un manager capable de parler le langage des développeurs tout en traduisant les besoins business des clients. Ma vision ? Créer une fusion entre l'innovation technique et l'accompagnement humain.",
     "cta": "Voir mon parcours"
   },
   "experience": {
@@ -29,20 +29,17 @@
   "skills": {
     "title": "Expertises & Compétences",
     "subtitle": "Du développement technique au pilotage de projet",
-    "intro": "De la conception technique au management de projet, mes compétences couvrent l'ensemble du cycle de développement web. Voici les domaines d'expertise que je mobilise pour concrétiser vos ambitions.",
+    "intro": "Après 3 ans chez HUGGII, mes compétences couvrent aussi bien l'architecture technique que le pilotage de projet client. Une double casquette que je mets au service de projets e-commerce concrets, de l'analyse des besoins à la mise en production.",
     "toggleAll": "Vue globale",
     "toggleTech": "Vue technique",
     "toggleManagement": "Vue management"
   },
   "projects": {
     "title": "Projets Réalisés",
-    "subtitle": "Sélection de réalisations professionnelles et personnelles",
+    "subtitle": "Un best-of des projets les plus représentatifs de mon parcours",
     "viewDetails": "Voir les détails",
     "visitSite": "Visiter",
-    "viewCode": "Code source",
-    "techStack": "Technologies",
-    "statusOngoing": "En cours",
-    "statusDone": "Livré"
+    "techStack": "Outils & Stack"
   },
   "testimonials": {
     "title": "Témoignages & Recommandations",

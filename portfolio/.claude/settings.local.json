@@ -28,7 +28,10 @@
       "Bash(npm audit *)",
       "Bash(Get-ChildItem -Recurse -Name -Include \"*.json\")",
       "Bash(Select-String -Pattern \"\\(locale|i18n|translation|en\\\\.json|fr\\\\.json\\)\")",
-      "Bash(xargs grep -l -i \"footer\")"
+      "Bash(xargs grep -l -i \"footer\")",
+      "Bash(Get-ChildItem -Path . -Depth 2)",
+      "Bash(xargs cat)",
+      "Bash(Remove-Item *)"
     ]
   }
 }

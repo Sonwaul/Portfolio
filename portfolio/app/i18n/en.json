@@ -11,9 +11,9 @@
   "hero": {
     "role": "Project Lead & Full Stack Developer",
     "badgeLocation": "Toufflers · Lille Area",
-    "badgeAge": "23 y.o.",
+    "badgeAge": "y.o.",
     "badgeRole": "Project Lead · HUGGII",
-    "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where pure logic meets creation. Today, I'm rising to become the central pillar of web projects: a manager who speaks the language of developers while translating clients' business needs. My vision? Creating a fusion between technical innovation and human-centered support.",
+    "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where pure logic meets creation. Today, I am that central pillar of web projects: a manager who speaks the language of developers while translating clients' business needs. My vision? Creating a fusion between technical innovation and human-centered support.",
     "cta": "See my background"
   },
   "experience": {
@@ -29,20 +29,17 @@
   "skills": {
     "title": "Expertise & Skills",
     "subtitle": "From technical development to project management",
-    "intro": "From technical design to project management, my skills cover the full web development lifecycle. Here are the areas of expertise I bring to make your ambitions a reality.",
+    "intro": "After 3 years at HUGGII, my expertise spans both technical architecture and client project management. A dual profile I bring to every e-commerce project, from requirements analysis to go-live.",
     "toggleAll": "Full view",
     "toggleTech": "Technical view",
     "toggleManagement": "Management view"
   },
   "projects": {
     "title": "Completed Projects",
-    "subtitle": "A selection of professional and personal work",
+    "subtitle": "A curated selection of the most representative projects from my journey",
     "viewDetails": "View details",
     "visitSite": "Visit",
-    "viewCode": "Source code",
-    "techStack": "Technologies",
-    "statusOngoing": "Ongoing",
-    "statusDone": "Delivered"
+    "techStack": "Tools & Stack"
   },
   "testimonials": {
     "title": "Testimonials & Recommendations",
@@ -55,7 +52,7 @@
     "emailPlaceholder": "Your email",
     "subjectPlaceholder": "Subject",
     "messagePlaceholder": "Your message...",
-    "socialsTitle": "Find me",
+    "socialsTitle": "Connect with me",
     "submit": "Send message",
     "success": "Message sent! I'll get back to you shortly.",
     "location": "Toufflers / Lille Metropolitan Area",

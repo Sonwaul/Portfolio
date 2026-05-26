@@ -15,7 +15,8 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Projec
     <div
       ref={ref}
       className={`project-card ${isVisible ? "reveal-visible" : "reveal-hidden"}`}
-      style={{ "--card-accent": project.accentColor } as React.CSSProperties}
+      style={{ "--card-accent": project.accentColor, cursor: "pointer" } as React.CSSProperties}
+      onClick={() => onOpen(project)}
     >
       <div className="project-card-header">
         {project.logo
@@ -25,9 +26,6 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Projec
       </div>
       <div className="project-card-body">
         <div className="project-card-top">
-          <span className={`project-status ${project.status === "ongoing" ? "status-ongoing" : "status-done"}`}>
-            {project.status === "ongoing" ? messages.projects.statusOngoing : messages.projects.statusDone}
-          </span>
           <span className="project-year">{project.year}</span>
         </div>
         <h3 className="project-card-title">{project.title}</h3>
@@ -42,9 +40,9 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Projec
             <span key={tag} className="project-tag">{tag}</span>
           ))}
         </div>
-        <button className="project-btn" onClick={() => onOpen(project)}>
+        <span className="project-btn">
           {messages.projects.viewDetails} →
-        </button>
+        </span>
       </div>
     </div>
   );
@@ -60,7 +58,22 @@ export default function ProjectsSection() {
     projects.forEach((p) => p.tags.forEach((t) => {
       if (t !== "À compléter" && t !== "To be filled") tagSet.add(t);
     }));
-    return Array.from(tagSet);
+    const TAG_ORDER = [
+      "Shopify", "Shopify Plus", "Shopify App", "Shopify POS",
+      "API Shopify", "PHP", "React / Next.js",
+      "ERP API", "ERP Fichier à plat", "EBP SDK", "EBP SaaS", "Sage X3", "Sage", "Sellsy", "Kaeliips",
+      "B2B", "B2B & B2C", "B2C",
+      "UX/UI", "Figma",
+      "SEO",
+    ];
+    return Array.from(tagSet).sort((a, b) => {
+      const ia = TAG_ORDER.indexOf(a);
+      const ib = TAG_ORDER.indexOf(b);
+      if (ia === -1 && ib === -1) return a.localeCompare(b);
+      if (ia === -1) return 1;
+      if (ib === -1) return -1;
+      return ia - ib;
+    });
   }, []);
 
   const filtered = useMemo(() => {
@@ -104,45 +117,41 @@ export default function ProjectsSection() {
       <Modal
         isOpen={selectedProject !== null}
         onClose={() => setSelectedProject(null)}
-        title={selectedProject?.title ?? ""}
+        accentColor={selectedProject?.accentColor}
       >
         {selectedProject && (
           <div className="modal-detail">
-            {selectedProject.logo && (
-              <div className="modal-company-logos">
-                <Image src={selectedProject.logo} alt={selectedProject.title} width={0} height={0} sizes="180px" style={{ width: "auto", height: "56px", objectFit: "contain" }} className="modal-company-logo" />
+            <div className="modal-hero">
+              {selectedProject.logo
+                ? <div className="modal-hero-logo-wrap">
+                    <Image src={selectedProject.logo} alt={selectedProject.title} width={0} height={0} sizes="200px" style={{ width: "auto", height: "52px", objectFit: "contain" }} />
+                  </div>
+                : <span className="modal-hero-initial">{selectedProject.title.charAt(0)}</span>
+              }
+              <h3 className="modal-hero-title">{selectedProject.title}</h3>
+              <p className="modal-hero-role">
+                {currentLang === "en" && selectedProject.roleEn ? selectedProject.roleEn : selectedProject.role}
+              </p>
+              <span className="modal-hero-year">{selectedProject.year}</span>
+            </div>
+            <div className="modal-content-inner">
+              <p className="modal-full-desc">
+                {currentLang === "en" && selectedProject.descriptionEn
+                  ? selectedProject.descriptionEn
+                  : selectedProject.description}
+              </p>
+              <h4 className="modal-missions-title">{messages.projects.techStack}</h4>
+              <div className="project-tags" style={{ marginTop: "0.5rem" }}>
+                {selectedProject.tags.map((tag) => (
+                  <span key={tag} className="project-tag">{tag}</span>
+                ))}
               </div>
-            )}
-            <div className="modal-meta">
-              <span>📅 {selectedProject.year}</span>
-              <span className={`project-status ${selectedProject.status === "ongoing" ? "status-ongoing" : "status-done"}`}>
-                {selectedProject.status === "ongoing" ? messages.projects.statusOngoing : messages.projects.statusDone}
-              </span>
-            </div>
-            <p className="modal-project-role">
-              {currentLang === "en" && selectedProject.roleEn ? selectedProject.roleEn : selectedProject.role}
-            </p>
-            <p className="modal-full-desc">
-              {currentLang === "en" && selectedProject.descriptionEn
-                ? selectedProject.descriptionEn
-                : selectedProject.description}
-            </p>
-            <h4 className="modal-missions-title">{messages.projects.techStack}</h4>
-            <div className="project-tags" style={{ marginTop: "0.5rem" }}>
-              {selectedProject.tags.map((tag) => (
-                <span key={tag} className="project-tag">{tag}</span>
-              ))}
-            </div>
-            <div className="modal-links">
               {selectedProject.link && (
-                <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
-                  🔗 {messages.projects.visitSite}
-                </a>
-              )}
-              {selectedProject.github && (
-                <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
-                  💻 {messages.projects.viewCode}
-                </a>
+                <div className="modal-links">
+                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
+                    🔗 {messages.projects.visitSite}
+                  </a>
+                </div>
               )}
             </div>
           </div>

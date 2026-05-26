@@ -126,67 +126,76 @@ export default function ExperienceSection() {
       <Modal
         isOpen={selectedItem !== null}
         onClose={() => setSelectedItem(null)}
-        title={selectedItem ? `${selectedItem.company} — ${currentLang === "en" && selectedItem.roleEn ? selectedItem.roleEn : selectedItem.role}` : ""}
+        accentColor={selectedItem?.accentColor}
       >
         {selectedItem && (
           <div className="modal-detail">
-            {selectedItem.logo && (
-              <div className="modal-company-logos">
-                <Image src={selectedItem.logo} alt={selectedItem.company} width={180} height={56} className="modal-company-logo" />
+            <div className="modal-hero">
+              {selectedItem.logo
+                ? <div className="modal-hero-logo-wrap">
+                    <Image src={selectedItem.logo} alt={selectedItem.company} width={0} height={0} sizes="180px" style={{ width: "auto", height: "52px", objectFit: "contain" }} />
+                  </div>
+                : <span className="modal-hero-initial">{selectedItem.company.charAt(0)}</span>
+              }
+              <h3 className="modal-hero-title">{selectedItem.company}</h3>
+              <p className="modal-hero-role">
+                {currentLang === "en" && selectedItem.roleEn ? selectedItem.roleEn : selectedItem.role}
+              </p>
+              <div className="modal-hero-meta">
+                <span className="modal-hero-year">
+                  📅 {selectedItem.startDate} → {selectedItem.current ? messages.experience.present : selectedItem.endDate}
+                </span>
+                <span className="modal-hero-year">📍 {selectedItem.location}</span>
+                {selectedItem.current && (
+                  <span className="modal-hero-badge">{messages.experience.currentBadge}</span>
+                )}
               </div>
-            )}
-            <div className="modal-meta">
-              <span>
-                📅 {selectedItem.startDate} → {selectedItem.current ? messages.experience.present : selectedItem.endDate}
-              </span>
-              <span>📍 {selectedItem.location}</span>
-              {selectedItem.current && (
-                <span className="timeline-badge">{messages.experience.currentBadge}</span>
-              )}
             </div>
-            <p className="modal-short-desc">
-              {currentLang === "en" && selectedItem.shortDescriptionEn
-                ? selectedItem.shortDescriptionEn
-                : selectedItem.shortDescription}
-            </p>
+            <div className="modal-content-inner modal-content-inner--left">
+              <p className="modal-short-desc">
+                {currentLang === "en" && selectedItem.shortDescriptionEn
+                  ? selectedItem.shortDescriptionEn
+                  : selectedItem.shortDescription}
+              </p>
 
-            {selectedItem.tabs ? (
-              <>
-                <div className="modal-inner-tabs">
-                  {selectedItem.tabs.map((tab, i) => (
-                    <button
-                      key={i}
-                      className={`modal-inner-tab ${modalTab === i ? "modal-inner-tab-active" : ""}`}
-                      onClick={() => setModalTab(i)}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </div>
-                <ul className="modal-missions-list">
-                  {selectedItem.tabs[modalTab].missions.map((mission, i) => (
-                    <li key={i}>{mission}</li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <>
-                <h4 className="modal-missions-title">{messages.experience.missions}</h4>
-                <ul className="modal-missions-list">
-                  {(currentLang === "en" && selectedItem.missionsEn
-                    ? selectedItem.missionsEn
-                    : selectedItem.missions
-                  ).map((mission, i) => (
-                    <li key={i}>{mission}</li>
-                  ))}
-                </ul>
-              </>
-            )}
+              {selectedItem.tabs ? (
+                <>
+                  <div className="modal-inner-tabs">
+                    {selectedItem.tabs.map((tab, i) => (
+                      <button
+                        key={i}
+                        className={`modal-inner-tab ${modalTab === i ? "modal-inner-tab-active" : ""}`}
+                        onClick={() => setModalTab(i)}
+                      >
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
+                  <ul className="modal-missions-list">
+                    {selectedItem.tabs[modalTab].missions.map((mission, i) => (
+                      <li key={i}>{mission}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <h4 className="modal-missions-title">{messages.experience.missions}</h4>
+                  <ul className="modal-missions-list">
+                    {(currentLang === "en" && selectedItem.missionsEn
+                      ? selectedItem.missionsEn
+                      : selectedItem.missions
+                    ).map((mission, i) => (
+                      <li key={i}>{mission}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
 
-            <div className="timeline-tags" style={{ marginTop: "1rem" }}>
-              {selectedItem.tags.map((tag) => (
-                <TagBadge key={tag} tag={tag} size={15} />
-              ))}
+              <div className="timeline-tags" style={{ marginTop: "1.2rem" }}>
+                {selectedItem.tags.map((tag) => (
+                  <TagBadge key={tag} tag={tag} size={15} />
+                ))}
+              </div>
             </div>
           </div>
         )}
