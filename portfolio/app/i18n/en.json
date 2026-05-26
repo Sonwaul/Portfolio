@@ -68,7 +68,8 @@
     "cvDownloadFull": "Download my Resume",
     "cvEnlarge": "Enlarge",
     "sending": "Sending…",
-    "error": "Something went wrong. Please try again or contact me directly."
+    "error": "Something went wrong. Please try again or contact me directly.",
+    "footerCopy": "All rights reserved"
   },
   "languageLabel": "EN",
   "close": "Close"

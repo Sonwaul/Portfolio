@@ -68,7 +68,8 @@
     "cvDownloadFull": "Télécharger mon CV",
     "cvEnlarge": "Agrandir",
     "sending": "Envoi en cours…",
-    "error": "Une erreur est survenue. Réessayez ou contactez-moi directement."
+    "error": "Une erreur est survenue. Réessayez ou contactez-moi directement.",
+    "footerCopy": "Tous droits réservés"
   },
   "languageLabel": "FR",
   "close": "Fermer"

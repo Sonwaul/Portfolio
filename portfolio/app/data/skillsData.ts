@@ -1,17 +1,21 @@
 export interface Skill {
   name: string;
+  nameEn?: string;
   logo?: string;
 }
 
 export interface SkillGroup {
   title: string;
+  titleEn?: string;
   skills: Skill[];
 }
 
 export interface SkillZone {
   id: "management" | "tech" | "tools";
   title: string;
+  titleEn?: string;
   subtitle: string;
+  subtitleEn?: string;
   groups: SkillGroup[];
 }
 
@@ -19,25 +23,29 @@ export const skillZones: SkillZone[] = [
   {
     id: "management",
     title: "Management & Relation Client",
+    titleEn: "Management & Client Relations",
     subtitle: "Pilotage de projet & soft skills",
+    subtitleEn: "Project management & soft skills",
     groups: [
       {
         title: "Pilotage & Outils",
+        titleEn: "Project Tools & Management",
         skills: [
           { name: "Agile / Scrum" },
           { name: "ClickUp", logo: "/skills/clickup.svg" },
-          { name: "Compréhension de CDC" },
-          { name: "Devis & Chiffrage" },
-          { name: "Relation Client" },
+          { name: "Compréhension de CDC", nameEn: "Spec Analysis" },
+          { name: "Devis & Chiffrage", nameEn: "Quoting & Estimation" },
+          { name: "Relation Client", nameEn: "Client Relations" },
         ],
       },
       {
         title: "Pédagogie & Leadership",
+        titleEn: "Pedagogy & Leadership",
         skills: [
-          { name: "Mentorat" },
-          { name: "Bilans de compétences" },
-          { name: "Écoute active" },
-          { name: "Formation" },
+          { name: "Mentorat", nameEn: "Mentoring" },
+          { name: "Bilans de compétences", nameEn: "Skills Assessment" },
+          { name: "Écoute active", nameEn: "Active Listening" },
+          { name: "Formation", nameEn: "Training" },
         ],
       },
     ],
@@ -45,28 +53,33 @@ export const skillZones: SkillZone[] = [
   {
     id: "tech",
     title: "Architecture & Développement",
+    titleEn: "Architecture & Development",
     subtitle: "Back-end, front-end & Shopify",
+    subtitleEn: "Back-end, front-end & Shopify",
     groups: [
       {
         title: "Back-end",
+        titleEn: "Back-end",
         skills: [
           { name: "PHP / Symfony", logo: "/skills/symfony.svg" },
           { name: "Java / Spring", logo: "/skills/spring.svg" },
           { name: "Python", logo: "/skills/python.svg" },
-          { name: "Architecture flux" },
+          { name: "Architecture flux", nameEn: "Flow Architecture" },
         ],
       },
       {
         title: "Écosystème Shopify",
+        titleEn: "Shopify Ecosystem",
         skills: [
           { name: "Shopify", logo: "/skills/shopify.svg" },
           { name: "Liquid" },
-          { name: "API Shopify", logo: "/skills/shopify.svg" },
-          { name: "Apps Shopify", logo: "/skills/shopify.svg" },
+          { name: "API Shopify", nameEn: "Shopify API", logo: "/skills/shopify.svg" },
+          { name: "Apps Shopify", nameEn: "Shopify Apps", logo: "/skills/shopify.svg" },
         ],
       },
       {
         title: "Front-end",
+        titleEn: "Front-end",
         skills: [
           { name: "HTML / CSS", logo: "/skills/html5.svg" },
           { name: "JavaScript", logo: "/skills/javascript.svg" },
@@ -79,10 +92,13 @@ export const skillZones: SkillZone[] = [
   {
     id: "tools",
     title: "Outils & Environnement",
+    titleEn: "Tools & Environment",
     subtitle: "Data, DevOps & conception",
+    subtitleEn: "Data, DevOps & design",
     groups: [
       {
         title: "Bases de données",
+        titleEn: "Databases",
         skills: [
           { name: "SQL / MySQL", logo: "/skills/mysql.svg" },
           { name: "PostgreSQL", logo: "/skills/postgresql.svg" },
@@ -90,13 +106,15 @@ export const skillZones: SkillZone[] = [
       },
       {
         title: "DevOps & Ops",
+        titleEn: "DevOps & Ops",
         skills: [
           { name: "Git / GitHub", logo: "/skills/github.svg" },
-          { name: "Maintenance & Logs" },
+          { name: "Maintenance & Logs", nameEn: "Maintenance & Log Monitoring" },
         ],
       },
       {
         title: "Support & Accès distant",
+        titleEn: "Support & Remote Access",
         skills: [
           { name: "TeamViewer", logo: "/skills/teamviewer.svg" },
           { name: "AnyDesk", logo: "/skills/anydesk.svg" },
@@ -104,6 +122,7 @@ export const skillZones: SkillZone[] = [
       },
       {
         title: "Design & Conception",
+        titleEn: "Design & UX/UI",
         skills: [
           { name: "Figma", logo: "/skills/figma.svg" },
           { name: "UX/UI Design" },

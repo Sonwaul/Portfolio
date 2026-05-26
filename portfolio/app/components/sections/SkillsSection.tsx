@@ -8,12 +8,15 @@ import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 
 type Mode = "tech" | "management" | "all";
 
-function SkillColCard({ zone, mode }: { zone: SkillZone; mode: Mode }) {
+function SkillColCard({ zone, mode, lang }: { zone: SkillZone; mode: Mode; lang: string }) {
   const { ref, isVisible } = useScrollReveal();
 
   const dimmed =
     (mode === "tech"       && zone.id === "management") ||
     (mode === "management" && (zone.id === "tech" || zone.id === "tools"));
+
+  const zoneTitle    = lang === "en" && zone.titleEn    ? zone.titleEn    : zone.title;
+  const zoneSubtitle = lang === "en" && zone.subtitleEn ? zone.subtitleEn : zone.subtitle;
 
   return (
     <div
@@ -25,21 +28,21 @@ function SkillColCard({ zone, mode }: { zone: SkillZone; mode: Mode }) {
       ].join(" ").trim()}
     >
       <div className="skill-col-header">
-        <h3 className="skill-col-title">{zone.title}</h3>
-        <p className="skill-col-subtitle">{zone.subtitle}</p>
+        <h3 className="skill-col-title">{zoneTitle}</h3>
+        <p className="skill-col-subtitle">{zoneSubtitle}</p>
       </div>
 
       <div className="skill-col-groups">
         {zone.groups.map((group, gi) => (
           <div key={gi} className="skill-col-group">
-            <p className="skill-col-group-label">{group.title}</p>
+            <p className="skill-col-group-label">{lang === "en" && group.titleEn ? group.titleEn : group.title}</p>
             <div className="skill-col-badges">
               {group.skills.map((skill, si) => (
                 <span key={si} className="skill-badge">
                   {skill.logo && (
                     <Image src={skill.logo} alt="" width={16} height={16} className="skill-badge-logo" />
                   )}
-                  {skill.name}
+                  {lang === "en" && skill.nameEn ? skill.nameEn : skill.name}
                 </span>
               ))}
             </div>
@@ -51,7 +54,7 @@ function SkillColCard({ zone, mode }: { zone: SkillZone; mode: Mode }) {
 }
 
 export default function SkillsSection() {
-  const { messages } = useLanguage();
+  const { messages, currentLang } = useLanguage();
   const [mode, setMode] = useState<Mode>("all");
 
   return (
@@ -87,7 +90,7 @@ export default function SkillsSection() {
 
         <div className="skills-grid">
           {skillZones.map((zone) => (
-            <SkillColCard key={zone.id} zone={zone} mode={mode} />
+            <SkillColCard key={zone.id} zone={zone} mode={mode} lang={currentLang} />
           ))}
         </div>
       </div>

@@ -196,7 +196,7 @@ export default function ContactSection() {
 
       <div className="contact-footer">
         <p className="footer-copy" suppressHydrationWarning>
-          © {new Date().getFullYear()} Elliot Infelta · Tous droits réservés
+          © {new Date().getFullYear()} Elliot Infelta · {messages.contact.footerCopy}
         </p>
         <nav className="footer-nav">
           <a href="#presentation">{messages.nav.hero}</a>

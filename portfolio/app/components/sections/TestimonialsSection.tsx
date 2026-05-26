@@ -30,6 +30,15 @@ export default function TestimonialsSection() {
   const [cardWidth, setCardWidth] = useState(0);
   const [index, setIndex] = useState(CLONE_COUNT);
   const [animated, setAnimated] = useState(true);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  function toggleExpand(author: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      next.has(author) ? next.delete(author) : next.add(author);
+      return next;
+    });
+  }
 
   function computeCardWidth() {
     if (!viewportRef.current) return;
@@ -109,7 +118,17 @@ export default function TestimonialsSection() {
                   style={{ width: cardWidth ? `${cardWidth}px` : undefined, flexShrink: 0 }}
                 >
                   <StarRating rating={review.rating} />
-                  <p className="testimonial-text">"{review.text}"</p>
+                  <p className={`testimonial-text${expanded.has(review.author) ? " testimonial-text-expanded" : ""}`}>
+                    "{review.text}"
+                  </p>
+                  {review.text.length > 220 && (
+                    <button
+                      className="testimonial-readmore"
+                      onClick={() => toggleExpand(review.author)}
+                    >
+                      {expanded.has(review.author) ? "Réduire ↑" : "En savoir plus ↓"}
+                    </button>
+                  )}
                   <div className="testimonial-footer">
                     <div className="testimonial-author">
                       {review.logo ? (
@@ -182,6 +201,7 @@ export default function TestimonialsSection() {
           ))}
         </div>
       </div>
+
     </section>
   );
 }

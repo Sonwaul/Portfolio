@@ -20,7 +20,7 @@ export const reviews: Review[] = [
     date: "",
     url: "https://share.google/MrzwN7KWDyuUBWWov",
     siteUrl: "https://pro.nemrod.co/",
-    logo: "/Logo-Nemrod.webp",
+    logo: "/projects/Nemrod.png",
   },
   {
     id: "rev2",
@@ -31,7 +31,7 @@ export const reviews: Review[] = [
     date: "",
     url: "https://share.google/RCHUC7GPjqGhFdT56",
     siteUrl: "https://tandem-fragrances.fr/",
-    logo: "/Logo-Tandem_fragrances.webp",
+    logo: "/projects/Tandem-fragrances.png",
   },
   {
     id: "rev3",
@@ -42,7 +42,7 @@ export const reviews: Review[] = [
     date: "",
     url: "https://share.google/KzGjYzKa9Q569j6Qo",
     siteUrl: "https://lafondationdespossibles.com/",
-    logo: "/Logo-Fondation_des_possibles.webp",
+    logo: "/projects/Fondation-des-possibles.png",
   },
   {
     id: "rev4",
@@ -53,7 +53,7 @@ export const reviews: Review[] = [
     date: "",
     url: "https://share.google/BsuyosP6qtknfYFzR",
     siteUrl: "https://www.skintips.co/",
-    logo: "/Logo-Skintips.webp",
+    logo: "/projects/Skintips.png",
   },
   {
     id: "rev5",
@@ -64,6 +64,6 @@ export const reviews: Review[] = [
     date: "",
     url: "https://share.google/CZyilnyDcRhjhXoNW",
     siteUrl: "https://automatic-technologies.com/",
-    logo: "/Logo-Automatic_Technologies.webp",
+    logo: "/projects/Automatic-technologies.png",
   },
 ];

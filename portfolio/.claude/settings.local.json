@@ -25,7 +25,10 @@
       "Bash(dir C:\\\\Users\\\\infel\\\\Documents\\\\GitHub\\\\Portfolio\\\\portfolio\\\\public *)",
       "Bash(Select-String -Pattern \"\\(?i\\)\\(iut|lille|saint|remi|rémi|lycee|lycée\\)\")",
       "WebFetch(domain:ethan-croenne.com)",
-      "Bash(npm audit *)"
+      "Bash(npm audit *)",
+      "Bash(Get-ChildItem -Recurse -Name -Include \"*.json\")",
+      "Bash(Select-String -Pattern \"\\(locale|i18n|translation|en\\\\.json|fr\\\\.json\\)\")",
+      "Bash(xargs grep -l -i \"footer\")"
     ]
   }
 }
