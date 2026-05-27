@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LanguageProvider } from "./i18n/LanguageContext";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
@@ -17,10 +17,15 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-title",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Elliot Infelta — Lead Projet & Développeur Full Stack",
+    default: "Elliot Infelta - Lead Projet & Développeur Full Stack",
     template: "%s | Elliot Infelta",
   },
   description:
@@ -45,7 +50,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: SITE_URL,
     siteName: "Elliot Infelta",
-    title: "Elliot Infelta — Lead Projet & Développeur Full Stack",
+    title: "Elliot Infelta - Lead Projet & Développeur Full Stack",
     description:
       "Portfolio d'Elliot Infelta, Lead Projet & Développeur Full Stack basé à Lille. Spécialisé Shopify, intégrations ERP et pilotage de projets web.",
     images: [
@@ -53,13 +58,13 @@ export const metadata: Metadata = {
         url: "/share-banner.png",
         width: 1200,
         height: 630,
-        alt: "Elliot Infelta — Lead Projet & Développeur Full Stack",
+        alt: "Elliot Infelta - Lead Projet & Développeur Full Stack",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elliot Infelta — Lead Projet & Développeur Full Stack",
+    title: "Elliot Infelta - Lead Projet & Développeur Full Stack",
     description:
       "Portfolio d'Elliot Infelta, Lead Projet & Développeur Full Stack basé à Lille. Spécialisé Shopify et intégrations ERP.",
     images: ["/share-banner.png"],

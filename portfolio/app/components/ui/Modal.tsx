@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import type { CSSProperties } from "react";
+import { X } from "lucide-react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -37,10 +38,10 @@ export default function Modal({ isOpen, onClose, title, accentColor, children }:
         {title ? (
           <div className="modal-header">
             <h3 className="modal-title">{title}</h3>
-            <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">✕</button>
+            <button className="modal-close-btn" onClick={onClose} aria-label="Fermer"><X size={18} aria-hidden="true" /></button>
           </div>
         ) : (
-          <button className="modal-close-btn modal-close-btn--overlay" onClick={onClose} aria-label="Fermer">✕</button>
+          <button className="modal-close-btn modal-close-btn--overlay" onClick={onClose} aria-label="Fermer"><X size={18} aria-hidden="true" /></button>
         )}
         <div className="modal-body">{children}</div>
       </div>

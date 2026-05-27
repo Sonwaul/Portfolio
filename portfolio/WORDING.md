@@ -279,13 +279,13 @@
 
 ### proj1 — Julien Faure (2026)
 **Rôle FR :** Lead Projet & Développeur Full Stack · **EN :** Project Lead & Full Stack Developer  
-**Court FR :** Migration B2B · Synchronisation Sage X3 · **EN :** B2B Migration · Sage X3 Synchronization
+**Court FR :** Migration B2B · Synchronisation Sage · **EN :** B2B Migration · Sage Synchronization
 
 **Description FR :**
-> Pilotage global de la refonte d'une plateforme e-commerce B2B vieillissante de plus de 10 ans vers l'écosystème Shopify (lancé le 26 mai 2026). Gestion des plannings, distribution des tâches et animation des réunions clients. Le défi consistait à moderniser l'interface tout en maintenant l'interconnexion automatisée par échange de fichiers à plat avec l'ERP Sage X3 et en accompagnant le changement pour les clients B2B historiques. Projet réalisé au sein de l'agence HUGGII.
+> Pilotage global de la refonte d'une plateforme e-commerce B2B vieillissante de plus de 10 ans vers l'écosystème Shopify (lancé le 26 mai 2026). Gestion des plannings, distribution des tâches et animation des réunions clients. Le défi consistait à moderniser l'interface tout en maintenant l'interconnexion automatisée par échange de fichiers à plat avec l'ERP Sage et en accompagnant le changement pour les clients B2B historiques. Projet réalisé au sein de l'agence HUGGII.
 
 **Description EN :**
-> Led the comprehensive overhaul of an aging B2B e-commerce platform (over 10 years old) migrating to Shopify (launched May 26, 2026). Managed timelines, task allocation, and client workshops. The core challenge was modernizing the interface while securing automated flat-file synchronization with Sage X3 ERP and managing user adoption for historical B2B clients. Project executed within HUGGII agency.
+> Led the comprehensive overhaul of an aging B2B e-commerce platform (over 10 years old) migrating to Shopify (launched May 26, 2026). Managed timelines, task allocation, and client workshops. The core challenge was modernizing the interface while securing automated flat-file synchronization with Sage ERP and managing user adoption for historical B2B clients. Project executed within HUGGII agency.
 
 ---
 

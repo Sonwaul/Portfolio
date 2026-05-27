@@ -2,7 +2,9 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
+import { TagBadge, TagIcon } from "@/app/components/ui/TagBadge";
 import { projects, Project } from "@/app/data/projectsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 import Modal from "@/app/components/ui/Modal";
@@ -37,11 +39,11 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Projec
         </p>
         <div className="project-tags">
           {project.tags.map((tag) => (
-            <span key={tag} className="project-tag">{tag}</span>
+            <TagBadge key={tag} tag={tag} size={13} baseClass="project-tag" />
           ))}
         </div>
         <span className="project-btn">
-          {messages.projects.viewDetails} →
+          {messages.projects.viewDetails} <ArrowRight size={14} aria-hidden="true" />
         </span>
       </div>
     </div>
@@ -60,9 +62,8 @@ export default function ProjectsSection() {
     }));
     const TAG_ORDER = [
       "Shopify", "Shopify Plus", "Shopify App", "Shopify POS",
-      "API Shopify", "PHP", "React / Next.js",
-      "ERP API", "ERP Fichier à plat", "EBP SDK", "EBP SaaS", "Sage X3", "Sage", "Sellsy", "Kaeliips",
-      "B2B", "B2B & B2C", "B2C",
+      "API Shopify", "PHP", "Remix",
+      "EBP SDK", "EBP SaaS", "Sage X3", "Sage", "Sellsy", "Kaeliips",
       "UX/UI", "Figma",
       "SEO",
     ];
@@ -102,6 +103,7 @@ export default function ProjectsSection() {
               className={`filter-btn ${activeFilter === tag ? "active" : ""}`}
               onClick={() => setActiveFilter(tag)}
             >
+              <TagIcon tag={tag} size={13} />
               {tag}
             </button>
           ))}
@@ -143,13 +145,13 @@ export default function ProjectsSection() {
               <h4 className="modal-missions-title">{messages.projects.techStack}</h4>
               <div className="project-tags" style={{ marginTop: "0.5rem" }}>
                 {selectedProject.tags.map((tag) => (
-                  <span key={tag} className="project-tag">{tag}</span>
+                  <TagBadge key={tag} tag={tag} size={15} baseClass="project-tag" />
                 ))}
               </div>
               {selectedProject.link && (
                 <div className="modal-links">
                   <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
-                    🔗 {messages.projects.visitSite}
+                    <ExternalLink size={15} aria-hidden="true" /> {messages.projects.visitSite}
                   </a>
                 </div>
               )}

@@ -2,41 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Briefcase, GraduationCap, Calendar, MapPin, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { timelineItems, educationItems, TimelineItem } from "@/app/data/timelineData";
 import Modal from "@/app/components/ui/Modal";
-
-const TAG_LOGOS: Record<string, string> = {
-  "ClickUp":      "/skills/clickup.svg",
-  "Shopify":      "/skills/shopify.svg",
-  "API Shopify":  "/skills/shopify.svg",
-  "Symfony":      "/skills/symfony.svg",
-  "PHP":          "/skills/php.svg",
-  "JavaScript":   "/skills/javascript.svg",
-  "MySQL":        "/skills/mysql.svg",
-  "Java":         "/skills/java.svg",
-  "Spring":       "/skills/spring.svg",
-  "Python":       "/skills/python.svg",
-  "React":        "/skills/react.svg",
-  "Next.js":      "/skills/nextjs.svg",
-  "Figma":        "/skills/figma.svg",
-  "GitHub":       "/skills/github.svg",
-  "Git":          "/skills/git.svg",
-  "WordPress":    "/skills/wordpress.svg",
-  "PrestaShop":   "/skills/prestashop.svg",
-  "HTML/CSS":     "/skills/html5.svg",
-  "PostgreSQL":   "/skills/postgresql.svg",
-};
-
-function TagBadge({ tag, size = 14 }: { tag: string; size?: number }) {
-  const logo = TAG_LOGOS[tag];
-  return (
-    <span className="timeline-tag">
-      {logo && <Image src={logo} alt="" width={size} height={size} className="timeline-tag-logo" />}
-      {tag}
-    </span>
-  );
-}
+import { TagBadge } from "@/app/components/ui/TagBadge";
 
 export default function ExperienceSection() {
   const { messages, currentLang } = useLanguage();
@@ -76,13 +46,13 @@ export default function ExperienceSection() {
             className={`experience-tab ${activeTab === "experience" ? "experience-tab-active" : ""}`}
             onClick={() => handleTabChange("experience")}
           >
-            💼 {messages.experience.experienceTab}
+            <Briefcase size={16} aria-hidden="true" /> {messages.experience.experienceTab}
           </button>
           <button
             className={`experience-tab ${activeTab === "education" ? "experience-tab-active" : ""}`}
             onClick={() => handleTabChange("education")}
           >
-            🎓 {messages.experience.educationTab}
+            <GraduationCap size={16} aria-hidden="true" /> {messages.experience.educationTab}
           </button>
         </div>
 
@@ -114,7 +84,7 @@ export default function ExperienceSection() {
                     ))}
                   </div>
                   <button className="timeline-btn" onClick={() => handleOpen(item)}>
-                    {messages.experience.seeDetails} →
+                    {messages.experience.seeDetails} <ArrowRight size={14} aria-hidden="true" />
                   </button>
                 </div>
               </div>
@@ -143,9 +113,9 @@ export default function ExperienceSection() {
               </p>
               <div className="modal-hero-meta">
                 <span className="modal-hero-year">
-                  📅 {selectedItem.startDate} → {selectedItem.current ? messages.experience.present : selectedItem.endDate}
+                  <Calendar size={14} aria-hidden="true" /> {selectedItem.startDate} → {selectedItem.current ? messages.experience.present : selectedItem.endDate}
                 </span>
-                <span className="modal-hero-year">📍 {selectedItem.location}</span>
+                <span className="modal-hero-year"><MapPin size={14} aria-hidden="true" /> {selectedItem.location}</span>
                 {selectedItem.current && (
                   <span className="modal-hero-badge">{messages.experience.currentBadge}</span>
                 )}

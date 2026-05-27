@@ -1,4 +1,4 @@
-export interface TimelineTab {
+﻿export interface TimelineTab {
   label: string;
   missions: string[];
 }
@@ -52,7 +52,7 @@ export const timelineItems: TimelineItem[] = [
     ],
     tags: ["Lead Projet", "ClickUp", "Agile", "Shopify", "API", "Symfony", "Formation", "Relation Client"],
     logo: "/experiences/huggii.png",
-    accentColor: "#2D6A5A",
+    accentColor: "#6C9A8B",
   },
   {
     id: "exp2",
@@ -78,7 +78,7 @@ export const timelineItems: TimelineItem[] = [
     ],
     tags: ["PHP", "Symfony", "Shopify", "API", "E-commerce", "Flux de données", "Migrations"],
     logo: "/experiences/huggii.png",
-    accentColor: "#3D7A6A",
+    accentColor: "#6C9A8B",
   },
   {
     id: "exp3",
@@ -104,7 +104,7 @@ export const timelineItems: TimelineItem[] = [
     ],
     tags: ["WordPress", "PrestaShop", "Relation Client", "E-commerce"],
     logo: "/experiences/anetmo.png",
-    accentColor: "#5B7E6E",
+    accentColor: "#6C9A8B",
   },
   {
     id: "exp4",
@@ -130,7 +130,7 @@ export const timelineItems: TimelineItem[] = [
     ],
     tags: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
     logo: "/experiences/proditex.png",
-    accentColor: "#7A8B6B",
+    accentColor: "#6C9A8B",
   },
 ];
 
@@ -161,7 +161,7 @@ export const educationItems: TimelineItem[] = [
     ],
     tags: ["Java", "Spring", "Architecture", "Agile"],
     logo: "/experiences/iut.png",
-    accentColor: "#4A6E9E",
+    accentColor: "#6C9A8B",
   },
   {
     id: "edu2",
@@ -187,7 +187,7 @@ export const educationItems: TimelineItem[] = [
     ],
     tags: ["Java", "Python", "PHP", "Symfony"],
     logo: "/experiences/saint-remi.png",
-    accentColor: "#5A7AAE",
+    accentColor: "#6C9A8B",
   },
   {
     id: "edu3",
@@ -211,6 +211,6 @@ export const educationItems: TimelineItem[] = [
     ],
     tags: ["Maths", "Sciences", "ISN", "Algorithmique"],
     logo: "/experiences/saint-remi.png",
-    accentColor: "#6A85AA",
+    accentColor: "#6C9A8B",
   },
 ];

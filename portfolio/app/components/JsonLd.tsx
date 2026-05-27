@@ -32,7 +32,7 @@ export default function JsonLd() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Elliot Infelta — Portfolio",
+    name: "Elliot Infelta - Portfolio",
     url: SITE_URL,
     author: { "@type": "Person", name: "Elliot Infelta" },
   };

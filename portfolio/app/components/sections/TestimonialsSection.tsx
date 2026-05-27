@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
+import { Star, ChevronUp, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { reviews } from "@/app/data/reviewsData";
 
@@ -9,7 +10,13 @@ function StarRating({ rating }: { rating: number }) {
   return (
     <div className="star-rating" aria-label={`${rating} étoiles sur 5`}>
       {[1, 2, 3, 4, 5].map((star) => (
-        <span key={star} className={star <= rating ? "star star-filled" : "star star-empty"}>★</span>
+        <Star
+          key={star}
+          size={16}
+          className={star <= rating ? "star star-filled" : "star star-empty"}
+          fill={star <= rating ? "currentColor" : "none"}
+          aria-hidden="true"
+        />
       ))}
     </div>
   );
@@ -42,8 +49,7 @@ export default function TestimonialsSection() {
 
   function computeCardWidth() {
     if (!viewportRef.current) return;
-    const vw = viewportRef.current.offsetWidth;
-    setCardWidth(Math.floor((vw - GAP) / 1.18));
+    setCardWidth(viewportRef.current.offsetWidth);
   }
 
   useEffect(() => {
@@ -76,7 +82,20 @@ export default function TestimonialsSection() {
   }, []);
 
   const next = useCallback(() => slideTo(index + 1), [index, slideTo]);
-  const prev = () => slideTo(index - 1);
+  const prev = useCallback(() => slideTo(index - 1), [index, slideTo]);
+
+  const touchStartX = useRef<number | null>(null);
+
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) delta > 0 ? next() : prev();
+    touchStartX.current = null;
+  }
 
   useEffect(() => {
     const timer = setInterval(next, 6000);
@@ -84,7 +103,7 @@ export default function TestimonialsSection() {
   }, [next]);
 
   const realIndex = ((index - CLONE_COUNT) % reviews.length + reviews.length) % reviews.length;
-  const translateX = -(index * (cardWidth + GAP));
+  const translateX = -(index * cardWidth);
 
   return (
     <section id="temoignages" className="testimonials-section">
@@ -101,7 +120,7 @@ export default function TestimonialsSection() {
             </svg>
           </button>
 
-          <div ref={viewportRef} className="carousel-viewport">
+          <div ref={viewportRef} className="carousel-viewport" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <div
               className="carousel-track"
               style={{
@@ -126,7 +145,7 @@ export default function TestimonialsSection() {
                       className="testimonial-readmore"
                       onClick={() => toggleExpand(review.author)}
                     >
-                      {expanded.has(review.author) ? "Réduire ↑" : "En savoir plus ↓"}
+                      {expanded.has(review.author) ? <><ChevronUp size={14} aria-hidden="true" /> Réduire</> : <>En savoir plus <ChevronDown size={14} aria-hidden="true" /></>}
                     </button>
                   )}
                   <div className="testimonial-footer">
@@ -135,8 +154,9 @@ export default function TestimonialsSection() {
                         <Image
                           src={review.logo}
                           alt={review.author}
-                          width={80}
-                          height={36}
+                          width={0}
+                          height={0}
+                          sizes="84px"
                           className="testimonial-logo"
                         />
                       ) : (

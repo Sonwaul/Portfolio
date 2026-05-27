@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Download, X, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
 function FooterLangToggle() {
@@ -68,9 +69,9 @@ export default function ContactSection() {
               <h3 className="cv-modal-title">{messages.contact.cvModalTitle}</h3>
               <div className="cv-modal-actions">
                 <a href="/CV-Elliot.pdf" download className="cv-download-btn">
-                  ⬇ {messages.contact.cvDownload}
+                  <Download size={16} aria-hidden="true" /> {messages.contact.cvDownload}
                 </a>
-                <button className="cv-close-btn" onClick={() => setCvOpen(false)} aria-label="Fermer">✕</button>
+                <button className="cv-close-btn" onClick={() => setCvOpen(false)} aria-label="Fermer"><X size={18} aria-hidden="true" /></button>
               </div>
             </div>
             <iframe
@@ -86,7 +87,7 @@ export default function ContactSection() {
         <div className="section-header">
           <h2 className="section-title">{messages.contact.title}</h2>
           <p className="section-subtitle">{messages.contact.subtitle}</p>
-          <p className="contact-location">📍 {messages.contact.location}</p>
+          <p className="contact-location"><MapPin size={16} aria-hidden="true" /> {messages.contact.location}</p>
         </div>
 
         {/* Socials banner */}
@@ -132,7 +133,7 @@ export default function ContactSection() {
             <form className="contact-form" onSubmit={handleSubmit}>
               {sent ? (
                 <div className="contact-success">
-                  <span className="contact-success-icon">✅</span>
+                  <CheckCircle size={32} className="contact-success-icon" aria-hidden="true" />
                   <p>{messages.contact.success}</p>
                 </div>
               ) : (
@@ -147,7 +148,7 @@ export default function ContactSection() {
                     placeholder={messages.contact.messagePlaceholder} required rows={4} className="contact-textarea"/>
                   {error && <p className="contact-error">{messages.contact.error}</p>}
                   <button type="submit" className="contact-submit" disabled={loading}>
-                    {loading ? messages.contact.sending : `${messages.contact.submit} →`}
+                    {loading ? messages.contact.sending : <>{messages.contact.submit} <ArrowRight size={16} aria-hidden="true" /></>}
                   </button>
                 </>
               )}

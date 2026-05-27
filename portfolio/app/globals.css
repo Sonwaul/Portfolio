@@ -347,6 +347,9 @@ a:hover { opacity: 0.75; }
 }
 
 .experience-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0.65rem 1.75rem;
   font-weight: 600;
   font-size: 0.88rem;
@@ -540,7 +543,9 @@ a:hover { opacity: 0.75; }
 }
 
 .timeline-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--c-accent);
@@ -808,6 +813,9 @@ a:hover { opacity: 0.75; }
 }
 
 .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.3rem 0.85rem;
   border-radius: 20px;
   font-size: 0.78rem;
@@ -944,6 +952,9 @@ a:hover { opacity: 0.75; }
 }
 
 .project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   background: color-mix(in srgb, var(--card-accent, var(--c-accent)) 10%, white);
   color: color-mix(in srgb, var(--card-accent, var(--c-accent)) 80%, black);
   padding: 0.18rem 0.6rem;
@@ -989,6 +1000,7 @@ a:hover { opacity: 0.75; }
   background: var(--c-surface);
   padding: 6rem 0;
   border-top: 1px solid var(--c-border);
+  overflow-x: hidden;
 }
 
 .testimonials-content {
@@ -1008,7 +1020,7 @@ a:hover { opacity: 0.75; }
 
 .carousel-track {
   display: flex;
-  gap: 20px;
+  gap: 0;
   align-items: stretch;
 }
 
@@ -1065,6 +1077,12 @@ a:hover { opacity: 0.75; }
   flex-direction: column;
   gap: 1rem;
   transition: box-shadow 0.2s ease;
+  overflow: hidden;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .testimonial-card { padding: 1.25rem; }
 }
 
 .testimonial-card:hover {
@@ -1085,10 +1103,26 @@ a:hover { opacity: 0.75; }
   line-height: 1.75;
   color: var(--c-muted);
   font-style: italic;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .testimonial-readmore {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+.testimonial-readmore:hover {
+  color: var(--c-hover);
 }
 
 @media (max-width: 768px) {
@@ -1103,22 +1137,6 @@ a:hover { opacity: 0.75; }
     display: block;
     overflow-y: auto;
     max-height: 180px;
-  }
-
-  .testimonial-readmore {
-    display: inline;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--c-accent);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    font-family: var(--font-body);
-  }
-
-  .testimonial-readmore:hover {
-    color: var(--c-hover);
   }
 }
 
@@ -1213,7 +1231,18 @@ a:hover { opacity: 0.75; }
   border-color: var(--c-hover);
 }
 
-@media (max-width: 640px) { .carousel-btn { width: 36px; height: 36px; } }
+@media (max-width: 640px) {
+  .carousel-btn { display: none; }
+  .testimonial-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .testimonial-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
 
 /* =============================================
    11. CONTACT SECTION
@@ -1230,10 +1259,12 @@ a:hover { opacity: 0.75; }
 .contact-content { flex: 1; }
 
 .contact-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.86rem;
   color: var(--c-bonus);
   margin-top: 0.4rem;
-  text-align: center;
 }
 
 .contact-socials-band {
@@ -1332,6 +1363,9 @@ a:hover { opacity: 0.75; }
 }
 
 .contact-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.9rem 2rem;
   background: var(--c-text);
   border: none;
@@ -1688,6 +1722,9 @@ a:hover { opacity: 0.75; }
 }
 
 .modal-hero-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.74rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.65);
