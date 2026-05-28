@@ -39,7 +39,9 @@
     "subtitle": "Un best-of des projets les plus représentatifs de mon parcours",
     "viewDetails": "Voir les détails",
     "visitSite": "Découvrir le projet",
-    "techStack": "Outils & Stack"
+    "techStack": "Outils & Stack",
+    "objective": "Objectif",
+    "missions": "Missions clés"
   },
   "testimonials": {
     "title": "Témoignages & Recommandations",

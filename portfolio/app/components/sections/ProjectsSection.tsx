@@ -9,7 +9,7 @@ import { projects, Project } from "@/app/data/projectsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 import Modal from "@/app/components/ui/Modal";
 
-function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Project) => void }) {
+function ProjectCard({ project, onOpen, priority = false }: { project: Project; onOpen: (p: Project) => void; priority?: boolean }) {
   const { messages, currentLang } = useLanguage();
   const { ref, isVisible } = useScrollReveal();
 
@@ -22,7 +22,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (p: Projec
     >
       <div className="project-card-header">
         {project.logo
-          ? <Image src={project.logo} alt={project.title} width={0} height={0} sizes="240px" style={{ width: "auto", height: "auto", maxHeight: "120px", maxWidth: "100%", objectFit: "contain" }} />
+          ? <Image src={project.logo} alt={project.title} width={0} height={0} sizes="240px" style={{ width: "auto", height: "auto", maxHeight: "120px", maxWidth: "100%", objectFit: "contain" }} priority={priority} />
           : <span className="project-card-header-initials">{project.title.charAt(0)}</span>
         }
       </div>
@@ -110,8 +110,8 @@ export default function ProjectsSection() {
         </div>
 
         <div className="projects-grid">
-          {filtered.map((project) => (
-            <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} />
+          {filtered.map((project, index) => (
+            <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} priority={index < 6} />
           ))}
         </div>
       </div>
@@ -136,18 +136,37 @@ export default function ProjectsSection() {
               </p>
               <span className="modal-hero-year">{selectedProject.year}</span>
             </div>
-            <div className="modal-content-inner">
+            <div className="modal-content-inner modal-content-inner--left">
+              <h4 className="modal-missions-title">{messages.projects.objective}</h4>
               <p className="modal-full-desc">
-                {currentLang === "en" && selectedProject.descriptionEn
-                  ? selectedProject.descriptionEn
-                  : selectedProject.description}
+                {currentLang === "en" ? selectedProject.objectiveEn : selectedProject.objective}
               </p>
-              <h4 className="modal-missions-title">{messages.projects.techStack}</h4>
+
+              <h4 className="modal-missions-title">{messages.projects.missions}</h4>
+              <ul className="modal-missions-list" style={{ width: "100%", marginBottom: "1.4rem" }}>
+                {(currentLang === "en" ? selectedProject.missionsEn : selectedProject.missions).map((m, i) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ul>
+
+              <div className="modal-highlights">
+                {selectedProject.highlights.map((h, i) => (
+                  <div key={i} className="modal-highlight-chip">
+                    <span className="modal-highlight-value">{h.value}</span>
+                    <span className="modal-highlight-label">
+                      {currentLang === "en" && h.labelEn ? h.labelEn : h.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <h4 className="modal-missions-title" style={{ marginTop: "1.4rem" }}>{messages.projects.techStack}</h4>
               <div className="project-tags" style={{ marginTop: "0.5rem" }}>
                 {selectedProject.tags.map((tag) => (
                   <TagBadge key={tag} tag={tag} size={15} baseClass="project-tag" />
                 ))}
               </div>
+
               {selectedProject.link && (
                 <div className="modal-links">
                   <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-link-btn">

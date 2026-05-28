@@ -1,4 +1,4 @@
-# Guide de lancement — Portfolio Elliot Infelta
+# Guide de lancement - Portfolio Elliot Infelta
 
 ## Prérequis
 
@@ -9,14 +9,14 @@
 
 ---
 
-## Étape 1 — Choisir et configurer ton domaine
+## Étape 1 - Choisir et configurer ton domaine
 
 1. Achète un nom de domaine (ex. `elliot-infelta.fr`)
 2. Note-le, il sera nécessaire aux étapes suivantes
 
 ---
 
-## Étape 2 — Configurer Resend (formulaire de contact)
+## Étape 2 - Configurer Resend (formulaire de contact)
 
 Le formulaire de contact utilise [Resend](https://resend.com) pour envoyer les emails.
 
@@ -45,18 +45,18 @@ from: "Portfolio Elliot <contact@ton-domaine.fr>",
 
 1. Va sur [resend.com/api-keys](https://resend.com/api-keys)
 2. Crée une clé avec les permissions **Sending access**
-3. Copie-la — elle ne sera plus affichée ensuite
+3. Copie-la - elle ne sera plus affichée ensuite
 
 ---
 
-## Étape 3 — Déployer sur Vercel
+## Étape 3 - Déployer sur Vercel
 
 ### 3a. Connecter le repo
 
 1. Va sur [vercel.com/new](https://vercel.com/new)
 2. Importe ton repo GitHub `Portfolio`
 3. Le framework Next.js sera détecté automatiquement
-4. Clique **Deploy** — un premier déploiement se lance (il échouera sur les variables d'env, c'est normal)
+4. Clique **Deploy** - un premier déploiement se lance (il échouera sur les variables d'env, c'est normal)
 
 ### 3b. Configurer les variables d'environnement
 
@@ -73,17 +73,17 @@ Vercel → **Deployments** → clique les `...` du dernier déploiement → **Re
 
 ---
 
-## Étape 4 — Connecter ton domaine à Vercel
+## Étape 4 - Connecter ton domaine à Vercel
 
 1. Vercel → ton projet → **Settings → Domains**
 2. Ajoute `ton-domaine.fr` et `www.ton-domaine.fr`
 3. Vercel te fournit des enregistrements DNS (A + CNAME)
 4. Ajoute-les chez ton registrar
-5. Patiente 15–60 min — Vercel gère le certificat SSL automatiquement
+5. Patiente 15–60 min - Vercel gère le certificat SSL automatiquement
 
 ---
 
-## Étape 5 — Vérifications post-lancement
+## Étape 5 - Vérifications post-lancement
 
 - [ ] Le site s'affiche sur `https://ton-domaine.fr`
 - [ ] Le formulaire de contact envoie bien un email à `infeltaelliot@gmail.com`
@@ -94,7 +94,7 @@ Vercel → **Deployments** → clique les `...` du dernier déploiement → **Re
 
 ---
 
-## Variables d'environnement — récapitulatif
+## Variables d'environnement - récapitulatif
 
 Créer un fichier `.env.local` à la racine pour le développement local :
 
@@ -110,7 +110,7 @@ RESEND_API_KEY=re_xxxxxxxxxxxxxxxx
 NEXT_PUBLIC_SITE_URL=https://ton-domaine.fr
 ```
 
-> **Important :** Ne jamais commiter `.env.local` — il est déjà dans le `.gitignore`.
+> **Important :** Ne jamais commiter `.env.local` - il est déjà dans le `.gitignore`.
 
 ---
 

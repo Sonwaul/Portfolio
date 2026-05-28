@@ -1,4 +1,4 @@
-# Guide de maintenance — Portfolio Elliot Infelta
+# Guide de maintenance - Portfolio Elliot Infelta
 
 ## Architecture générale
 
@@ -34,19 +34,32 @@ Chaque projet est un objet dans le tableau `projects`. Pour **ajouter un projet*
 
 ```ts
 {
-  id: "proj17",                          // identifiant unique
+  id: "proj17",                              // identifiant unique
   title: "Nom du projet",
   role: "Ton rôle en FR",
   roleEn: "Ton rôle en EN",
-  shortDescription: "Résumé court FR",   // affiché sur la carte
+  shortDescription: "Résumé court FR",       // affiché sur la carte
   shortDescriptionEn: "Short summary EN",
-  description: "Description complète FR",// affiché dans la modale
-  descriptionEn: "Full description EN",
-  tags: ["Shopify", "PHP"],              // filtres + tech stack modale
+  objective: "Objectif du projet en FR",     // 1re section de la modale
+  objectiveEn: "Project objective in EN",
+  missions: [                                // liste à puces dans la modale
+    "Mission 1 FR",
+    "Mission 2 FR",
+  ],
+  missionsEn: [
+    "Mission 1 EN",
+    "Mission 2 EN",
+  ],
+  highlights: [                              // 3 chips de stats dans la modale
+    { value: "26 mai 2026", label: "Lancement", labelEn: "Launch" },
+    { value: "Sage X3",     label: "ERP intégré", labelEn: "Integrated ERP" },
+    { value: "B2B",         label: "Contexte", labelEn: "Context" },
+  ],
+  tags: ["Shopify", "PHP"],                  // filtres + tech stack modale
   year: "2026",
-  link: "https://...",                   // null si pas de lien
-  accentColor: "#6C9A8B",               // couleur de la carte (hex)
-  logo: "/projects/nom-du-logo.png",    // image dans public/projects/
+  link: "https://...",                       // null si pas de lien
+  accentColor: "#6C9A8B",                   // couleur de la carte (hex)
+  logo: "/projects/nom-du-logo.png",        // image dans public/projects/
 }
 ```
 
@@ -131,8 +144,8 @@ Les logos SVG sont dans `public/skills/`.
 
 Tous les labels, titres de sections et textes statiques sont dans les fichiers JSON :
 
-- `app/i18n/fr.json` — version française
-- `app/i18n/en.json` — version anglaise
+- `app/i18n/fr.json` - version française
+- `app/i18n/en.json` - version anglaise
 
 Les deux fichiers doivent avoir exactement les mêmes clés.
 
@@ -197,7 +210,7 @@ Format recommandé : JPG, ratio portrait (~420×600px minimum).
 
 ---
 
-## SEO — mettre à jour les métadonnées
+## SEO - mettre à jour les métadonnées
 
 Les métadonnées globales (titre, description, OpenGraph) sont dans `app/layout.tsx`.
 L'URL du site est dans `app/config.ts` (surchargeable via `NEXT_PUBLIC_SITE_URL`).

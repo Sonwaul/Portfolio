@@ -373,7 +373,7 @@ a:hover { opacity: 0.75; }
   color: white;
 }
 
-/* Timeline — horizontal landscape */
+/* Timeline - horizontal landscape */
 .timeline-h-wrapper {
   overflow-x: auto;
   margin-top: 2.5rem;
@@ -564,8 +564,8 @@ a:hover { opacity: 0.75; }
   opacity: 1;
 }
 
-/* Timeline — mobile vertical layout */
-@media (max-width: 768px) {
+/* Timeline - vertical layout on tablet + mobile */
+@media (max-width: 1100px) {
   .timeline-h-wrapper {
     overflow-x: visible;
   }
@@ -851,6 +851,8 @@ a:hover { opacity: 0.75; }
   border-radius: var(--radius-card);
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -886,7 +888,12 @@ a:hover { opacity: 0.75; }
   opacity: 0.6;
 }
 
-.project-card-body { padding: 1.2rem 1.4rem 1.4rem; }
+.project-card-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 .project-card-top {
   display: flex;
@@ -974,6 +981,7 @@ a:hover { opacity: 0.75; }
   transition: gap 0.15s ease;
   padding: 0;
   font-family: var(--font-body);
+  margin-top: auto;
 }
 
 .project-card:hover .project-btn {
@@ -1105,6 +1113,20 @@ a:hover { opacity: 0.75; }
   font-style: italic;
   word-break: break-word;
   overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.testimonial-text-expanded {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+.testimonial-readmore {
+  display: none;
 }
 
 .testimonial-readmore {
@@ -1126,6 +1148,10 @@ a:hover { opacity: 0.75; }
 }
 
 @media (max-width: 768px) {
+  .testimonial-readmore {
+    display: inline-flex;
+  }
+
   .testimonial-text {
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -1883,6 +1909,43 @@ a:hover { opacity: 0.75; }
   font-weight: 700;
 }
 
+.modal-highlights {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
+.modal-highlight-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--modal-accent, var(--c-accent)) 8%, white);
+  border: 1px solid color-mix(in srgb, var(--modal-accent, var(--c-accent)) 20%, transparent);
+  min-width: 110px;
+  flex: 1;
+}
+
+.modal-highlight-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--modal-accent, var(--c-accent)) 85%, black);
+  font-family: var(--font-heading);
+  line-height: 1.25;
+}
+
+.modal-highlight-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-muted);
+  margin-top: 0.2rem;
+}
+
 .modal-links {
   margin-top: 1.6rem;
   display: flex;
@@ -1915,6 +1978,60 @@ a:hover { opacity: 0.75; }
   font-size: 0.83rem;
   color: var(--c-muted);
   font-style: italic;
+}
+
+/* ─── Project modal: two-column layout (tablet+) ─── */
+@media (min-width: 768px) {
+  .modal-content:has(.modal-detail) {
+    max-width: 860px;
+    max-height: 82vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-content:has(.modal-detail) > .modal-body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-content:has(.modal-detail) .modal-detail {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .modal-content:has(.modal-detail) .modal-hero {
+    width: 260px;
+    min-width: 260px;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 2.5rem 1.8rem;
+  }
+
+  .modal-content:has(.modal-detail) .modal-content-inner {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding: 2rem 2.2rem 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-border) transparent;
+  }
+
+  .modal-content:has(.modal-detail) .modal-close-btn--overlay {
+    background: var(--c-surface);
+    color: var(--c-muted);
+    border-color: var(--c-border);
+    border-radius: 8px;
+  }
+
+  .modal-content:has(.modal-detail) .modal-close-btn--overlay:hover {
+    background: #E5E7EB;
+    color: var(--c-text);
+  }
 }
 
 /* =============================================

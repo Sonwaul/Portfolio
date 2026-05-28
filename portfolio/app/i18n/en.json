@@ -39,7 +39,9 @@
     "subtitle": "A curated selection of the most representative projects from my journey",
     "viewDetails": "View details",
     "visitSite": "View project",
-    "techStack": "Tools & Stack"
+    "techStack": "Tools & Stack",
+    "objective": "Objective",
+    "missions": "Key Missions"
   },
   "testimonials": {
     "title": "Testimonials & Recommendations",

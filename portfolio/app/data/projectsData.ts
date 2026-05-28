@@ -1,12 +1,21 @@
-﻿export interface Project {
+export interface ProjectHighlight {
+  value: string;
+  label: string;
+  labelEn?: string;
+}
+
+export interface Project {
   id: string;
   title: string;
   role: string;
   roleEn: string;
   shortDescription: string;
   shortDescriptionEn: string;
-  description: string;
-  descriptionEn: string;
+  objective: string;
+  objectiveEn: string;
+  missions: string[];
+  missionsEn: string[];
+  highlights: ProjectHighlight[];
   tags: string[];
   year: string;
   link: string | null;
@@ -22,10 +31,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Migration B2B · Synchronisation Sage",
     shortDescriptionEn: "B2B Migration · Sage Synchronization",
-    description:
-      "Pilotage global de la refonte d'une plateforme e-commerce B2B vieillissante de plus de 10 ans vers l'écosystème Shopify (lancé le 26 mai 2026). Gestion des plannings, distribution des tâches et animation des réunions clients. Le défi consistait à moderniser l'interface tout en maintenant l'interconnexion automatisée par échange de fichiers à plat avec l'ERP Sage et en accompagnant le changement pour les clients B2B historiques. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Led the comprehensive overhaul of an aging B2B e-commerce platform (over 10 years old) migrating to Shopify (launched May 26, 2026). Managed timelines, task allocation, and client workshops. The core challenge was modernizing the interface while securing automated flat-file synchronization with Sage ERP and managing user adoption for historical B2B clients. Project executed within HUGGII agency.",
+    objective:
+      "Moderniser l'image de marque et l'expérience utilisateur tout en conservant les habitudes et automatisations métier complexes.",
+    objectiveEn:
+      "Modernize the brand image and user experience while preserving complex business habits and automations.",
+    missions: [
+      "Interconnexion automatisée avec l'ERP Sage X3 via échange de fichiers à plat.",
+      "Interface moderne respectant les flux de commande spécifiques au B2B.",
+      "Accompagnement au changement pour la transition des clients historiques.",
+    ],
+    missionsEn: [
+      "Automated integration with Sage X3 ERP via flat-file exchange.",
+      "Modern interface tailored to B2B-specific ordering workflows.",
+      "Change management support for long-standing B2B clients.",
+    ],
+    highlights: [
+      { value: "26 mai 2026", label: "Lancement", labelEn: "Launch" },
+      { value: "Sage X3", label: "ERP intégré", labelEn: "Integrated ERP" },
+      { value: "B2B · 10 ans+", label: "Contexte client", labelEn: "Client context" },
+    ],
     tags: ["Shopify", "Sage"],
     year: "2026",
     link: "https://julien-faure.fr/",
@@ -39,10 +63,25 @@ export const projects: Project[] = [
     roleEn: "Lead Back-end Developer & Product Owner",
     shortDescription: "Application officielle Shopify Store · Autonomie totale",
     shortDescriptionEn: "Official Shopify App Store · Full Autonomy",
-    description:
-      "Développement et publication en totale autonomie d'une application officielle sur le Shopify App Store (publiée le 25 mai 2026). Gestion intégrale du cycle de vie du produit : de la relation directe avec les équipes de Creditsafe au cadrage en sprints agiles, jusqu'à la présentation directionnelle et la formation technique des équipes internes. Une expertise unique sur la conception d'applications Shopify de bout en bout. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "End-to-end development and publication of an official application on the Shopify App Store (released May 25, 2026). Managed the entire product lifecycle: from direct relations with Creditsafe teams and agile sprint planning, to steering committee presentations and internal team training. Project executed within HUGGII agency.",
+    objective:
+      "Offrir une solution fintech intégrée pour les marchands Shopify, gérée de A à Z - de la conception technique à la relation directionnelle.",
+    objectiveEn:
+      "Deliver a fully integrated fintech solution for Shopify merchants, managed end-to-end - from technical design to stakeholder relations.",
+    missions: [
+      "Architecture d'application Shopify complexe avec gestion intégrale du cycle de vie du produit.",
+      "Cadrage en sprints agiles et relation directe avec les équipes de Creditsafe.",
+      "Formation technique des équipes internes et présentation directionnelle.",
+    ],
+    missionsEn: [
+      "Complex Shopify app architecture with full product lifecycle management.",
+      "Agile sprint planning with direct engagement with Creditsafe's teams.",
+      "Internal team technical training and steering committee presentations.",
+    ],
+    highlights: [
+      { value: "25 mai 2026", label: "Publication", labelEn: "Published" },
+      { value: "Shopify App Store", label: "Distribution", labelEn: "Distribution" },
+      { value: "100% autonome", label: "Méthode", labelEn: "Approach" },
+    ],
     tags: ["Shopify App", "API Shopify", "Remix"],
     year: "2026",
     link: "https://apps.shopify.com/creditsafe-1?locale=fr",
@@ -56,10 +95,25 @@ export const projects: Project[] = [
     roleEn: "Project Manager & Full Stack Developer",
     shortDescription: "E-commerce médiatisé · France 2",
     shortDescriptionEn: "Featured e-commerce · France 2 TV",
-    description:
-      "Conception et réalisation intégrale de la plateforme e-commerce (lancée le 16 avril 2026). Accompagnement, relation client de proximité et formation des utilisateurs chez le client. Projet à fort impact médiatique, mis en avant sur France 2 lors d'un reportage dédié au Concours Lépine 2025. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "End-to-end design and creation of the e-commerce platform (launched April 16, 2026). Handled client user training and direct client relations. High-impact project featured on France 2 national television during a report on the 2025 Concours Lépine. Project executed within HUGGII agency.",
+    objective:
+      "Accompagner le lancement d'un produit innovant mis en avant lors du Concours Lépine 2025 sur France 2.",
+    objectiveEn:
+      "Support the launch of an innovative product showcased during the 2025 Concours Lépine on France 2 national TV.",
+    missions: [
+      "Design épuré et optimisé pour absorber les pics d'audience TV.",
+      "Formation complète des utilisateurs pour une gestion autonome de la boutique.",
+      "Relation client de proximité pour un cadrage sur-mesure.",
+    ],
+    missionsEn: [
+      "Clean, performance-optimized design built to handle TV-driven traffic spikes.",
+      "Full user training for autonomous store management post-launch.",
+      "Close-knit client relationship for tailored project framing.",
+    ],
+    highlights: [
+      { value: "16 avril 2026", label: "Lancement", labelEn: "Launch" },
+      { value: "France 2", label: "Médiatisation", labelEn: "Media coverage" },
+      { value: "Concours Lépine 2025", label: "Événement", labelEn: "Event" },
+    ],
     tags: ["Shopify", "UX/UI"],
     year: "2026",
     link: "https://1705.fr/",
@@ -73,10 +127,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Architecture Multi-flux · ERP EBP SDK & Système de location",
     shortDescriptionEn: "Multi-flow Architecture · EBP SDK ERP & Rental System",
-    description:
-      "Conception technique et gestion de projet pour fusionner plusieurs sites web sur une seule instance Shopify. Mise en place d'un connecteur complexe multi-flux via API (EBP SDK) et logiciels logistiques pour automatiser la gestion des stocks en temps réel pour un modèle hybride : réservation de location de matériel et vente de produits. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Technical blueprint and project management to consolidate multiple sites into a single Shopify storefront. Implemented a complex multi-flow API connector linked to EBP ERP (via SDK) and warehouse software to automate real-time inventory management for a hybrid business model. Project executed within HUGGII agency.",
+    objective:
+      "Centraliser plusieurs activités web sur une seule instance Shopify pour automatiser la gestion des stocks d'un modèle hybride vente/location.",
+    objectiveEn:
+      "Consolidate multiple web activities onto a single Shopify instance to automate inventory management for a hybrid sale/rental business model.",
+    missions: [
+      "Connecteur API complexe relié à l'ERP EBP (SDK) et aux logiciels logistiques.",
+      "Système de réservation de location de matériel couplé à la vente de produits classiques.",
+      "Automatisation des stocks en temps réel via l'ERP.",
+    ],
+    missionsEn: [
+      "Complex API connector linked to EBP ERP (SDK) and logistics software.",
+      "Equipment rental booking system coupled with standard product sales.",
+      "Real-time inventory automation via ERP.",
+    ],
+    highlights: [
+      { value: "10 avril 2026", label: "Livraison", labelEn: "Delivered" },
+      { value: "Multi-flux", label: "Architecture", labelEn: "Architecture" },
+      { value: "Vente + Location", label: "Modèle métier", labelEn: "Business model" },
+    ],
     tags: ["Shopify", "API Shopify", "EBP SDK"],
     year: "2026",
     link: "https://sonolens.fr/",
@@ -90,10 +159,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Relation client de proximité · ERP Kaeliips",
     shortDescriptionEn: "Local Client Relations · Kaeliips ERP",
-    description:
-      "Pilotage de la relation client de proximité via des comités de projet physiques réguliers pour suivre l'avancée du projet (aboutissant au lancement le 10 mars 2026). Conception et déploiement du connecteur API Shopify lié à l'API de l'ERP Kaeliips, suivi d'un accompagnement rigoureux en maintenance évolutive. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Management of client relations through regular physical project committees to track project progress (resulting in the March 10, 2026 launch). Designed and deployed the Shopify API connector linked to the Kaeliips ERP API, followed by continuous scalable maintenance. Project executed within HUGGII agency.",
+    objective:
+      "Assurer une synchronisation parfaite entre les stocks physiques et la boutique en ligne via une intégration ERP sur-mesure.",
+    objectiveEn:
+      "Ensure seamless synchronization between physical stock and the online store through a custom ERP integration.",
+    missions: [
+      "Déploiement d'un connecteur sur-mesure lié à l'API de l'ERP Kaeliips.",
+      "Comités de projet physiques réguliers pour un suivi précis de l'avancement.",
+      "Maintenance évolutive rigoureuse après lancement.",
+    ],
+    missionsEn: [
+      "Custom connector deployment linked to the Kaeliips ERP API.",
+      "Regular in-person project committees for precise progress tracking.",
+      "Rigorous post-launch evolutionary maintenance.",
+    ],
+    highlights: [
+      { value: "10 mars 2026", label: "Lancement", labelEn: "Launch" },
+      { value: "Kaeliips API", label: "ERP connecté", labelEn: "Connected ERP" },
+      { value: "Maintenance active", label: "Suivi", labelEn: "Follow-up" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "Kaeliips"],
     year: "2026",
     link: "https://sa-outrebon.fr/",
@@ -107,10 +191,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Projet International (Belgique/Pologne) · Secteur Luxe",
     shortDescriptionEn: "International Project (Belgium/Poland) · Luxury Sector",
-    description:
-      "Migration de la plateforme e-commerce pour une grande marque belgo-polonaise (réalisé le 20 janvier 2026), dans le cadre de la préparation de l'événement Maison & Déco à Paris. Création d'une interface ultra-élégante couplée à un très gros objectif de structure SEO internationale. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Developed the e-commerce store migration for a prominent Belgian-Polish brand (completed January 20, 2026), preparing for the Maison & Déco Paris event. Delivered a high-end elegant interface coupled with complex international SEO architecture. Project executed within HUGGII agency.",
+    objective:
+      "Préparer l'événement Maison & Déco à Paris avec une interface élégante, un SEO international solide et une expérience luxe aboutie.",
+    objectiveEn:
+      "Prepare for the Maison & Déco Paris event with an elegant interface, strong international SEO, and a polished luxury experience.",
+    missions: [
+      "Architecture multi-langues et multi-pays (Belgique, Pologne).",
+      "Interface ultra-élégante répondant aux codes du luxe et du design.",
+      "Optimisation SEO internationale pour la visibilité européenne.",
+    ],
+    missionsEn: [
+      "Multi-language and multi-country architecture (Belgium, Poland).",
+      "Ultra-elegant interface aligned with luxury and design codes.",
+      "International SEO optimization for European visibility.",
+    ],
+    highlights: [
+      { value: "20 janv. 2026", label: "Réalisation", labelEn: "Completed" },
+      { value: "Belgique · Pologne", label: "Marchés", labelEn: "Markets" },
+      { value: "Maison & Déco Paris", label: "Événement", labelEn: "Event" },
+    ],
     tags: ["Shopify", "SEO"],
     year: "2026",
     link: "https://exsud.com/",
@@ -124,10 +223,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Interopérabilité ERP EBP SaaS · Enjeux SEO",
     shortDescriptionEn: "EBP SaaS ERP Interoperability · SEO Migration",
-    description:
-      "Direction d'un projet complexe à forts enjeux d'interopérabilité technique et de référencement (lancé le 24 décembre 2025). Conservation du positionnement Google historique lors de la migration. Interconnexion automatisée par API Rest des flux métiers via l'ERP EBP SaaS et l'API Shopify. Recommandation client 5 étoiles sur Google. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Directed a complex project with high stakes in technical interoperability and SEO migration data integrity (launched December 24, 2025). Interconnected business workflows via API with EBP SaaS ERP and Shopify API. Received a 5-star Google review. Project executed within HUGGII agency.",
+    objective:
+      "Moderniser la plateforme sans perdre le positionnement historique sur Google tout en automatisant les flux métiers via l'ERP.",
+    objectiveEn:
+      "Modernize the platform without losing established Google rankings while automating business workflows via ERP.",
+    missions: [
+      "Interconnexion automatisée par API REST entre l'ERP EBP SaaS et Shopify.",
+      "Conservation de l'intégrité des données SEO lors de la migration.",
+      "Automatisation complète des flux métiers (produits et commandes).",
+    ],
+    missionsEn: [
+      "Automated REST API integration between EBP SaaS ERP and Shopify.",
+      "Preservation of SEO data integrity throughout the migration.",
+      "Full automation of business workflows (products and orders).",
+    ],
+    highlights: [
+      { value: "24 déc. 2025", label: "Lancement", labelEn: "Launch" },
+      { value: "5 ★ Google", label: "Avis client", labelEn: "Client review" },
+      { value: "EBP SaaS API", label: "ERP connecté", labelEn: "Connected ERP" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "SEO", "EBP SaaS"],
     year: "2025",
     link: "https://automatic-technologies.com/",
@@ -141,10 +255,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Lancement d'activité · Couplage ERP EBP SaaS",
     shortDescriptionEn: "Business Launch · EBP SaaS ERP Coupling",
-    description:
-      "Accompagnement au lancement d'une nouvelle activité commerciale à fort enjeu économique (mise en ligne le 16 novembre 2025). Gestion de la relation client et de projet axée sur l'intégration par API de l'ERP EBP SaaS avec Shopify, combinée à une optimisation technique SEO pointue pour maximiser le démarrage. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Supported the launch of a new business activity with high economic stakes (live on November 16, 2025). Project management focused on API integration between EBP SaaS ERP and Shopify, combined with technical SEO optimization. Project executed within HUGGII agency.",
+    objective:
+      "Maximiser le démarrage de l'activité grâce à une structure SEO performante et un back-office entièrement automatisé.",
+    objectiveEn:
+      "Maximize business launch performance through a strong SEO structure and a fully automated back-office.",
+    missions: [
+      "Intégration API entre l'ERP EBP SaaS et la plateforme Shopify.",
+      "Optimisation technique SEO pointue pour un lancement immédiat.",
+      "Accompagnement stratégique sur le choix de la stack technique.",
+    ],
+    missionsEn: [
+      "API integration between EBP SaaS ERP and the Shopify platform.",
+      "In-depth technical SEO optimization for immediate launch.",
+      "Strategic advisory on the technical stack selection.",
+    ],
+    highlights: [
+      { value: "16 nov. 2025", label: "Mise en ligne", labelEn: "Go live" },
+      { value: "EBP SaaS API", label: "ERP connecté", labelEn: "Connected ERP" },
+      { value: "Lancement d'activité", label: "Contexte", labelEn: "Context" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "SEO", "EBP SaaS"],
     year: "2025",
     link: "https://www.emballages.fr/",
@@ -158,10 +287,25 @@ export const projects: Project[] = [
     roleEn: "Tech Project Manager & UI/UX Designer",
     shortDescription: "Lancement e-commerce · UX/UI & Mentorat",
     shortDescriptionEn: "E-commerce Launch · UX/UI & Mentoring",
-    description:
-      "Pilotage et coordination d'un projet e-commerce lancé avec succès dans les délais impartis. Réalisation de la phase d'UX/UI Design sur Figma, intégration Front-end et mise en place d'un mentorat interne avec les collaborateurs alternants pour appréhender les architectures sur-mesure. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Project management and coordination of an e-commerce project delivered on time and on brief. Executed UX/UI design via Figma, Front-end integration, and internal mentoring with apprentices to manage custom platform workflows. Project executed within HUGGII agency.",
+    objective:
+      "Allier esthétisme de marque et performance technique tout en formant les équipes internes aux architectures sur-mesure.",
+    objectiveEn:
+      "Combine brand aesthetics with technical performance while training internal teams on custom platform architectures.",
+    missions: [
+      "Phase complète d'UX/UI Design réalisée sur Figma.",
+      "Intégration Front-end sur-mesure et respectueuse de l'identité visuelle.",
+      "Mentorat technique des collaborateurs alternants sur le projet.",
+    ],
+    missionsEn: [
+      "Complete UX/UI design phase delivered on Figma.",
+      "Custom front-end integration aligned with the visual identity.",
+      "Technical mentoring of apprentice team members on the project.",
+    ],
+    highlights: [
+      { value: "27 sept. 2025", label: "Livraison", labelEn: "Delivered" },
+      { value: "Figma · Front-end", label: "Stack design", labelEn: "Design stack" },
+      { value: "Mentorat interne", label: "Formation", labelEn: "Training" },
+    ],
     tags: ["Shopify", "Figma", "UX/UI"],
     year: "2025",
     link: "https://tandem-fragrances.fr/",
@@ -175,10 +319,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Intégration ERP Sage · Projet long terme complexe",
     shortDescriptionEn: "Sage ERP integration · Complex long-term project",
-    description:
-      "Gestion de projet long terme sur un périmètre technique et fonctionnel complexe. Intégration avancée par échange de fichiers à plat (CSV/XML automatisés) entre l'API Shopify et l'ERP Sage, apportant un gain de temps opérationnel majeur et un vrai succès commercial pour le client. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Long-term project management within a complex technical scope. Successfully integrated the Shopify API with Sage ERP using automated flat-file processing (CSV/XML), delivering significant operational time savings. Project executed within HUGGII agency.",
+    objective:
+      "Automatiser des flux métiers volumineux pour dégager un gain de temps opérationnel majeur grâce à une intégration ERP avancée.",
+    objectiveEn:
+      "Automate high-volume business workflows to deliver significant operational time savings through advanced ERP integration.",
+    missions: [
+      "Intégration avancée par fichiers à plat (JSON automatisés) avec l'ERP Sage.",
+      "Gestion d'un périmètre technique et fonctionnel très large.",
+      "Optimisation des flux de données pour réduire les erreurs manuelles.",
+    ],
+    missionsEn: [
+      "Advanced integration via automated flat-file processing (JSON) with Sage ERP.",
+      "Management of a very broad technical and functional scope.",
+      "Data flow optimization to reduce manual errors.",
+    ],
+    highlights: [
+      { value: "9 juin 2025", label: "Livraison", labelEn: "Delivered" },
+      { value: "1 an+", label: "Durée", labelEn: "Duration" },
+      { value: "Sage · JSON", label: "Intégration", labelEn: "Integration" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "Sage"],
     year: "2025",
     link: "https://les-ateliers-de-langres.fr/",
@@ -192,10 +351,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Back-end Developer",
     shortDescription: "Shopify Plus B2B · Connecteur ERP Sellsy",
     shortDescriptionEn: "Shopify Plus B2B · Sellsy ERP Connector",
-    description:
-      "Développement de la plateforme e-commerce B2B sur l'infrastructure haut de gamme Shopify Plus pour une marque de référence majeure (déployée le 5 avril 2025). Conception et intégration réussie du connecteur API Rest sur-mesure entre Shopify et l'ERP Sellsy pour répondre à de très fortes exigences de flux. Maintenance active. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Developed the B2B store on high-tier Shopify Plus infrastructure for a leading reference brand (deployed April 5, 2025). Designed and successfully integrated a custom REST API connector between Shopify and Sellsy ERP to meet high enterprise standards. Project executed within HUGGII agency.",
+    objective:
+      "Proposer une expérience d'achat professionnelle fluide sur Shopify Plus répondant à de très fortes exigences de flux B2B.",
+    objectiveEn:
+      "Deliver a seamless B2B purchasing experience on Shopify Plus, meeting high enterprise workflow requirements.",
+    missions: [
+      "Infrastructure Shopify Plus pour supporter des volumes de vente élevés.",
+      "Connecteur API REST sur-mesure avec l'ERP Sellsy.",
+      "Gestion des tarifs et conditions spécifiques aux professionnels.",
+    ],
+    missionsEn: [
+      "Shopify Plus infrastructure to handle high sales volumes.",
+      "Custom REST API connector with Sellsy ERP.",
+      "Management of professional-tier pricing and terms.",
+    ],
+    highlights: [
+      { value: "5 avril 2025", label: "Déploiement", labelEn: "Deployed" },
+      { value: "Shopify Plus", label: "Infrastructure", labelEn: "Infrastructure" },
+      { value: "Sellsy API", label: "ERP connecté", labelEn: "Connected ERP" },
+    ],
     tags: ["Shopify Plus", "API Shopify", "Sellsy"],
     year: "2025",
     link: "https://www.minoisparis.com/",
@@ -209,10 +383,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Back-end Developer",
     shortDescription: "Connecteur Shopify × ERP Sellsy",
     shortDescriptionEn: "Shopify × Sellsy ERP Connector",
-    description:
-      "Pilotage de projet et développement d'un connecteur sur-mesure basé sur l'API Rest entre l'écosystème Shopify et l'ERP Sellsy (aboutissant au lancement le 20 décembre 2024). Gestion globale de la maintenance applicative et du suivi, avec optimisation continue des flux logistiques. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Project management and custom REST API connector development between Shopify and Sellsy ERP (launched December 20, 2024). Handled comprehensive application maintenance and monitoring, optimizing logistics workflows. Project executed within HUGGII agency.",
+    objective:
+      "Automatiser la transmission des commandes vers l'ERP pour fluidifier les expéditions et fiabiliser la gestion logistique.",
+    objectiveEn:
+      "Automate order transmission to ERP to streamline fulfillment and ensure reliable logistics management.",
+    missions: [
+      "Développement d'une passerelle API REST entre Shopify et Sellsy.",
+      "Gestion globale de la maintenance applicative et du suivi post-lancement.",
+      "Optimisation continue des flux logistiques.",
+    ],
+    missionsEn: [
+      "Development of a REST API gateway between Shopify and Sellsy.",
+      "Full application maintenance management and post-launch monitoring.",
+      "Continuous logistics workflow optimization.",
+    ],
+    highlights: [
+      { value: "20 déc. 2024", label: "Lancement", labelEn: "Launch" },
+      { value: "Sellsy API", label: "ERP connecté", labelEn: "Connected ERP" },
+      { value: "Maintenance active", label: "Suivi", labelEn: "Follow-up" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "Sellsy"],
     year: "2024",
     link: "https://www.skintips.co/",
@@ -226,10 +415,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Plateforme B2B · Synchronisation Sellsy",
     shortDescriptionEn: "B2B platform · Sellsy synchronization",
-    description:
-      "Gestion de projet, relation client et architecture technique d'une plateforme e-commerce orientée B2B lancée le 19 novembre 2024 (flux de tarifs professionnels). Développement d'une passerelle de synchronisation automatisée via l'API Sellsy, récompensée par un avis client 5 étoiles et un suivi de maintenance continu. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Project management, client relations, and technical architecture for a B2B e-commerce platform launched November 19, 2024 (wholesale pricing workflows). Developed an automated data synchronization gateway via Sellsy API, backed by a 5-star review. Project executed within HUGGII agency.",
+    objective:
+      "Digitaliser la prise de commande pour les professionnels avec des tarifs dynamiques et une synchronisation ERP temps réel.",
+    objectiveEn:
+      "Digitalize B2B order management with dynamic pricing and real-time ERP synchronization.",
+    missions: [
+      "Passerelle de synchronisation automatisée via l'API Sellsy.",
+      "Interface client B2B dédiée avec flux de tarifs spécifiques.",
+      "Suivi de maintenance continu et relation client de proximité.",
+    ],
+    missionsEn: [
+      "Automated synchronization gateway via the Sellsy API.",
+      "Dedicated B2B client interface with custom pricing workflows.",
+      "Continuous maintenance follow-up and close client relations.",
+    ],
+    highlights: [
+      { value: "19 nov. 2024", label: "Lancement", labelEn: "Launch" },
+      { value: "5 ★ Google", label: "Avis client", labelEn: "Client review" },
+      { value: "Sellsy API", label: "ERP connecté", labelEn: "Connected ERP" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "Sellsy"],
     year: "2024",
     link: "https://pro.nemrod.co/",
@@ -243,10 +447,25 @@ export const projects: Project[] = [
     roleEn: "Tech Project Manager & UI/UX Designer",
     shortDescription: "Migration Shopify POS · Optimisation Conversion IA",
     shortDescriptionEn: "Shopify POS Migration · AI Conversion Optimization",
-    description:
-      "Projet initié le 1 novembre 2024 avec un suivi de maintenance actif depuis le lancement. Migration complète du catalogue vers Shopify incluant le système de caisse physique Shopify POS. Implémentation régulière des dernières nouveautés technologiques liées à l'IA, à l'UX/UI et à l'optimisation du taux de conversion. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Project launched November 1, 2024, with continuous evolutionary maintenance. Full migration to Shopify including omnichannel Shopify POS integration. Regularly deployed cutting-edge web developments in AI, UX/UI, and conversion rate optimization. Project executed within HUGGII agency.",
+    objective:
+      "Unifier les ventes physiques et en ligne tout en optimisant la conversion via les dernières innovations UX/UI et IA.",
+    objectiveEn:
+      "Unify physical and online sales while optimizing conversion through the latest UX/UI and AI innovations.",
+    missions: [
+      "Migration complète du catalogue et déploiement du système Shopify POS.",
+      "Implémentation de modules UX/UI basés sur l'IA pour booster la conversion.",
+      "Suivi de maintenance actif depuis le lancement.",
+    ],
+    missionsEn: [
+      "Full catalog migration and Shopify POS system deployment.",
+      "Implementation of AI-powered UX/UI modules to boost conversion.",
+      "Active maintenance follow-up since launch.",
+    ],
+    highlights: [
+      { value: "1 nov. 2024", label: "Lancement", labelEn: "Launch" },
+      { value: "Shopify POS", label: "Solution omnicanale", labelEn: "Omnichannel" },
+      { value: "IA · UX/UI", label: "Technologies", labelEn: "Technologies" },
+    ],
     tags: ["Shopify", "Shopify POS", "UX/UI"],
     year: "2024",
     link: "https://mademoiselle-biloba.fr/",
@@ -260,10 +479,25 @@ export const projects: Project[] = [
     roleEn: "Project Lead & Full Stack Developer",
     shortDescription: "Support stratégique long terme & Mentorat alternants",
     shortDescriptionEn: "Long-term Strategic Support & Apprentice Mentoring",
-    description:
-      "Accompagnement continu, relation client et maintenance stratégique depuis le lancement du premier virage numérique de cet acteur alimentaire majeur le 23 octobre 2024. Supervision technique du connecteur de l'ERP Kaeliips géré par API et animation de sessions de formation régulières pour les alternants de l'agence et les équipes du client. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "Continuous strategic support, client relations, and maintenance since this major food industry client's first digital shift launched October 23, 2024. Technical supervision of the Kaeliips ERP API connector and led regular training sessions for apprentices. Project executed within HUGGII agency.",
+    objective:
+      "Moderniser l'image d'un acteur alimentaire historique et automatiser ses flux ERP tout en valorisant les équipes internes.",
+    objectiveEn:
+      "Modernize a historic food industry brand's image and automate its ERP workflows while developing internal teams.",
+    missions: [
+      "Supervision technique du connecteur ERP Kaeliips via API.",
+      "Animation de sessions de formation pour les équipes client et les alternants.",
+      "Maintenance stratégique et relation client sur le long terme.",
+    ],
+    missionsEn: [
+      "Technical supervision of the Kaeliips ERP API connector.",
+      "Led training sessions for client teams and apprentices.",
+      "Strategic long-term maintenance and client relationship management.",
+    ],
+    highlights: [
+      { value: "23 oct. 2024", label: "Lancement", labelEn: "Launch" },
+      { value: "Kaeliips API", label: "ERP connecté", labelEn: "Connected ERP" },
+      { value: "Mentorat", label: "Formation", labelEn: "Training" },
+    ],
     tags: ["Shopify", "API Shopify", "PHP", "Kaeliips"],
     year: "2024",
     link: "https://lesgarconsbouchers.fr/",
@@ -277,10 +511,25 @@ export const projects: Project[] = [
     roleEn: "Tech Project Manager & UI/UX Designer",
     shortDescription: "Accompagnement historique · Figma & Relation client",
     shortDescriptionEn: "Historical Support · Figma & Client relations",
-    description:
-      "Premier projet d'envergure mené sur l'écosystème Shopify dès le 7 mai 2024. Gestion complète de la relation client, conception des wireframes sur Figma et pilotage d'un accompagnement sur-mesure sur le long terme qui se poursuit encore aujourd'hui. Projet réalisé au sein de l'agence HUGGII.",
-    descriptionEn:
-      "First major project executed on the Shopify ecosystem on May 7, 2024. Managed client relations, wireframe design via Figma, and directed a tailored, long-term partnership that continues today. Project executed within HUGGII agency.",
+    objective:
+      "Créer une plateforme solidaire moderne avec un accompagnement client de long terme qui se poursuit encore aujourd'hui.",
+    objectiveEn:
+      "Build a modern social impact platform with a long-term client partnership that continues to this day.",
+    missions: [
+      "Conception intégrale des wireframes et maquettes sur Figma.",
+      "Pilotage de l'accompagnement sur-mesure sur le long terme.",
+      "Gestion complète de la relation client et de l'analyse des besoins.",
+    ],
+    missionsEn: [
+      "Full wireframe and mockup design on Figma.",
+      "Long-term custom partnership management.",
+      "Complete client relationship management and needs analysis.",
+    ],
+    highlights: [
+      { value: "7 mai 2024", label: "Lancement", labelEn: "Launch" },
+      { value: "Suivi continu", label: "Partenariat", labelEn: "Partnership" },
+      { value: "1er projet Shopify", label: "Étape clé", labelEn: "Key milestone" },
+    ],
     tags: ["Shopify", "Figma", "UX/UI"],
     year: "2024",
     link: "https://lafondationdespossibles.com/",
