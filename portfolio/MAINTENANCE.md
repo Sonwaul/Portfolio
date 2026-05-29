@@ -191,7 +191,7 @@ Les couleurs principales sont définies en variables CSS au début du fichier :
 
 ## Mettre à jour le CV
 
-Remplace simplement le fichier `public/CV-Elliot.pdf` par la nouvelle version en gardant le même nom.
+Remplace simplement le fichier `public/CV-Elliot_Infelta.pdf` par la nouvelle version en gardant le même nom.
 
 ---
 

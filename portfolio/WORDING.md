@@ -1,6 +1,6 @@
 # Wording de référence - Portfolio Elliot Infelta
 
-> Document à jour au 28/05/2026. Reflète l'état exact des fichiers `fr.json`, `en.json`, `projectsData.ts`, `timelineData.ts`, `skillsData.ts` et `reviewsData.ts`.
+> Document à jour au 29/05/2026. Reflète l'état exact des fichiers `fr.json`, `en.json`, `projectsData.ts`, `timelineData.ts`, `skillsData.ts` et `reviewsData.ts`.
 
 ---
 
@@ -65,10 +65,10 @@
 **Période :** Sept. 2023 → Aujourd'hui · Roubaix
 
 **Description courte FR :**
-> Pilier central des projets web de l'agence. J'assure le lien direct entre les besoins business des clients et l'équipe technique, de la phase d'analyse initiale jusqu'à la livraison. Mes missions incluent le pilotage de projet, la rédaction des devis et cahiers des charges, la formation et le mentorat des collaborateurs, ainsi que le développement d'architectures et de flux complexes.
+> Pilier central des projets web de l'agence. J'assure le lien direct entre les besoins business des clients et l'équipe technique, de la phase d'analyse initiale jusqu'à la livraison. Mes missions incluent le pilotage de projet, la rédaction des devis et cahiers des charges, la formation et le mentorat des collaborateurs, ainsi que le développement d'architectures et de flux complexes. J'intègre l'IA générative (Claude, Claude Code, Gemini) dans mon workflow de développement et de gestion de projet, et j'utilise des agents IA pour optimiser mes tâches quotidiennes.
 
 **Description courte EN :**
-> Central pillar of the agency's web projects. I ensure a direct connection between clients' business needs and the technical team, from initial analysis to final delivery. My responsibilities include project management, drafting specifications and quotes, onboarding and mentoring team members, as well as developing robust architectures and complex workflows.
+> Central pillar of the agency's web projects. I ensure a direct connection between clients' business needs and the technical team, from initial analysis to final delivery. My responsibilities include project management, drafting specifications and quotes, onboarding and mentoring team members, as well as developing robust architectures and complex workflows. I actively integrate generative AI (Claude, Claude Code, Gemini) into my development and project management workflows, and leverage AI agents to optimize my daily tasks.
 
 **Missions FR :**
 - Pilotage de projets de A à Z via ClickUp en méthode Agile
@@ -76,6 +76,9 @@
 - Formation et mentorat des collaborateurs
 - Connexion Shopify aux CRM/ERP via API, WebServices, CSV et JSON
 - Maintenance serveurs internes, logs et scripts fonctionnels
+- Intégration de l'IA (Claude Code, Gemini) dans le workflow de développement
+- Utilisation de Claude pour l'analyse, la rédaction et le pilotage de projet
+- Déploiement d'agents IA ClickUp pour l'automatisation des tâches récurrentes
 
 **Missions EN :**
 - End-to-end project management using ClickUp and Agile methodology
@@ -83,6 +86,11 @@
 - Onboarding and mentoring of team members
 - Shopify integrations with CRM/ERP via API, WebServices, CSV and JSON
 - Internal server maintenance, log monitoring and functional scripting
+- AI integration (Claude Code, Gemini) into the development workflow
+- Using Claude for analysis, writing, and project management
+- Deploying ClickUp AI agents to automate recurring tasks
+
+**Tags :** Lead Projet, ClickUp, Agile, Shopify, API, Symfony, Formation, Relation Client, IA Générative, Claude Code, Gemini, Agents IA
 
 ---
 
@@ -238,6 +246,7 @@
 | Pilotage de Projet | Project Management | Agile / Scrum, ClickUp, Compréhension de CDC, Devis & Chiffrage | Agile / Scrum, ClickUp, Spec Analysis, Quoting & Estimation |
 | Relation Client | Client Relations | Relation Client, Écoute active, Communication | Client Relations, Active Listening, Communication |
 | Pédagogie & Leadership | Pedagogy & Leadership | Mentorat, Formation, Bilans de compétences | Mentoring, Training, Skills Assessment |
+| IA & Workflow | AI & Workflow | Claude (gestion de projet), Agents IA ClickUp | Claude (project management), ClickUp AI Agents |
 
 ---
 
@@ -247,8 +256,9 @@
 | Groupe FR | Groupe EN | Compétences |
 |---|---|---|
 | Back-end | Back-end | PHP / Symfony, Java / Spring, Python, Architecture flux |
-| Écosystème Shopify | Shopify Ecosystem | Shopify, Liquid, API Shopify, Apps Shopify |
-| Front-end | Front-end | HTML / CSS, JavaScript, React / Next.js, Twig |
+| Écosystème Shopify | Shopify Ecosystem | Shopify, Liquid *(logo liquid.svg)*, API Shopify, Apps Shopify |
+| Front-end | Front-end | HTML / CSS, JavaScript, React / Next.js, Liquid / Twig *(logo liquid.svg)* |
+| IA & LLMs | AI & LLMs | Claude (assistance dev), Claude Code (CLI), Gemini (analyse & génération) |
 
 ---
 
@@ -261,6 +271,7 @@
 | DevOps & Ops | DevOps & Ops | Git / GitHub, Maintenance & Logs |
 | Support & Accès distant | Support & Remote Access | TeamViewer, AnyDesk |
 | Design & UX/UI | Design & UX/UI | Figma, UX/UI Design |
+| IDEs Agentiques & CLI | Agentic IDEs & CLIs | Antigravity (Google), Claude (application), CLI IA |
 
 ---
 

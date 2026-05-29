@@ -55,6 +55,14 @@ export const skillZones: SkillZone[] = [
           { name: "Bilans de compétences", nameEn: "Skills Assessment" },
         ],
       },
+      {
+        title: "IA & Workflow",
+        titleEn: "AI & Workflow",
+        skills: [
+          { name: "Claude (gestion de projet)", nameEn: "Claude (project management)", logo: "/skills/claude.svg" },
+          { name: "Agents IA ClickUp", nameEn: "ClickUp AI Agents", logo: "/skills/clickup.svg" },
+        ],
+      },
     ],
   },
   {
@@ -79,7 +87,7 @@ export const skillZones: SkillZone[] = [
         titleEn: "Shopify Ecosystem",
         skills: [
           { name: "Shopify", logo: "/skills/shopify.svg" },
-          { name: "Liquid" },
+          { name: "Liquid", logo: "/skills/liquid.svg" },
           { name: "API Shopify", nameEn: "Shopify API", logo: "/skills/shopify.svg" },
           { name: "Apps Shopify", nameEn: "Shopify Apps", logo: "/skills/shopify.svg" },
         ],
@@ -91,7 +99,16 @@ export const skillZones: SkillZone[] = [
           { name: "HTML / CSS", logo: "/skills/html5.svg" },
           { name: "JavaScript", logo: "/skills/javascript.svg" },
           { name: "React / Next.js", logo: "/skills/react.svg" },
-          { name: "Twig" },
+          { name: "Liquid / Twig", logo: "/skills/liquid.svg" },
+        ],
+      },
+      {
+        title: "IA & LLMs",
+        titleEn: "AI & LLMs",
+        skills: [
+          { name: "Claude (assistance dev)", nameEn: "Claude (dev assistant)", logo: "/skills/claude.svg" },
+          { name: "Claude Code (CLI)", nameEn: "Claude Code (CLI)", logo: "/skills/claude.svg" },
+          { name: "Gemini (analyse & génération)", nameEn: "Gemini (analysis & generation)", logo: "/skills/gemini.svg" },
         ],
       },
     ],
@@ -133,6 +150,15 @@ export const skillZones: SkillZone[] = [
         skills: [
           { name: "Figma", logo: "/skills/figma.svg" },
           { name: "UX/UI Design" },
+        ],
+      },
+      {
+        title: "IDEs Agentiques & CLI",
+        titleEn: "Agentic IDEs & CLIs",
+        skills: [
+          { name: "Antigravity (Google)", nameEn: "Antigravity (Google)", logo: "/skills/antigravity.svg" },
+          { name: "Claude (application)", nameEn: "Claude (app)", logo: "/skills/claude.svg" },
+          { name: "CLI IA", nameEn: "AI CLIs" },
         ],
       },
     ],

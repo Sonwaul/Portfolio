@@ -68,14 +68,14 @@ export default function ContactSection() {
             <div className="cv-modal-header">
               <h3 className="cv-modal-title">{messages.contact.cvModalTitle}</h3>
               <div className="cv-modal-actions">
-                <a href="/CV-Elliot.pdf" download className="cv-download-btn">
+                <a href="/CV-Elliot_Infelta.pdf" download className="cv-download-btn">
                   <Download size={16} aria-hidden="true" /> {messages.contact.cvDownload}
                 </a>
                 <button className="cv-close-btn" onClick={() => setCvOpen(false)} aria-label="Fermer"><X size={18} aria-hidden="true" /></button>
               </div>
             </div>
             <iframe
-              src="/CV-Elliot.pdf#toolbar=0&navpanes=0&view=FitH"
+              src="/CV-Elliot_Infelta.pdf#toolbar=0&navpanes=0&view=FitH"
               className="cv-iframe"
               title={messages.contact.cvModalTitle}
             />
@@ -174,7 +174,7 @@ export default function ContactSection() {
                   </svg>
                   {messages.contact.cvEnlarge}
                 </button>
-                <a href="/CV-Elliot.pdf" download className="cv-preview-btn cv-preview-btn-filled">
+                <a href="/CV-Elliot_Infelta.pdf" download className="cv-preview-btn cv-preview-btn-filled">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                     <polyline points="7 10 12 15 17 10"/>
@@ -186,7 +186,7 @@ export default function ContactSection() {
             </div>
             <div className="cv-preview-frame">
               <iframe
-                src="/CV-Elliot.pdf#toolbar=0&navpanes=0&view=FitH"
+                src="/CV-Elliot_Infelta.pdf#toolbar=0&navpanes=0&view=FitH"
                 className="cv-preview-iframe"
                 title={messages.contact.cvModalTitle}
               />

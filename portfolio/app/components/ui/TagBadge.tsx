@@ -33,6 +33,11 @@ const TAG_LOGOS: Record<string, string> = {
   "Sage X3":             "/skills/sage.png",
   "Kaeliips":            "/skills/kaeliips.png",
   "Remix":               "/skills/remix.svg",
+  "Claude Code":         "/skills/claude.svg",
+  "IA Générative":       "/skills/claude.svg",
+  "Gemini":              "/skills/gemini.svg",
+  "Antigravity":         "/skills/antigravity.svg",
+  "Agents IA":           "/skills/clickup.svg",
 };
 
 const LUCIDE_ICONS: Record<string, React.ElementType> = {

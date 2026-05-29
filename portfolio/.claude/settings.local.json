@@ -40,7 +40,11 @@
       "Bash(where npx *)",
       "Bash(npx playwright *)",
       "Bash(node -e \"require\\('@playwright/test'\\)\")",
-      "Bash(node -e \"require\\('playwright'\\)\")"
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "WebFetch(domain:cdn.simpleicons.org)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:simpleicons.org)",
+      "Bash(Get-ChildItem *)"
     ]
   }
 }

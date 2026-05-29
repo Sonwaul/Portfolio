@@ -7,7 +7,7 @@ export default function CvFloatingButton() {
 
   return (
     <a
-      href="/CV-Elliot.pdf"
+      href="/CV-Elliot_Infelta.pdf"
       download
       className="cv-fab"
       aria-label={messages.contact.cvDownloadFull}
