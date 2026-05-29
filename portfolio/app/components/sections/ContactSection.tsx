@@ -116,14 +116,14 @@ export default function ContactSection() {
 
           <div className="contact-band-sep" aria-hidden="true" />
 
-          <a href="mailto:infeltaelliot@gmail.com" className="contact-social-link">
+          <a href="mailto:contact@elliot-infelta.fr" className="contact-social-link">
             <svg className="contact-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m2 6 10 7 10-7"/>
             </svg>
             <div className="contact-social-text">
               <span className="contact-social-label">{messages.contact.emailLabel}</span>
-              <span className="contact-social-value">infeltaelliot@gmail.com</span>
+              <span className="contact-social-value">contact@elliot-infelta.fr</span>
             </div>
           </a>
         </div>
