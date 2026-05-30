@@ -21,6 +21,21 @@ This portfolio showcases 16+ real-world projects, my full skill set, and client 
 
 ---
 
+## Performance
+
+Optimized across all PageSpeed Insights categories (mobile):
+
+| Category | Score |
+|---|---|
+| Performance | 96 / 100 |
+| Accessibility | 100 / 100 |
+| Best Practices | 100 / 100 |
+| SEO | 100 / 100 |
+
+Key optimizations: responsive image sizing, dynamic imports for below-fold sections, modern `browserslist` target (no legacy polyfills), WCAG AA contrast compliance, semantic ARIA attributes, and proper touch target sizing.
+
+---
+
 ## Built with
 
 - **Next.js 15** (App Router) + **TypeScript**

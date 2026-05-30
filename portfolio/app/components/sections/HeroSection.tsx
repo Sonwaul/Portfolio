@@ -29,6 +29,7 @@ export default function HeroSection() {
               height={600}
               className="hero-photo-img"
               priority
+              sizes="(max-width: 640px) 200px, (max-width: 768px) 350px, 420px"
             />
           </div>
           <div className="hero-photo-glow" aria-hidden="true" />
