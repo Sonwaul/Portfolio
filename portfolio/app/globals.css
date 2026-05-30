@@ -19,12 +19,12 @@ ul { list-style: none; padding: 0; }
 :root {
   --c-bg:      #F8F9F6;
   --c-text:    #1C2B21;
-  --c-accent:  #6C9A8B;
+  --c-accent:  #346B5E;
   --c-surface: #D8E3DC;
   --c-hover:   #3E7C59;
-  --c-muted:   #728C7A;
+  --c-muted:   #485F51;
   --c-border:  rgba(28, 43, 33, 0.08);
-  --c-bonus:   #A9B7AD;
+  --c-bonus:   #5A6E62;
 
   --font-body:  var(--font-body);
   --font-title: var(--font-title);
@@ -1062,16 +1062,28 @@ a:hover { opacity: 0.75; }
 }
 
 .carousel-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.carousel-dot::after {
+  content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--c-border);
-  border: none;
-  cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
 
-.carousel-dot-active {
+.carousel-dot-active::after {
   background: var(--c-accent);
   transform: scale(1.4);
 }
@@ -1552,11 +1564,10 @@ a:hover { opacity: 0.75; }
   color: var(--c-muted);
   padding: 0.25rem 0.4rem;
   border-radius: 4px;
-  opacity: 0.55;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.footer-lang-btn:hover { opacity: 1; }
+.footer-lang-btn:hover { color: var(--c-text); }
 
 .footer-lang-active {
   opacity: 1;

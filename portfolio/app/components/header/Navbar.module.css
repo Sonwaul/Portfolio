@@ -174,7 +174,7 @@
 .langBtn {
   background: none;
   border: none;
-  color: var(--nav-text);
+  color: var(--c-muted);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -182,17 +182,16 @@
   cursor: pointer;
   padding: 0.3rem 0.45rem;
   border-radius: 6px;
-  opacity: 0.45;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .langBtn:hover {
-  opacity: 1;
+  color: var(--nav-text);
   background: color-mix(in srgb, var(--nav-fill) 55%, transparent);
 }
 
 .langBtnActive {
-  opacity: 1;
+  color: var(--nav-text);
   background: color-mix(in srgb, var(--nav-fill) 65%, transparent);
 }
 

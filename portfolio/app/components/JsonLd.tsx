@@ -8,7 +8,7 @@ export default function JsonLd() {
     jobTitle: "Lead Projet & Développeur Full Stack",
     url: SITE_URL,
     image: `${SITE_URL}/elliot-infelta.jpg`,
-    email: "contact@elliot-infelta.fr",
+    email: "infeltaelliot@gmail.com",
     sameAs: [
       "https://www.linkedin.com/in/elliot-infelta/",
       "https://github.com/Sonwaul",

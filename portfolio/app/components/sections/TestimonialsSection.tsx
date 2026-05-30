@@ -8,7 +8,7 @@ import { reviews } from "@/app/data/reviewsData";
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="star-rating" aria-label={`${rating} étoiles sur 5`}>
+    <div className="star-rating" role="img" aria-label={`${rating} étoiles sur 5`}>
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
@@ -174,6 +174,7 @@ export default function TestimonialsSection() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="testimonial-link testimonial-link-site"
+                          aria-label={`Voir le site de ${review.author}`}
                         >
                           Voir le site
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
