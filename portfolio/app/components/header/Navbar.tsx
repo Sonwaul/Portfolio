@@ -1,62 +1,58 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import styles from "./Navbar.module.css";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
-const SECTIONS = ["presentation", "parcours", "competences", "projets", "temoignages", "contact"] as const;
-type SectionId = typeof SECTIONS[number];
+const NAV_ITEMS = [
+  { key: "realisations", href: "/realisations" },
+  { key: "blog",         href: "/blog" },
+  { key: "about",        href: "/a-propos" },
+  { key: "contact",      href: "/#contact" },
+] as const;
+
+type NavKey = typeof NAV_ITEMS[number]["key"];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<SectionId>("presentation");
   const { messages } = useLanguage();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id as SectionId);
-        });
-      },
-      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-    );
-    SECTIONS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+  const pathname = usePathname();
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isMenuOpen]);
 
-  const navItems = [
-    { id: "presentation", label: messages.nav.hero },
-    { id: "parcours",     label: messages.nav.experience },
-    { id: "competences",  label: messages.nav.skills },
-    { id: "projets",      label: messages.nav.projects },
-    { id: "temoignages",  label: messages.nav.testimonials },
-    { id: "contact",      label: messages.nav.contact },
-  ] as const;
+  const isActive = (href: string) => {
+    if (href === "/#contact") return false;
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
+  const navLabels: Record<NavKey, string> = {
+    realisations: messages.nav.realisations,
+    blog:         messages.nav.blog,
+    about:        messages.nav.about,
+    contact:      messages.nav.contact,
+  };
 
   return (
     <>
       <header className={styles.header}>
-        <nav className={styles.navbarContainer} data-section={activeSection}>
-          <a href="#top" className={styles.logo}>{messages.brandName}</a>
+        <nav className={styles.navbarContainer}>
+          <Link href="/" className={styles.logo}>{messages.brandName}</Link>
 
           <div className={styles.rightSection}>
             <ul className={styles.navLinks}>
-              {navItems.map(({ id, label }) => (
-                <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    className={`${styles.navLink} ${activeSection === id ? styles.navLinkActive : ""}`}
+              {NAV_ITEMS.map(({ key, href }) => (
+                <li key={key}>
+                  <Link
+                    href={href}
+                    className={`${styles.navLink} ${isActive(href) ? styles.navLinkActive : ""}`}
                   >
-                    {label}
-                  </a>
+                    {navLabels[key]}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -77,16 +73,16 @@ export default function Navbar() {
       </header>
 
       {isMenuOpen && (
-        <div className={styles.mobileMenu} data-section={activeSection}>
-          {navItems.map(({ id, label }) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className={activeSection === id ? styles.mobileNavLinkActive : ""}
+        <div className={styles.mobileMenu}>
+          {NAV_ITEMS.map(({ key, href }) => (
+            <Link
+              key={key}
+              href={href}
+              className={isActive(href) ? styles.mobileNavLinkActive : ""}
               onClick={() => setIsMenuOpen(false)}
             >
-              {label}
-            </a>
+              {navLabels[key]}
+            </Link>
           ))}
         </div>
       )}

@@ -3,6 +3,8 @@ import "./globals.css";
 import { LanguageProvider } from "./i18n/LanguageContext";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import JsonLd from "./components/JsonLd";
+import Navbar from "./components/header/Navbar";
+import Footer from "./components/footer/Footer";
 import { SITE_URL } from "./config";
 
 const manrope = Manrope({
@@ -81,7 +83,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${manrope.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <JsonLd />
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

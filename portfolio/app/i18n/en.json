@@ -6,7 +6,10 @@
     "skills": "Skills",
     "projects": "Projects",
     "testimonials": "Reviews",
-    "contact": "Contact"
+    "contact": "Contact",
+    "realisations": "Projects",
+    "blog": "Blog",
+    "about": "About me"
   },
   "hero": {
     "role": "Project Lead & Full Stack Developer",
@@ -69,6 +72,19 @@
     "sending": "Sending…",
     "error": "Something went wrong. Please try again or contact me directly.",
     "footerCopy": "All rights reserved"
+  },
+  "footer": {
+    "tagline": "Project Lead & Full Stack Developer",
+    "copyright": "All rights reserved",
+    "navRealisations": "Projects",
+    "navBlog": "Blog",
+    "navAbout": "About me",
+    "navContact": "Contact"
+  },
+  "reassurance": {
+    "reviewsTitle": "What my clients say",
+    "contactTitle": "Got a project in mind?",
+    "contactCta": "Get in touch"
   },
   "languageLabel": "EN",
   "close": "Close"

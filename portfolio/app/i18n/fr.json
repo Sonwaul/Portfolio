@@ -6,7 +6,10 @@
     "skills": "Compétences",
     "projects": "Projets",
     "testimonials": "Avis",
-    "contact": "Contact"
+    "contact": "Contact",
+    "realisations": "Réalisations",
+    "blog": "Blog",
+    "about": "À propos"
   },
   "hero": {
     "role": "Lead Projet & Développeur Full Stack",
@@ -69,6 +72,19 @@
     "sending": "Envoi en cours…",
     "error": "Une erreur est survenue. Réessayez ou contactez-moi directement.",
     "footerCopy": "Tous droits réservés"
+  },
+  "footer": {
+    "tagline": "Lead Projet & Développeur Full Stack",
+    "copyright": "Tous droits réservés",
+    "navRealisations": "Réalisations",
+    "navBlog": "Blog",
+    "navAbout": "À propos",
+    "navContact": "Contact"
+  },
+  "reassurance": {
+    "reviewsTitle": "Ce que disent mes clients",
+    "contactTitle": "Un projet en tête ?",
+    "contactCta": "Me contacter"
   },
   "languageLabel": "FR",
   "close": "Fermer"

@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Navbar from "./components/header/Navbar";
 import HeroSection from "./components/sections/HeroSection";
 
 const ExperienceSection = dynamic(
@@ -36,7 +35,6 @@ const CvFloatingButton = dynamic(
 export default function HomePage() {
   return (
     <main id="top">
-      <Navbar />
       <HeroSection />
       <ExperienceSection />
       <SkillsSection />
