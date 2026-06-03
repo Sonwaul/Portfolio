@@ -1,35 +1,218 @@
 "use client";
 
+import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { Star, ChevronUp, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
+import { reviews } from "@/app/data/reviewsData";
 
-export default function ReassuranceBlock() {
+const GAP = 24;
+const CLONE_COUNT = 2;
+
+const extended = [
+  ...reviews.slice(-CLONE_COUNT),
+  ...reviews,
+  ...reviews.slice(0, CLONE_COUNT),
+];
+
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <div className="star-rating" role="img" aria-label={`${rating} étoiles sur 5`}>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star
+          key={star}
+          size={16}
+          className={star <= rating ? "star star-filled" : "star star-empty"}
+          fill={star <= rating ? "currentColor" : "none"}
+          aria-hidden="true"
+        />
+      ))}
+    </div>
+  );
+}
+
+export default function ReassuranceBlock({ hideCta = false }: { hideCta?: boolean }) {
   const { messages } = useLanguage();
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [index, setIndex] = useState(CLONE_COUNT);
+  const [animated, setAnimated] = useState(true);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  function toggleExpand(author: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      next.has(author) ? next.delete(author) : next.add(author);
+      return next;
+    });
+  }
+
+  function computeCardWidth() {
+    if (!viewportRef.current) return;
+    setCardWidth(viewportRef.current.offsetWidth);
+  }
+
+  useEffect(() => {
+    computeCardWidth();
+    const ro = new ResizeObserver(computeCardWidth);
+    if (viewportRef.current) ro.observe(viewportRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!animated) {
+      const t = setTimeout(() => setAnimated(true), 50);
+      return () => clearTimeout(t);
+    }
+  }, [animated]);
+
+  function handleTransitionEnd() {
+    if (index >= reviews.length + CLONE_COUNT) {
+      setAnimated(false);
+      setIndex(CLONE_COUNT);
+    } else if (index < CLONE_COUNT) {
+      setAnimated(false);
+      setIndex(reviews.length + CLONE_COUNT - 1);
+    }
+  }
+
+  const slideTo = useCallback((i: number) => {
+    setAnimated(true);
+    setIndex(i);
+  }, []);
+
+  const next = useCallback(() => slideTo(index + 1), [index, slideTo]);
+  const prev = useCallback(() => slideTo(index - 1), [index, slideTo]);
+
+  const touchStartX = useRef<number | null>(null);
+
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) delta > 0 ? next() : prev();
+    touchStartX.current = null;
+  }
+
+  useEffect(() => {
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  const realIndex = ((index - CLONE_COUNT) % reviews.length + reviews.length) % reviews.length;
+  const translateX = -(index * cardWidth);
 
   return (
-    <section className="py-16 border-t border-[rgba(28,43,33,0.08)] bg-[#F8F9F6]">
-      <div className="max-w-[1400px] mx-auto px-6 flex flex-col gap-10">
+    <section className="testimonials-section">
+      <div className="container testimonials-content">
 
-        {/* Reviews placeholder — à remplacer par les vrais avis lors de l'implémentation page par page */}
-        <div>
-          <h2 className="font-[family-name:var(--font-title)] text-2xl font-semibold text-[#1C2B21] mb-6">
-            {messages.reassurance.reviewsTitle}
-          </h2>
-          {/* Les avis seront injectés ici depuis reviewsData */}
+        <div className="section-header">
+          <h2 className="section-title">{messages.reassurance.reviewsTitle}</h2>
         </div>
 
-        {/* CTA contact */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-3xl bg-[rgba(108,154,139,0.08)] border border-[rgba(108,154,139,0.14)]">
-          <h3 className="font-[family-name:var(--font-title)] text-xl font-semibold text-[#1C2B21]">
-            {messages.reassurance.contactTitle}
-          </h3>
-          <Link
-            href="/contact"
-            className="shrink-0 inline-block px-7 py-3 rounded-full bg-[#1C2B21] text-[#F8F9F6] text-sm font-medium font-[family-name:var(--font-body)] hover:bg-[#2d4a37] transition-colors"
-          >
-            {messages.reassurance.contactCta}
-          </Link>
+        <div className="carousel-outer">
+          <button className="carousel-btn" onClick={prev} aria-label="Précédent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <div ref={viewportRef} className="carousel-viewport" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            <div
+              className="carousel-track"
+              style={{
+                transform: cardWidth ? `translateX(${translateX}px)` : "none",
+                transition: animated ? "transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)" : "none",
+                opacity: cardWidth ? 1 : 0,
+              }}
+              onTransitionEnd={handleTransitionEnd}
+            >
+              {extended.map((review, i) => (
+                <div
+                  key={i}
+                  className="testimonial-card"
+                  style={{ width: cardWidth ? `${cardWidth}px` : undefined, flexShrink: 0 }}
+                >
+                  <StarRating rating={review.rating} />
+                  <p className={`testimonial-text${expanded.has(review.author) ? " testimonial-text-expanded" : ""}`}>
+                    "{review.text}"
+                  </p>
+                  {review.text.length > 220 && (
+                    <button className="testimonial-readmore" onClick={() => toggleExpand(review.author)}>
+                      {expanded.has(review.author)
+                        ? <><ChevronUp size={14} aria-hidden="true" /> Réduire</>
+                        : <>En savoir plus <ChevronDown size={14} aria-hidden="true" /></>}
+                    </button>
+                  )}
+                  <div className="testimonial-footer">
+                    <div className="testimonial-author">
+                      {review.logo ? (
+                        <Image src={review.logo} alt={review.author} width={0} height={0} sizes="84px" className="testimonial-logo" />
+                      ) : (
+                        <div className="testimonial-avatar">{review.author.charAt(0)}</div>
+                      )}
+                      <div>
+                        <p className="testimonial-author-name">{review.author}</p>
+                        <p className="testimonial-author-role">{review.role}</p>
+                      </div>
+                    </div>
+                    <div className="testimonial-actions">
+                      {review.siteUrl && (
+                        <a href={review.siteUrl} target="_blank" rel="noopener noreferrer" className="testimonial-link testimonial-link-site" aria-label={`Voir le site de ${review.author}`}>
+                          Voir le site
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                          </svg>
+                        </a>
+                      )}
+                      <a href={review.url} target="_blank" rel="noopener noreferrer" className="testimonial-link">
+                        Avis Google
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button className="carousel-btn" onClick={next} aria-label="Suivant">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
+
+        <div className="carousel-dots">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              className={`carousel-dot ${i === realIndex ? "carousel-dot-active" : ""}`}
+              onClick={() => slideTo(CLONE_COUNT + i)}
+              aria-label={`Avis ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {!hideCta && (
+          <div className="reassurance-cta">
+            <p className="reassurance-cta-title">{messages.reassurance.contactTitle}</p>
+            <Link href="/contact" className="hero-cta">
+              {messages.reassurance.contactCta}
+            </Link>
+          </div>
+        )}
+
       </div>
     </section>
   );

@@ -6,9 +6,9 @@
     "skills": "Compétences",
     "projects": "Projets",
     "testimonials": "Avis",
-    "contact": "Contact",
-    "realisations": "Réalisations",
-    "blog": "Blog",
+    "contact": "Parlons de votre projet",
+    "realisations": "Mes projets",
+    "blog": "Mon blog",
     "about": "À propos"
   },
   "hero": {
@@ -17,7 +17,8 @@
     "badgeAge": "ans",
     "badgeRole": "Lead Projet · HUGGII",
     "description": "Bonjour, je suis Elliot. À 23 ans, j'évolue au cœur de la métropole lilloise. Mon parcours a débuté dans les lignes de code, là où la logique pure rencontre la création. Aujourd'hui, je suis ce pilier central du projet web : un manager capable de parler le langage des développeurs tout en traduisant les besoins business des clients. Ma vision ? Créer une fusion entre l'innovation technique et l'accompagnement humain.",
-    "cta": "Voir mon parcours"
+    "cta": "Voir mon parcours",
+    "ctaProjects": "Voir mes projets"
   },
   "experience": {
     "title": "Parcours Professionnel & Académique",
@@ -27,6 +28,7 @@
     "educationTab": "Formations",
     "missions": "Missions",
     "seeDetails": "Voir le détail",
+    "seeMore": "En savoir plus sur moi",
     "present": "Aujourd'hui"
   },
   "skills": {
@@ -40,11 +42,21 @@
   "projects": {
     "title": "Projets Réalisés",
     "subtitle": "Un best-of des projets les plus représentatifs de mon parcours",
-    "viewDetails": "Voir les détails",
+    "viewDetails": "Voir le projet",
     "visitSite": "Découvrir le projet",
     "techStack": "Outils & Stack",
     "objective": "Objectif",
     "missions": "Missions clés"
+  },
+  "home": {
+    "projectsPreviewTitle": "Mes dernières réalisations",
+    "projectsPreviewSubtitle": "Découvrez comment j'accompagne les marques dans leurs projets e-commerce les plus stratégiques.",
+    "projectsPreviewCta": "Voir tous les projets",
+    "blogCtaTitle": "Accélérez votre croissance avec des stratégies e-commerce éprouvées",
+    "blogCtaDesc": "Mes réflexions sur l'IA appliquée au dev, les intégrations ERP complexes et les évolutions du web e-commerce.",
+    "blogCtaBtn": "Explorer le blog",
+    "aboutCtaTitle": "De développeur passionné à Lead Projet : découvrez mon parcours, ma vision de l'agilité et mes méthodes de travail.",
+    "aboutCtaBtn": "En savoir plus sur mon expertise"
   },
   "testimonials": {
     "title": "Témoignages & Recommandations",
@@ -74,17 +86,31 @@
     "footerCopy": "Tous droits réservés"
   },
   "footer": {
-    "tagline": "Lead Projet & Développeur Full Stack",
-    "copyright": "Tous droits réservés",
-    "navRealisations": "Réalisations",
-    "navBlog": "Blog",
+    "tagline": "Architecte de solutions e-commerce performantes, automatisées et scalables.",
+    "copyright": "Tous droits réservés.",
+    "navRealisations": "Mes Projets",
+    "navBlog": "Mon blog",
     "navAbout": "À propos",
-    "navContact": "Contact"
+    "navContact": "Parlons de votre projet",
+    "legalNotice": "Mentions Légales"
   },
   "reassurance": {
-    "reviewsTitle": "Ce que disent mes clients",
-    "contactTitle": "Un projet en tête ?",
-    "contactCta": "Me contacter"
+    "reviewsTitle": "Ils me font confiance pour propulser et sécuriser leur écosystème e-commerce",
+    "contactTitle": "Un défi technique ou une migration complexe à confier à un Lead ?",
+    "contactCta": "Lancer l'analyse de mon projet"
+  },
+  "contactPage": {
+    "h1": "Concevons ensemble votre prochaine étape technique",
+    "intro": "Parce qu'un projet e-commerce d'envergure ne se résume pas à du code, je vous accompagne dans la définition de votre architecture logicielle. Que vous soyez en pleine réflexion sur une migration Shopify Plus, une automatisation de flux ERP complexe ou le développement d'une application métier sur-mesure, mon rôle est de traduire vos enjeux business en une feuille de route technique robuste et scalable.",
+    "h2Form": "Lancez la conversation",
+    "engagement": "Premier retour d'analyse sous 48h ouvrées.",
+    "h2Why": "Pourquoi collaborer avec moi ?",
+    "reason1Title": "Audit technique approfondi",
+    "reason1Desc": "Chaque prise de contact commence par une compréhension fine de votre stack actuelle et de vos points de friction.",
+    "reason2Title": "Méthodologie Agile",
+    "reason2Desc": "Transparence totale sur l'avancement via ClickUp et des cycles de livraison courts.",
+    "reason3Title": "Culture du résultat",
+    "reason3Desc": "Une approche focalisée sur la stabilité de vos flux de données et la satisfaction de vos utilisateurs finaux."
   },
   "languageLabel": "FR",
   "close": "Fermer"

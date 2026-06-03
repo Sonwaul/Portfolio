@@ -6,6 +6,7 @@ export interface ProjectHighlight {
 
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   role: string;
   roleEn: string;
@@ -26,6 +27,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "proj1",
+    slug: "julien-faure-ecommerce",
     title: "Julien Faure",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -58,6 +60,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj2",
+    slug: "creditsafe-shopify-app",
     title: "Creditsafe",
     role: "Lead Développeur Back-end & Product Owner",
     roleEn: "Lead Back-end Developer & Product Owner",
@@ -90,6 +93,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj3",
+    slug: "parapluie-1705",
     title: "Parapluie 1705",
     role: "Chef de Projet & Développeur Full Stack",
     roleEn: "Project Manager & Full Stack Developer",
@@ -122,6 +126,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj4",
+    slug: "sonolens",
     title: "Sonolens",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -154,6 +159,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj5",
+    slug: "outrebon",
     title: "Outrebon",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -186,6 +192,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj6",
+    slug: "exsud",
     title: "Exsud",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -218,6 +225,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj7",
+    slug: "automatic-technologies",
     title: "Automatic Technologies",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -250,6 +258,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj8",
+    slug: "emballages-fr",
     title: "Emballages.fr",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -282,6 +291,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj9",
+    slug: "tandem-fragrances",
     title: "Tandem Fragrances",
     role: "Chef de Projet Tech & UI/UX Designer",
     roleEn: "Tech Project Manager & UI/UX Designer",
@@ -314,6 +324,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj10",
+    slug: "ateliers-de-langres",
     title: "Les Ateliers de Langres",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -346,6 +357,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj11",
+    slug: "minois-paris",
     title: "Minois Paris",
     role: "Lead Projet & Développeur Back-end",
     roleEn: "Project Lead & Back-end Developer",
@@ -378,6 +390,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj12",
+    slug: "skintips",
     title: "Skintips",
     role: "Lead Projet & Développeur Back-end",
     roleEn: "Project Lead & Back-end Developer",
@@ -410,6 +423,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj13",
+    slug: "nemrod",
     title: "Nemrod",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -442,6 +456,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj14",
+    slug: "mademoiselle-biloba",
     title: "Mademoiselle Biloba",
     role: "Chef de Projet Tech & UI/UX Designer",
     roleEn: "Tech Project Manager & UI/UX Designer",
@@ -474,6 +489,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj15",
+    slug: "les-garcons-bouchers",
     title: "Les Garçons Bouchers",
     role: "Lead Projet & Développeur Full Stack",
     roleEn: "Project Lead & Full Stack Developer",
@@ -506,6 +522,7 @@ export const projects: Project[] = [
   },
   {
     id: "proj16",
+    slug: "fondation-des-possibles",
     title: "Fondation des Possibles",
     role: "Chef de Projet Tech & UI/UX Designer",
     roleEn: "Tech Project Manager & UI/UX Designer",

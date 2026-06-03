@@ -6,9 +6,9 @@
     "skills": "Skills",
     "projects": "Projects",
     "testimonials": "Reviews",
-    "contact": "Contact",
-    "realisations": "Projects",
-    "blog": "Blog",
+    "contact": "Let's talk",
+    "realisations": "My projects",
+    "blog": "My blog",
     "about": "About me"
   },
   "hero": {
@@ -17,7 +17,8 @@
     "badgeAge": "y.o.",
     "badgeRole": "Project Lead · HUGGII",
     "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where pure logic meets creation. Today, I am that central pillar of web projects: a manager who speaks the language of developers while translating clients' business needs. My vision? Creating a fusion between technical innovation and human-centered support.",
-    "cta": "See my background"
+    "cta": "See my background",
+    "ctaProjects": "View my projects"
   },
   "experience": {
     "title": "Professional & Academic Background",
@@ -27,6 +28,7 @@
     "educationTab": "Education",
     "missions": "Missions",
     "seeDetails": "See details",
+    "seeMore": "Learn more about me",
     "present": "Today"
   },
   "skills": {
@@ -40,11 +42,21 @@
   "projects": {
     "title": "Completed Projects",
     "subtitle": "A curated selection of the most representative projects from my journey",
-    "viewDetails": "View details",
+    "viewDetails": "View project",
     "visitSite": "View project",
     "techStack": "Tools & Stack",
     "objective": "Objective",
     "missions": "Key Missions"
+  },
+  "home": {
+    "projectsPreviewTitle": "My latest projects",
+    "projectsPreviewSubtitle": "Discover how I support brands in their most strategic e-commerce projects.",
+    "projectsPreviewCta": "View all projects",
+    "blogCtaTitle": "Accelerate your growth with proven e-commerce strategies",
+    "blogCtaDesc": "My thoughts on AI-driven development, complex ERP integrations and the evolution of e-commerce.",
+    "blogCtaBtn": "Explore the blog",
+    "aboutCtaTitle": "From passionate developer to Project Lead: discover my background, my agile vision and working methods.",
+    "aboutCtaBtn": "Learn more about my expertise"
   },
   "testimonials": {
     "title": "Testimonials & Recommendations",
@@ -74,17 +86,31 @@
     "footerCopy": "All rights reserved"
   },
   "footer": {
-    "tagline": "Project Lead & Full Stack Developer",
-    "copyright": "All rights reserved",
-    "navRealisations": "Projects",
-    "navBlog": "Blog",
+    "tagline": "Architect of performant, automated & scalable e-commerce solutions.",
+    "copyright": "All rights reserved.",
+    "navRealisations": "My Projects",
+    "navBlog": "My blog",
     "navAbout": "About me",
-    "navContact": "Contact"
+    "navContact": "Let's talk about your project",
+    "legalNotice": "Legal Notice"
   },
   "reassurance": {
-    "reviewsTitle": "What my clients say",
-    "contactTitle": "Got a project in mind?",
-    "contactCta": "Get in touch"
+    "reviewsTitle": "They trust me to grow and secure their e-commerce ecosystem",
+    "contactTitle": "A technical challenge or complex migration to hand over to a Lead?",
+    "contactCta": "Start my project analysis"
+  },
+  "contactPage": {
+    "h1": "Let's design your next technical milestone together",
+    "intro": "Because a large-scale e-commerce project is more than just code, I support you in defining your software architecture. Whether you're considering a Shopify Plus migration, automating complex ERP flows or building a custom business application, my role is to translate your business challenges into a robust and scalable technical roadmap.",
+    "h2Form": "Start the conversation",
+    "engagement": "First analysis response within 48 business hours.",
+    "h2Why": "Why work with me?",
+    "reason1Title": "In-depth technical audit",
+    "reason1Desc": "Every initial contact begins with a thorough understanding of your current stack and pain points.",
+    "reason2Title": "Agile methodology",
+    "reason2Desc": "Full transparency on progress via ClickUp and short delivery cycles.",
+    "reason3Title": "Results-driven culture",
+    "reason3Desc": "An approach focused on the stability of your data flows and the satisfaction of your end users."
   },
   "languageLabel": "EN",
   "close": "Close"

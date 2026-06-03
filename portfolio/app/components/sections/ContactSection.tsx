@@ -4,26 +4,8 @@ import { useState } from "react";
 import { Download, X, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
-function FooterLangToggle() {
-  const { currentLang, setLang } = useLanguage();
-  return (
-    <div className="footer-lang">
-      <button
-        className={`footer-lang-btn ${currentLang === "fr" ? "footer-lang-active" : ""}`}
-        onClick={() => setLang("fr")}
-        aria-label="Passer en français"
-      >FR</button>
-      <span className="footer-lang-sep" aria-hidden="true">|</span>
-      <button
-        className={`footer-lang-btn ${currentLang === "en" ? "footer-lang-active" : ""}`}
-        onClick={() => setLang("en")}
-        aria-label="Switch to English"
-      >EN</button>
-    </div>
-  );
-}
 
-export default function ContactSection() {
+export default function ContactSection({ hideHeader = false }: { hideHeader?: boolean }) {
   const { messages } = useLanguage();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -84,11 +66,13 @@ export default function ContactSection() {
       )}
 
       <div className="container contact-content">
-        <div className="section-header">
-          <h2 className="section-title">{messages.contact.title}</h2>
-          <p className="section-subtitle">{messages.contact.subtitle}</p>
-          <p className="contact-location"><MapPin size={16} aria-hidden="true" /> {messages.contact.location}</p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <h2 className="section-title">{messages.contact.title}</h2>
+            <p className="section-subtitle">{messages.contact.subtitle}</p>
+            <p className="contact-location"><MapPin size={16} aria-hidden="true" /> {messages.contact.location}</p>
+          </div>
+        )}
 
         {/* Socials banner */}
         <div className="contact-socials-band">
@@ -195,20 +179,6 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <div className="contact-footer">
-        <p className="footer-copy" suppressHydrationWarning>
-          © {new Date().getFullYear()} Elliot Infelta · {messages.contact.footerCopy}
-        </p>
-        <nav className="footer-nav">
-          <a href="#presentation">{messages.nav.hero}</a>
-          <a href="#parcours">{messages.nav.experience}</a>
-          <a href="#competences">{messages.nav.skills}</a>
-          <a href="#projets">{messages.nav.projects}</a>
-          <a href="#temoignages">{messages.nav.testimonials}</a>
-          <a href="#contact">{messages.nav.contact}</a>
-        </nav>
-        <FooterLangToggle />
-      </div>
     </section>
   );
 }

@@ -7,9 +7,9 @@ import styles from "./Navbar.module.css";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 
 const NAV_ITEMS = [
+  { key: "about",        href: "/a-propos" },
   { key: "realisations", href: "/realisations" },
   { key: "blog",         href: "/blog" },
-  { key: "about",        href: "/a-propos" },
   { key: "contact",      href: "/contact" },
 ] as const;
 

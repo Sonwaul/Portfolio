@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { skillZones, SkillZone } from "@/app/data/skillsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
@@ -92,6 +94,12 @@ export default function SkillsSection() {
           {skillZones.map((zone) => (
             <SkillColCard key={zone.id} zone={zone} mode={mode} lang={currentLang} />
           ))}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+          <Link href="/a-propos" className="hero-cta">
+            {messages.home.aboutCtaBtn} <ArrowRight size={14} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>

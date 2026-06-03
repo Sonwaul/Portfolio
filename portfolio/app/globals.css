@@ -389,7 +389,7 @@ a:hover { opacity: 0.75; }
 .timeline-h-track {
   position: relative;
   display: flex;
-  height: 500px;
+  height: 430px;
   min-width: 560px;
 }
 
@@ -397,7 +397,7 @@ a:hover { opacity: 0.75; }
   position: absolute;
   left: 0;
   right: 0;
-  top: 240px;
+  top: 208px;
   height: 2px;
   background: var(--c-border);
   z-index: 0;
@@ -414,7 +414,7 @@ a:hover { opacity: 0.75; }
   position: absolute;
   width: 14px;
   height: 14px;
-  top: 233px;
+  top: 201px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
@@ -439,15 +439,15 @@ a:hover { opacity: 0.75; }
   z-index: 1;
 }
 
-.node-above .timeline-h-stem { top: 195px; }
-.node-below .timeline-h-stem { top: 247px; }
+.node-above .timeline-h-stem { top: 170px; }
+.node-below .timeline-h-stem { top: 215px; }
 
 /* Cards */
 .timeline-h-card {
   position: absolute;
-  left: 0.75rem;
-  right: 0.75rem;
-  height: 183px;
+  left: 0.25rem;
+  right: 0.25rem;
+  height: 158px;
   background: white;
   border: 1px solid var(--c-border);
   border-radius: var(--radius-card);
@@ -463,7 +463,7 @@ a:hover { opacity: 0.75; }
 }
 
 .node-above .timeline-h-card { top: 12px; }
-.node-below .timeline-h-card { top: 285px; }
+.node-below .timeline-h-card { top: 253px; }
 
 .timeline-h-period {
   font-size: 0.68rem;
@@ -2291,7 +2291,7 @@ a:hover { opacity: 0.75; }
 }
 
 .cv-fab-label {
-  font-family: var(--font-title);
+  font-family: var(--font-body);
   font-size: 0.85rem;
 }
 
@@ -2301,4 +2301,294 @@ a:hover { opacity: 0.75; }
     right: 1.25rem;
     padding: 0.6rem 0.9rem;
   }
+}
+
+/* =============================================
+   15. REASSURANCE BLOCK
+   ============================================= */
+
+.reassurance-section {
+  padding: 6rem 0;
+  background: var(--c-surface);
+}
+
+.reassurance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.reassurance-card {
+  background: white;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.reassurance-card:hover {
+  box-shadow: 0 8px 24px rgba(28, 43, 33, 0.08);
+  transform: translateY(-3px);
+}
+
+.reassurance-stars {
+  display: flex;
+  gap: 0.2rem;
+  color: #F59E0B;
+}
+
+.reassurance-text {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--c-text);
+  line-height: 1.7;
+  flex: 1;
+  opacity: 0.85;
+}
+
+.reassurance-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-top: 1px solid var(--c-border);
+  padding-top: 0.75rem;
+}
+
+.reassurance-author-name {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.reassurance-author-role {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--c-muted);
+}
+
+.reassurance-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+  border-radius: var(--radius-card);
+  background: white;
+  border: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.reassurance-cta-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 700;
+  color: var(--c-text);
+  max-width: 520px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .reassurance-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================================
+   16. CONTACT PAGE
+   ============================================= */
+
+.cp-section {
+  padding: 6rem 0;
+  background: var(--c-bg);
+}
+
+.cp-section--alt {
+  background: var(--c-surface);
+}
+
+.cp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--c-hover);
+  background: rgba(62, 124, 89, 0.08);
+  border: 1px solid rgba(62, 124, 89, 0.18);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+}
+
+.cp-reasons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cp-reason {
+  background: white;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-card);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.cp-reason:hover {
+  box-shadow: 0 8px 24px rgba(28, 43, 33, 0.07);
+}
+
+.cp-reason-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(62, 124, 89, 0.09);
+  color: var(--c-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cp-reason-title {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0;
+}
+
+.cp-reason-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--c-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cp-reasons { grid-template-columns: 1fr; }
+  .cp-section  { padding: 4rem 0; }
+}
+
+/* =============================================
+   16. BLOG TEASER SECTION
+   ============================================= */
+
+.blog-teaser-section {
+  padding: var(--section-py) 0;
+  background: rgba(108, 154, 139, 0.04);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.blog-teaser-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.blog-teaser-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-hover);
+}
+
+.blog-teaser-title {
+  margin: 0;
+}
+
+.blog-teaser-desc {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  color: var(--c-muted);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0;
+}
+
+.blog-teaser-topics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.blog-teaser-topic {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-hover);
+  background: rgba(62, 124, 89, 0.08);
+  border: 1px solid rgba(62, 124, 89, 0.18);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+}
+
+/* =============================================
+   16. PROJECTS PREVIEW — GRID RESPONSIVE
+   ============================================= */
+
+.projects-grid--preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .projects-grid--preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .projects-grid--preview {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   16. HERO — SECONDARY CTA
+   ============================================= */
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-cta-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.9rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(28, 43, 33, 0.28);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.hero-cta-outline:hover {
+  border-color: var(--c-text);
+  background: rgba(28, 43, 33, 0.05);
 }

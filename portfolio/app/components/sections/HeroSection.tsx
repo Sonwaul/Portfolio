@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin, User, Briefcase, ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { MapPin, User, Briefcase, ChevronDown, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { BIRTH_DATE } from "@/app/config";
 
@@ -44,10 +45,16 @@ export default function HeroSection() {
           <h1 className="hero-name">Elliot Infelta</h1>
           <p className="hero-role">{messages.hero.role}</p>
           <p className="hero-description">{messages.hero.description}</p>
-          <a href="#parcours" className="hero-cta">
-            {messages.hero.cta}
-            <ChevronDown size={18} className="hero-cta-arrow" aria-hidden="true" />
-          </a>
+          <div className="hero-cta-group">
+            <a href="#parcours" className="hero-cta">
+              {messages.hero.cta}
+              <ChevronDown size={18} className="hero-cta-arrow" aria-hidden="true" />
+            </a>
+            <Link href="/realisations" className="hero-cta-outline">
+              {messages.hero.ctaProjects}
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

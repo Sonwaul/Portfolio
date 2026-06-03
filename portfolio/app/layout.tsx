@@ -5,6 +5,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import JsonLd from "./components/JsonLd";
 import Navbar from "./components/header/Navbar";
 import Footer from "./components/footer/Footer";
+import CvFloatingButton from "./components/ui/CvFloatingButton";
 import { SITE_URL } from "./config";
 
 const manrope = Manrope({
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           {children}
           <Footer />
+          <CvFloatingButton />
         </LanguageProvider>
       </body>
     </html>

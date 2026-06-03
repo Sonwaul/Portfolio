@@ -13,10 +13,11 @@ const SkillsSection = dynamic(
   { loading: () => <div style={{ minHeight: "500px" }} /> }
 );
 
-const ProjectsSection = dynamic(
-  () => import("./components/sections/ProjectsSection"),
-  { loading: () => <div style={{ minHeight: "700px" }} /> }
+const ProjectsPreview = dynamic(
+  () => import("./components/sections/ProjectsPreview"),
+  { loading: () => <div style={{ minHeight: "600px" }} /> }
 );
+
 
 const TestimonialsSection = dynamic(
   () => import("./components/sections/TestimonialsSection"),
@@ -28,9 +29,6 @@ const ContactSection = dynamic(
   { loading: () => <div style={{ minHeight: "600px" }} /> }
 );
 
-const CvFloatingButton = dynamic(
-  () => import("./components/ui/CvFloatingButton")
-);
 
 export default function HomePage() {
   return (
@@ -38,10 +36,9 @@ export default function HomePage() {
       <HeroSection />
       <ExperienceSection />
       <SkillsSection />
-      <ProjectsSection />
+      <ProjectsPreview />
       <TestimonialsSection />
       <ContactSection />
-      <CvFloatingButton />
     </main>
   );
 }
