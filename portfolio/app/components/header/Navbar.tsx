@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { key: "realisations", href: "/realisations" },
   { key: "blog",         href: "/blog" },
   { key: "about",        href: "/a-propos" },
-  { key: "contact",      href: "/#contact" },
+  { key: "contact",      href: "/contact" },
 ] as const;
 
 type NavKey = typeof NAV_ITEMS[number]["key"];

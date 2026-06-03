@@ -10,7 +10,7 @@ export default function Footer() {
     { href: "/realisations", label: messages.footer.navRealisations },
     { href: "/blog",         label: messages.footer.navBlog },
     { href: "/a-propos",     label: messages.footer.navAbout },
-    { href: "/#contact",     label: messages.footer.navContact },
+    { href: "/contact",      label: messages.footer.navContact },
   ];
 
   return (

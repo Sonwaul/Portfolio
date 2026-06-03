@@ -24,7 +24,7 @@ export default function ReassuranceBlock() {
             {messages.reassurance.contactTitle}
           </h3>
           <Link
-            href="/#contact"
+            href="/contact"
             className="shrink-0 inline-block px-7 py-3 rounded-full bg-[#1C2B21] text-[#F8F9F6] text-sm font-medium font-[family-name:var(--font-body)] hover:bg-[#2d4a37] transition-colors"
           >
             {messages.reassurance.contactCta}
