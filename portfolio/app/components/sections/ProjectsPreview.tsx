@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Lock } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { TagBadge } from "@/app/components/ui/TagBadge";
 import { projects, Project } from "@/app/data/projectsData";
@@ -46,9 +46,20 @@ function PreviewCard({ project, priority = false }: { project: Project; priority
             <TagBadge key={tag} tag={tag} size={13} baseClass="project-tag" />
           ))}
         </div>
-        <Link href={`/realisations/${project.slug}`} className="project-btn">
-          {messages.projects.viewDetails} <ArrowRight size={14} aria-hidden="true" />
-        </Link>
+        {project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-btn"
+          >
+            {messages.projects.visitSite} <ArrowRight size={14} aria-hidden="true" />
+          </a>
+        ) : (
+          <span className="project-internal-badge">
+            <Lock size={12} aria-hidden="true" /> {messages.projects.internalApp}
+          </span>
+        )}
       </div>
     </div>
   );

@@ -23,24 +23,17 @@ export default function Footer() {
   };
 
   return (
-    <footer style={{
-      borderTop: "1px solid var(--c-border)",
-      padding: "1.5rem 2.5rem",
-      marginTop: "4rem",
-      display: "flex",
-      alignItems: "center",
-    }}>
-      <p className="footer-copy" style={{ flex: 1 }}>
+    <footer className="footer">
+      <p className="footer-copy">
         © {new Date().getFullYear()} {messages.brandName} · {messages.footer.copyright}
       </p>
-      <nav className="footer-nav" style={{ flex: 1, justifyContent: "center" }} aria-label="Navigation footer">
+      <nav className="footer-nav" aria-label="Navigation footer">
         {NAV_ITEMS.map(({ key, href }) => (
           <Link key={href} href={href}>
             {navLabels[key]}
           </Link>
         ))}
       </nav>
-      <div style={{ flex: 1 }} />
     </footer>
   );
 }

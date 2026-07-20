@@ -55,7 +55,7 @@ function SkillColCard({ zone, mode, lang }: { zone: SkillZone; mode: Mode; lang:
   );
 }
 
-export default function SkillsSection() {
+export default function SkillsSection({ hideAboutCta = false }: { hideAboutCta?: boolean }) {
   const { messages, currentLang } = useLanguage();
   const [mode, setMode] = useState<Mode>("all");
 
@@ -96,11 +96,13 @@ export default function SkillsSection() {
           ))}
         </div>
 
-        <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-          <Link href="/a-propos" className="hero-cta">
-            {messages.home.aboutCtaBtn} <ArrowRight size={14} aria-hidden="true" />
-          </Link>
-        </div>
+        {!hideAboutCta && (
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <Link href="/a-propos" className="hero-cta">
+              {messages.home.aboutCtaBtn} <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
