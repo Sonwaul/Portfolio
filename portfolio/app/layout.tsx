@@ -81,7 +81,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${manrope.variable} ${cormorant.variable}`} suppressHydrationWarning>
+    <html lang="fr" className={`${manrope.variable} ${cormorant.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <JsonLd />
         <LanguageProvider>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import fr from "./fr.json";
 import en from "./en.json";
 
@@ -18,6 +18,10 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(undefine
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [currentLang, setCurrentLang] = useState<Language>("fr");
   const messages = currentLang === "fr" ? fr : en;
+
+  useEffect(() => {
+    document.documentElement.lang = currentLang;
+  }, [currentLang]);
 
   return (
     <LanguageContext.Provider value={{ currentLang, messages, setLang: setCurrentLang }}>
