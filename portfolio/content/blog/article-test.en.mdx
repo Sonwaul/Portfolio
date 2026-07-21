@@ -1,0 +1,75 @@
+---
+title: "Test article — to be replaced with your first real post"
+date: "2026-07-21"
+tags: ["test", "demo"]
+excerpt: "Placeholder content used to validate and demonstrate every feature available for writing an article. Replace this file with your real article."
+readingTime: 3
+---
+
+## This is a test article
+
+This file validates that MDX rendering, dynamic metadata, the `Article` JSON-LD schema and the breadcrumb all work correctly on `/blog/article-test`. It also serves as a **demo of every feature** available for writing an article — keep it as a reference while you write.
+
+Every `##` (level 2 heading) and `###` (level 3) automatically shows up in the table of contents on the right, with a clickable anchor.
+
+## Text formatting
+
+**Bold**, *italic*, ~~strikethrough~~ and `inline code` all work. Links too, like to [my projects](/realisations).
+
+### Sub-section (level 3)
+
+`###` headings create a nested entry in the table of contents, under their parent `##`.
+
+## Lists
+
+Bullet list:
+
+- First point
+- Second point
+- Third point
+
+Numbered list:
+
+1. Step one
+2. Step two
+3. Step three
+
+Task list (checkbox):
+
+- [x] Blog technical pipeline done
+- [x] TOC, sharing, author card
+- [ ] Write the real first article
+
+## Blockquote
+
+> A sample blockquote, to check the styling. Useful for highlighting a client review or a key sentence.
+
+## Code block
+
+For a code snippet, with a background block (no per-language syntax highlighting for now, just a monospace block):
+
+```ts
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+```
+
+## Table
+
+| Tech       | Main use         | Level    |
+|------------|------------------|----------|
+| Shopify    | E-commerce       | Advanced |
+| PHP        | Backend          | Advanced |
+| Next.js    | Frontend / SSR   | Advanced |
+
+## Image
+
+![Photo of Elliot Infelta](/elliot-infelta.jpg)
+
+A plain Markdown image (`![alt](path)`) renders full-width, with rounded corners.
+
+---
+
+The separator above (`---`) marks a visual break in the article.
+
+Once your real article is ready, delete this file (`content/blog/article-test.fr.mdx` + `.en.mdx`) and add yours following `content/blog/_FORMAT.md`.

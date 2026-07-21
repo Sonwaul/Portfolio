@@ -1,0 +1,75 @@
+---
+title: "Article de test — à remplacer par ton premier vrai article"
+date: "2026-07-21"
+tags: ["test", "demo"]
+excerpt: "Contenu factice utilisé pour valider et démontrer toutes les fonctionnalités disponibles pour rédiger un article. Remplace ce fichier par ton vrai article."
+readingTime: 3
+---
+
+## Ceci est un article de test
+
+Ce fichier valide que le rendu MDX, les metadata dynamiques, le JSON-LD `Article` et le fil d'Ariane fonctionnent correctement sur `/blog/article-test`. Il sert aussi de **démonstration de toutes les fonctionnalités** disponibles pour écrire un article — garde-le sous les yeux comme référence pendant que tu rédiges.
+
+Chaque `##` (titre de niveau 2) et `###` (niveau 3) apparaît automatiquement dans le sommaire à droite, avec une ancre cliquable.
+
+## Mise en forme du texte
+
+Le **gras**, l'*italique*, le ~~texte barré~~ et le `code en ligne` fonctionnent tous. Les liens aussi, comme vers [mes réalisations](/realisations).
+
+### Sous-section (niveau 3)
+
+Les `###` créent une entrée imbriquée dans le sommaire, en dessous du `##` parent.
+
+## Listes
+
+Liste à puces :
+
+- Premier point
+- Deuxième point
+- Troisième point
+
+Liste numérotée :
+
+1. Étape une
+2. Étape deux
+3. Étape trois
+
+Liste de tâches (case à cocher) :
+
+- [x] Chaîne technique du blog terminée
+- [x] Sommaire, partage, encart auteur
+- [ ] Rédiger le vrai premier article
+
+## Citation
+
+> Une citation de démonstration, pour vérifier le style des blockquotes. Utile pour mettre en avant un avis client ou une phrase clé.
+
+## Bloc de code
+
+Pour un extrait de code, avec coloration de fond (pas de coloration syntaxique par langage pour l'instant, juste un bloc mono-espace) :
+
+```ts
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+```
+
+## Tableau
+
+| Techno     | Usage principal        | Niveau |
+|------------|-------------------------|--------|
+| Shopify    | E-commerce              | Avancé |
+| PHP        | Backend                 | Avancé |
+| Next.js    | Frontend / SSR           | Avancé |
+
+## Image
+
+![Photo d'Elliot Infelta](/elliot-infelta.jpg)
+
+Une image simple en Markdown (`![alt](chemin)`) s'affiche en pleine largeur, avec coins arrondis.
+
+---
+
+Le séparateur ci-dessus (`---`) permet de marquer une coupure visuelle dans l'article.
+
+Une fois ton vrai article prêt, supprime ce fichier (`content/blog/article-test.fr.mdx` + `.en.mdx`) et ajoute le tien en suivant `content/blog/_FORMAT.md`.

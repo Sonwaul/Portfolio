@@ -27,3 +27,17 @@ Lorem ipsum...
 
 ...
 ```
+
+Les titres `##` et `###` génèrent automatiquement le sommaire (colonne de droite) — pense à les utiliser pour structurer l'article.
+
+## Tableaux
+
+Supportés (syntaxe Markdown standard, via `remark-gfm`) :
+
+```mdx
+| Colonne 1 | Colonne 2 |
+|-----------|-----------|
+| Valeur A  | Valeur B  |
+```
+
+Bon pour le SEO (contenu structuré, souvent repris en featured snippet) — à utiliser pour des comparatifs, specs techniques, etc.
