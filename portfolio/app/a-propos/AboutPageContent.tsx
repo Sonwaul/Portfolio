@@ -53,6 +53,8 @@ export default function AboutPageContent() {
         ctas={[
           { label: messages.experience.seeMore, href: "#parcours", variant: "primary", iconType: "chevron" },
         ]}
+        breadcrumbItems={[{ label: messages.breadcrumb.about }]}
+        breadcrumbHomeLabel={messages.breadcrumb.home}
       />
 
       <SkillsSection hideAboutCta />
@@ -74,6 +76,7 @@ export default function AboutPageContent() {
                 width={420}
                 height={560}
                 className="hero-photo-img"
+                priority
                 sizes="(max-width: 768px) 240px, 420px"
               />
             </div>

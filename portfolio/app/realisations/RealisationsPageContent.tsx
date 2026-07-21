@@ -15,6 +15,14 @@ const DESIGN_TAGS = ["UX/UI", "Figma"];
 
 type Filter = "all" | "erp" | "design" | "seo" | "app";
 
+const FILTER_DEFS: { key: Filter; fr: string; en: string; match: (p: Project) => boolean }[] = [
+  { key: "all",    fr: "Tous",             en: "All",             match: () => true },
+  { key: "erp",    fr: "Intégration ERP",  en: "ERP Integration", match: (p) => p.tags.some((t) => ERP_TAGS.includes(t)) },
+  { key: "design", fr: "UX/UI & Design",   en: "UX/UI & Design",  match: (p) => p.tags.some((t) => DESIGN_TAGS.includes(t)) },
+  { key: "seo",    fr: "SEO",              en: "SEO",             match: (p) => p.tags.includes("SEO") },
+  { key: "app",    fr: "App Shopify",       en: "Shopify App",     match: (p) => p.tags.includes("Shopify App") },
+];
+
 function GalleryCard({ project }: { project: Project }) {
   const { messages, currentLang } = useLanguage();
 
@@ -79,21 +87,13 @@ export default function RealisationsPageContent() {
   const rp = messages.realisationsPage;
   const [filter, setFilter] = useState<Filter>("all");
 
-  const filterDefs: { key: Filter; fr: string; en: string; match: (p: Project) => boolean }[] = [
-    { key: "all",    fr: "Tous",             en: "All",             match: () => true },
-    { key: "erp",    fr: "Intégration ERP",  en: "ERP Integration", match: (p) => p.tags.some((t) => ERP_TAGS.includes(t)) },
-    { key: "design", fr: "UX/UI & Design",   en: "UX/UI & Design",  match: (p) => p.tags.some((t) => DESIGN_TAGS.includes(t)) },
-    { key: "seo",    fr: "SEO",              en: "SEO",             match: (p) => p.tags.includes("SEO") },
-    { key: "app",    fr: "App Shopify",       en: "Shopify App",     match: (p) => p.tags.includes("Shopify App") },
-  ];
-
   const filtered = useMemo(
-    () => projects.filter(filterDefs.find((f) => f.key === filter)!.match),
+    () => projects.filter(FILTER_DEFS.find((f) => f.key === filter)!.match),
     [filter]
   );
 
   const count = (key: Filter) =>
-    projects.filter(filterDefs.find((f) => f.key === key)!.match).length;
+    projects.filter(FILTER_DEFS.find((f) => f.key === key)!.match).length;
 
   return (
     <>
@@ -111,13 +111,15 @@ export default function RealisationsPageContent() {
           { label: rp.heroCtaPrimary,   href: "#gallery",   variant: "primary",  iconType: "chevron" },
           { label: rp.heroCtaSecondary, href: "/contact",   variant: "outline",  iconType: "arrow" },
         ]}
+        breadcrumbItems={[{ label: messages.breadcrumb.realisations }]}
+        breadcrumbHomeLabel={messages.breadcrumb.home}
       />
 
       <main id="gallery" className="realisations-page">
         <div className="container">
 
           <div className="realisations-filters" role="group" aria-label={currentLang === "en" ? "Filter projects" : "Filtrer les projets"}>
-            {filterDefs.map((f) => (
+            {FILTER_DEFS.map((f) => (
               <button
                 key={f.key}
                 onClick={() => setFilter(f.key)}

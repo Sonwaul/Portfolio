@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type LucideIcon, ChevronDown, ArrowRight } from "lucide-react";
+import Breadcrumb, { type BreadcrumbItem } from "./Breadcrumb";
 
 export interface PageHeroBadge {
   icon: LucideIcon;
@@ -26,6 +27,8 @@ interface PageHeroProps {
   subtitle?: string;
   description: string;
   ctas?: PageHeroCta[];
+  breadcrumbItems?: BreadcrumbItem[];
+  breadcrumbHomeLabel?: string;
 }
 
 export default function PageHero({
@@ -36,9 +39,17 @@ export default function PageHero({
   subtitle,
   description,
   ctas = [],
+  breadcrumbItems,
+  breadcrumbHomeLabel,
 }: PageHeroProps) {
   return (
     <section className="hero-section">
+      {breadcrumbItems && breadcrumbHomeLabel && (
+        <div className="container hero-breadcrumb-bar">
+          <Breadcrumb items={breadcrumbItems} homeLabel={breadcrumbHomeLabel} />
+        </div>
+      )}
+
       <div className="container hero-content">
 
         <div className="hero-photo-wrapper">

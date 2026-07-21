@@ -32,6 +32,8 @@ export default function ContactPageContent() {
         ctas={[
           { label: cp.heroCta, href: "#contact", variant: "primary", iconType: "chevron" },
         ]}
+        breadcrumbItems={[{ label: messages.breadcrumb.contact }]}
+        breadcrumbHomeLabel={messages.breadcrumb.home}
       />
 
       <main>
