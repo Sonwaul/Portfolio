@@ -11,12 +11,19 @@
     "blog": "My blog",
     "about": "About me"
   },
+  "breadcrumb": {
+    "home": "Home",
+    "realisations": "Projects",
+    "contact": "Contact",
+    "about": "About",
+    "blog": "Blog"
+  },
   "hero": {
     "role": "Project Lead & Full Stack Developer",
     "badgeLocation": "Toufflers · Lille Area",
     "badgeAge": "y.o.",
     "badgeRole": "Project Lead · HUGGII",
-    "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where pure logic meets creation. Today, I am that central pillar of web projects: a manager who speaks the language of developers while translating clients' business needs. My vision? Creating a fusion between technical innovation and human-centered support.",
+    "description": "Hi, I'm Elliot. At 23, I'm based in the heart of the Lille metropolitan area. My journey began in lines of code, where logic meets creation. Today, I bridge developers and clients: translating business needs into technical solutions, and back again. What drives me is combining technical rigor with a human approach.",
     "cta": "See my background",
     "ctaProjects": "View my projects"
   },
@@ -121,6 +128,7 @@
     "reason3Desc": "Open to a permanent on-site or hybrid role in the Lille metropolitan area. No full remote — a team, a workspace, a shared project."
   },
   "blogPage": {
+    "readArticle": "Read article",
     "heroTitle": "My Blog",
     "heroDesc": "Thoughts on AI-driven development, complex ERP integrations and the e-commerce strategies that actually make a difference.",
     "heroBadge1": "Coming soon",
@@ -133,6 +141,16 @@
     "topic3": "Web Architecture",
     "topic4": "Technical SEO",
     "topic5": "Project Launches"
+  },
+  "blogArticle": {
+    "tocTitle": "Table of contents",
+    "tagsLabel": "Tags",
+    "shareLabel": "Share",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "writtenBy": "Written by",
+    "authorBio": "Project Lead & Full Stack Developer at HUGGII, based in Lille. I bridge developers and clients on a daily basis.",
+    "latestArticles": "Latest articles"
   },
   "aboutPage": {
     "heroTitle": "About me",

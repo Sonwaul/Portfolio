@@ -11,12 +11,19 @@
     "blog": "Mon blog",
     "about": "À propos"
   },
+  "breadcrumb": {
+    "home": "Accueil",
+    "realisations": "Réalisations",
+    "contact": "Contact",
+    "about": "À propos",
+    "blog": "Blog"
+  },
   "hero": {
     "role": "Lead Projet & Développeur Full Stack",
     "badgeLocation": "Toufflers · Lille Métropole",
     "badgeAge": "ans",
     "badgeRole": "Lead Projet · HUGGII",
-    "description": "Bonjour, je suis Elliot. À 23 ans, j'évolue au cœur de la métropole lilloise. Mon parcours a débuté dans les lignes de code, là où la logique pure rencontre la création. Aujourd'hui, je suis ce pilier central du projet web : un manager capable de parler le langage des développeurs tout en traduisant les besoins business des clients. Ma vision ? Créer une fusion entre l'innovation technique et l'accompagnement humain.",
+    "description": "Bonjour, je suis Elliot. À 23 ans, j'évolue au cœur de la métropole lilloise. Mon parcours a débuté dans les lignes de code, là où la logique rencontre la création. Aujourd'hui, je fais le lien entre développeurs et clients : je traduis les besoins business en solutions techniques, et inversement. Ce qui me motive, c'est d'allier rigueur technique et accompagnement humain.",
     "cta": "Voir mon parcours",
     "ctaProjects": "Voir mes projets"
   },
@@ -121,6 +128,7 @@
     "reason3Desc": "Ouvert à un CDI en présentiel ou hybride dans la métropole lilloise. Pas de full remote — une équipe, des locaux, un projet en commun."
   },
   "blogPage": {
+    "readArticle": "Lire l'article",
     "heroTitle": "Mon Blog",
     "heroDesc": "Réflexions sur l'IA appliquée au développement, les intégrations ERP complexes et les stratégies e-commerce qui font vraiment la différence.",
     "heroBadge1": "Bientôt disponible",
@@ -133,6 +141,16 @@
     "topic3": "Architecture web",
     "topic4": "SEO technique",
     "topic5": "Lancements de projets"
+  },
+  "blogArticle": {
+    "tocTitle": "Sommaire",
+    "tagsLabel": "Mots-clés",
+    "shareLabel": "Partager",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié",
+    "writtenBy": "Écrit par",
+    "authorBio": "Lead Projet & Développeur Full Stack chez HUGGII, à Lille. Je fais le lien entre développeurs et clients au quotidien.",
+    "latestArticles": "Derniers articles"
   },
   "aboutPage": {
     "heroTitle": "À propos",
