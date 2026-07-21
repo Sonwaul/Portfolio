@@ -14,11 +14,6 @@ export type BlogFrontmatter = {
   readingTime: number;
 };
 
-export type ProjectFrontmatter = {
-  title: string;
-  excerpt?: string;
-};
-
 function readMdx(dir: string, slug: string, locale: Locale) {
   const filePath = path.join(CONTENT_ROOT, dir, `${slug}.${locale}.mdx`);
   const raw = fs.readFileSync(filePath, "utf8");
@@ -49,23 +44,6 @@ export function getBlogPost(slug: string, locale: Locale) {
 
 export function getAllBlogSlugs(): string[] {
   const dir = path.join(CONTENT_ROOT, "blog");
-  if (!fs.existsSync(dir)) return [];
-
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".fr.mdx"))
-    .map((f) => f.replace(".fr.mdx", ""));
-}
-
-// ─── Projects ────────────────────────────────────────────────────────────────
-
-export function getProjectContent(slug: string, locale: Locale) {
-  const { data, content } = readMdx("projects", slug, locale);
-  return { frontmatter: data as ProjectFrontmatter, source: content };
-}
-
-export function getAllProjectSlugs(): string[] {
-  const dir = path.join(CONTENT_ROOT, "projects");
   if (!fs.existsSync(dir)) return [];
 
   return fs

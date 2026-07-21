@@ -62,7 +62,6 @@ export function TagBadge({
   size?: number;
   baseClass?: string;
 }) {
-  const logo = TAG_LOGOS[tag];
   return (
     <span className={baseClass}>
       <TagIcon tag={tag} size={size} />
