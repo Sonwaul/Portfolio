@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getAllBlogPosts } from "@/app/lib/mdx";
+import { BLOG_ENABLED } from "@/app/config";
 import BlogPageContent from "./BlogPageContent";
 
 const TITLE = "Blog";
@@ -30,6 +32,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  if (!BLOG_ENABLED) notFound();
+
   const frPosts = getAllBlogPosts("fr");
   const enPosts = getAllBlogPosts("en");
 

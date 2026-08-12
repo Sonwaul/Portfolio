@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { MapPin, Briefcase, User, RefreshCw, MessageCircle, Users, Dumbbell, Heart, Gamepad2, Tv } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
-import { BIRTH_DATE } from "@/app/config";
+import { BIRTH_DATE, BLOG_ENABLED } from "@/app/config";
 import PageHero from "@/app/components/ui/PageHero";
 import SkillsSection from "@/app/components/sections/SkillsSection";
 import ExperienceSection from "@/app/components/sections/ExperienceSection";
@@ -125,7 +125,7 @@ export default function AboutPageContent() {
         </div>
       </section>
 
-      <BlogTeaser />
+      {BLOG_ENABLED && <BlogTeaser />}
       <ReassuranceBlock />
       <ContactSection />
     </>

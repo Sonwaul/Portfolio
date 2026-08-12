@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllBlogPosts, getAllBlogSlugs, getBlogPost } from "@/app/lib/mdx";
-import { SITE_URL } from "@/app/config";
+import { SITE_URL, BLOG_ENABLED } from "@/app/config";
 import { extractToc, slugify } from "@/app/lib/toc";
 import BlogArticleContent from "./BlogArticleContent";
 
@@ -38,6 +38,7 @@ function Table({ children }: { children?: ReactNode }) {
 const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
 
 export async function generateStaticParams() {
+  if (!BLOG_ENABLED) return [];
   return getAllBlogSlugs().map((slug) => ({ slug }));
 }
 
@@ -56,6 +57,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  if (!BLOG_ENABLED) return {};
+
   const { slug } = await params;
   const post = loadPost(slug);
   if (!post) return {};
@@ -91,6 +94,8 @@ export default async function BlogArticlePage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  if (!BLOG_ENABLED) notFound();
+
   const { slug } = await params;
   const post = loadPost(slug);
   if (!post) notFound();

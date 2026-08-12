@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/app/i18n/LanguageContext";
+import { BLOG_ENABLED } from "@/app/config";
 
 const NAV_ITEMS = [
   { key: "about",        href: "/a-propos" },
   { key: "realisations", href: "/realisations" },
-  { key: "blog",         href: "/blog" },
+  ...(BLOG_ENABLED ? [{ key: "blog", href: "/blog" }] as const : []),
   { key: "contact",      href: "/contact" },
 ] as const;
 
