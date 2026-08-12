@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { Star, ChevronUp, ChevronDown } from "lucide-react";
+import { useLanguage } from "@/app/i18n/LanguageContext";
 import { reviews } from "@/app/data/reviewsData";
 
 const CLONE_COUNT = 2;
@@ -12,6 +13,13 @@ const extended = [
   ...reviews,
   ...reviews.slice(0, CLONE_COUNT),
 ];
+
+function formatReviewDate(date: string, currentLang: "fr" | "en"): string {
+  return new Date(date).toLocaleDateString(currentLang === "en" ? "en-US" : "fr-FR", {
+    month: "long",
+    year: "numeric",
+  });
+}
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -38,6 +46,7 @@ export default function TestimonialsCarousel({
   title: string;
   subtitle?: string;
 }) {
+  const { currentLang } = useLanguage();
   const viewportRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
   const [index, setIndex] = useState(CLONE_COUNT);
@@ -145,7 +154,12 @@ export default function TestimonialsCarousel({
                   className="testimonial-card"
                   style={{ width: cardWidth ? `${cardWidth}px` : undefined, flexShrink: 0 }}
                 >
-                  <StarRating rating={review.rating} />
+                  <div className="testimonial-top">
+                    <StarRating rating={review.rating} />
+                    {review.date && (
+                      <span className="testimonial-date">{formatReviewDate(review.date, currentLang)}</span>
+                    )}
+                  </div>
                   <p className={`testimonial-text${expanded.has(review.author) ? " testimonial-text-expanded" : ""}`}>
                     «&nbsp;{review.text}&nbsp;»
                   </p>

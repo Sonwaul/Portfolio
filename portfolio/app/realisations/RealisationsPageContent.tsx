@@ -28,18 +28,19 @@ function GalleryCard({ project }: { project: Project }) {
 
   return (
     <div className="gallery-card">
-      <div className="gallery-card-logo">
+      <div className="gallery-card-image">
         {project.logo ? (
           <Image
             src={project.logo}
             alt={project.title}
-            width={0}
-            height={0}
-            sizes="160px"
-            style={{ width: "auto", height: "auto", maxHeight: "72px", maxWidth: "140px", objectFit: "contain" }}
+            fill
+            sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, (max-width: 1200px) 33vw, 25vw"
+            style={{ objectFit: "cover" }}
           />
         ) : (
-          <span className="gallery-card-initials">{project.title.charAt(0)}</span>
+          <div className="gallery-card-initials-wrap">
+            <span className="gallery-card-initials">{project.title.charAt(0)}</span>
+          </div>
         )}
       </div>
 
@@ -98,7 +99,7 @@ export default function RealisationsPageContent() {
   return (
     <>
       <PageHero
-        imageSrc="/elliot-infelta.jpg"
+        imageSrc="/mes-realisations.jpg"
         imageAlt="Elliot Infelta"
         badges={[
           { icon: Layers,   text: rp.heroBadge1 },

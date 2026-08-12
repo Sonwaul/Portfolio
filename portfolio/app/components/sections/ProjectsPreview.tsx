@@ -9,8 +9,8 @@ import { TagBadge } from "@/app/components/ui/TagBadge";
 import { projects, Project } from "@/app/data/projectsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 
-const MAX_PROJECTS = 9;
-const PER_PAGE = 3;
+const MAX_PROJECTS = 12;
+const PER_PAGE = 4;
 const pool = projects.slice(0, MAX_PROJECTS);
 const totalPages = Math.ceil(pool.length / PER_PAGE);
 
@@ -26,7 +26,7 @@ function PreviewCard({ project, priority = false }: { project: Project; priority
     >
       <div className="project-card-header">
         {project.logo
-          ? <Image src={project.logo} alt={project.title} width={0} height={0} sizes="240px" style={{ width: "auto", height: "auto", maxHeight: "120px", maxWidth: "100%", objectFit: "contain" }} priority={priority} />
+          ? <Image src={project.logo} alt={project.title} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" style={{ objectFit: "cover" }} priority={priority} />
           : <span className="project-card-header-initials">{project.title.charAt(0)}</span>
         }
       </div>

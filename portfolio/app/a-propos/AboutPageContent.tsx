@@ -40,7 +40,7 @@ export default function AboutPageContent() {
   return (
     <>
       <PageHero
-        imageSrc="/elliot-infelta.jpg"
+        imageSrc="/elliot-infelta-norvege.jpg"
         imageAlt="Elliot Infelta"
         badges={[
           { icon: User,     text: `${age} ${messages.hero.badgeAge}` },
