@@ -3,18 +3,19 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronLeft, ChevronRight, Lock } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Lock } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { TagBadge } from "@/app/components/ui/TagBadge";
 import { projects, Project } from "@/app/data/projectsData";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
+import Modal from "@/app/components/ui/Modal";
 
 const MAX_PROJECTS = 12;
 const PER_PAGE = 4;
 const pool = projects.slice(0, MAX_PROJECTS);
 const totalPages = Math.ceil(pool.length / PER_PAGE);
 
-function PreviewCard({ project, priority = false }: { project: Project; priority?: boolean }) {
+function PreviewCard({ project, onOpen, priority = false }: { project: Project; onOpen: (p: Project) => void; priority?: boolean }) {
   const { messages, currentLang } = useLanguage();
   const { ref, isVisible } = useScrollReveal();
 
@@ -22,7 +23,8 @@ function PreviewCard({ project, priority = false }: { project: Project; priority
     <div
       ref={ref}
       className={`project-card ${isVisible ? "reveal-visible" : "reveal-hidden"}`}
-      style={{ "--card-accent": project.accentColor } as React.CSSProperties}
+      style={{ "--card-accent": project.accentColor, cursor: "pointer" } as React.CSSProperties}
+      onClick={() => onOpen(project)}
     >
       <div className="project-card-header">
         {project.logo
@@ -46,28 +48,18 @@ function PreviewCard({ project, priority = false }: { project: Project; priority
             <TagBadge key={tag} tag={tag} size={13} baseClass="project-tag" />
           ))}
         </div>
-        {project.link ? (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-btn"
-          >
-            {messages.projects.visitSite} <ArrowRight size={14} aria-hidden="true" />
-          </a>
-        ) : (
-          <span className="project-internal-badge">
-            <Lock size={12} aria-hidden="true" /> {messages.projects.internalApp}
-          </span>
-        )}
+        <span className="project-btn">
+          {messages.projects.viewDetails} <ArrowRight size={14} aria-hidden="true" />
+        </span>
       </div>
     </div>
   );
 }
 
 export default function ProjectsPreview() {
-  const { messages } = useLanguage();
+  const { messages, currentLang } = useLanguage();
   const [page, setPage] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const current = pool.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
@@ -88,7 +80,7 @@ export default function ProjectsPreview() {
 
         <div className="projects-grid--preview">
           {current.map((project, index) => (
-            <PreviewCard key={project.id} project={project} priority={page === 0 && index === 0} />
+            <PreviewCard key={project.id} project={project} onOpen={setSelectedProject} priority={page === 0 && index === 0} />
           ))}
         </div>
 
@@ -152,6 +144,83 @@ export default function ProjectsPreview() {
           </div>
         )}
       </div>
+
+      <Modal
+        isOpen={selectedProject !== null}
+        onClose={() => setSelectedProject(null)}
+        accentColor={selectedProject?.accentColor}
+      >
+        {selectedProject && (
+          <div className="modal-detail">
+            <div className="modal-hero">
+              {selectedProject.logo ? (
+                <div className="modal-hero-logo-wrap">
+                  <Image
+                    src={selectedProject.logo}
+                    alt={selectedProject.title}
+                    width={0}
+                    height={0}
+                    sizes="200px"
+                    style={{ width: "auto", height: "52px", objectFit: "contain" }}
+                  />
+                </div>
+              ) : (
+                <span className="modal-hero-initial">{selectedProject.title.charAt(0)}</span>
+              )}
+              <h3 className="modal-hero-title">{selectedProject.title}</h3>
+              <p className="modal-hero-role">
+                {currentLang === "en" && selectedProject.roleEn ? selectedProject.roleEn : selectedProject.role}
+              </p>
+              <span className="modal-hero-year">{selectedProject.year}</span>
+            </div>
+            <div className="modal-content-inner modal-content-inner--left">
+              <h4 className="modal-missions-title">{messages.projects.objective}</h4>
+              <p className="modal-full-desc">
+                {currentLang === "en" ? selectedProject.objectiveEn : selectedProject.objective}
+              </p>
+
+              <h4 className="modal-missions-title">{messages.projects.missions}</h4>
+              <ul className="modal-missions-list" style={{ width: "100%", marginBottom: "1.4rem" }}>
+                {(currentLang === "en" ? selectedProject.missionsEn : selectedProject.missions).map((m, i) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ul>
+
+              {selectedProject.highlights.length > 0 && (
+                <div className="modal-highlights">
+                  {selectedProject.highlights.map((h, i) => (
+                    <div key={i} className="modal-highlight-chip">
+                      <span className="modal-highlight-value">{h.value}</span>
+                      <span className="modal-highlight-label">
+                        {currentLang === "en" && h.labelEn ? h.labelEn : h.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <h4 className="modal-missions-title" style={{ marginTop: "1.4rem" }}>{messages.projects.techStack}</h4>
+              <div className="project-tags" style={{ marginTop: "0.5rem" }}>
+                {selectedProject.tags.map((tag) => (
+                  <TagBadge key={tag} tag={tag} size={15} baseClass="project-tag" />
+                ))}
+              </div>
+
+              <div className="modal-links">
+                {selectedProject.link ? (
+                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
+                    <ExternalLink size={15} aria-hidden="true" /> {messages.projects.visitSite}
+                  </a>
+                ) : (
+                  <span className="project-internal-badge">
+                    <Lock size={12} aria-hidden="true" /> {messages.projects.internalApp}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </section>
   );
 }

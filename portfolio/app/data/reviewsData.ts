@@ -35,7 +35,7 @@ const reviewsData: Review[] = [
   },
   {
     id: "rev3",
-    author: "Fondation des Possibles",
+    author: "Fond'Actions des Possibles",
     role: "Avis Google · huggii.com",
     rating: 5,
     text: "La Fondation des Possibles est ravie d'avoir fait appel à Huggii pour la refonte de son site. Guillaume et Elliot ont su comprendre notre demande très vite et le résultat est vraiment à la hauteur de nos attentes ! N'hésitez plus si vous avez un site à faire.",

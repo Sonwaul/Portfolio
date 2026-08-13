@@ -2,13 +2,14 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-import { ArrowRight, Lock, Layers, Calendar, Code2 } from "lucide-react";
+import { ArrowRight, ExternalLink, Lock, Layers, Calendar, Code2 } from "lucide-react";
 import { useLanguage } from "@/app/i18n/LanguageContext";
 import { TagBadge } from "@/app/components/ui/TagBadge";
 import { projects, Project } from "@/app/data/projectsData";
 import PageHero from "@/app/components/ui/PageHero";
 import ReassuranceBlock from "@/app/components/ui/ReassuranceBlock";
 import ContactSection from "@/app/components/sections/ContactSection";
+import Modal from "@/app/components/ui/Modal";
 
 const ERP_TAGS = ["Sage", "EBP SDK", "EBP SaaS", "Sellsy", "Kaeliips"];
 const DESIGN_TAGS = ["UX/UI", "Figma"];
@@ -23,11 +24,11 @@ const FILTER_DEFS: { key: Filter; fr: string; en: string; match: (p: Project) =>
   { key: "app",    fr: "App Shopify",       en: "Shopify App",     match: (p) => p.tags.includes("Shopify App") },
 ];
 
-function GalleryCard({ project }: { project: Project }) {
+function GalleryCard({ project, onOpen }: { project: Project; onOpen: (p: Project) => void }) {
   const { messages, currentLang } = useLanguage();
 
   return (
-    <div className="gallery-card">
+    <div className="gallery-card" style={{ cursor: "pointer" }} onClick={() => onOpen(project)}>
       <div className="gallery-card-image">
         {project.logo ? (
           <Image
@@ -63,20 +64,9 @@ function GalleryCard({ project }: { project: Project }) {
         </div>
 
         <div className="gallery-card-footer">
-          {project.link ? (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gallery-card-btn"
-            >
-              {messages.projects.visitSite} <ArrowRight size={13} aria-hidden="true" />
-            </a>
-          ) : (
-            <span className="project-internal-badge">
-              <Lock size={12} aria-hidden="true" /> {messages.projects.internalApp}
-            </span>
-          )}
+          <span className="gallery-card-btn">
+            {messages.projects.viewDetails} <ArrowRight size={13} aria-hidden="true" />
+          </span>
         </div>
       </div>
     </div>
@@ -87,6 +77,7 @@ export default function RealisationsPageContent() {
   const { messages, currentLang } = useLanguage();
   const rp = messages.realisationsPage;
   const [filter, setFilter] = useState<Filter>("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filtered = useMemo(
     () => projects.filter(FILTER_DEFS.find((f) => f.key === filter)!.match),
@@ -141,7 +132,7 @@ export default function RealisationsPageContent() {
 
           <div className="realisations-grid">
             {filtered.map((project) => (
-              <GalleryCard key={project.id} project={project} />
+              <GalleryCard key={project.id} project={project} onOpen={setSelectedProject} />
             ))}
           </div>
 
@@ -150,6 +141,83 @@ export default function RealisationsPageContent() {
 
       <ReassuranceBlock />
       <ContactSection />
+
+      <Modal
+        isOpen={selectedProject !== null}
+        onClose={() => setSelectedProject(null)}
+        accentColor={selectedProject?.accentColor}
+      >
+        {selectedProject && (
+          <div className="modal-detail">
+            <div className="modal-hero">
+              {selectedProject.logo ? (
+                <div className="modal-hero-logo-wrap">
+                  <Image
+                    src={selectedProject.logo}
+                    alt={selectedProject.title}
+                    width={0}
+                    height={0}
+                    sizes="200px"
+                    style={{ width: "auto", height: "52px", objectFit: "contain" }}
+                  />
+                </div>
+              ) : (
+                <span className="modal-hero-initial">{selectedProject.title.charAt(0)}</span>
+              )}
+              <h3 className="modal-hero-title">{selectedProject.title}</h3>
+              <p className="modal-hero-role">
+                {currentLang === "en" && selectedProject.roleEn ? selectedProject.roleEn : selectedProject.role}
+              </p>
+              <span className="modal-hero-year">{selectedProject.year}</span>
+            </div>
+            <div className="modal-content-inner modal-content-inner--left">
+              <h4 className="modal-missions-title">{messages.projects.objective}</h4>
+              <p className="modal-full-desc">
+                {currentLang === "en" ? selectedProject.objectiveEn : selectedProject.objective}
+              </p>
+
+              <h4 className="modal-missions-title">{messages.projects.missions}</h4>
+              <ul className="modal-missions-list" style={{ width: "100%", marginBottom: "1.4rem" }}>
+                {(currentLang === "en" ? selectedProject.missionsEn : selectedProject.missions).map((m, i) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ul>
+
+              {selectedProject.highlights.length > 0 && (
+                <div className="modal-highlights">
+                  {selectedProject.highlights.map((h, i) => (
+                    <div key={i} className="modal-highlight-chip">
+                      <span className="modal-highlight-value">{h.value}</span>
+                      <span className="modal-highlight-label">
+                        {currentLang === "en" && h.labelEn ? h.labelEn : h.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <h4 className="modal-missions-title" style={{ marginTop: "1.4rem" }}>{messages.projects.techStack}</h4>
+              <div className="project-tags" style={{ marginTop: "0.5rem" }}>
+                {selectedProject.tags.map((tag) => (
+                  <TagBadge key={tag} tag={tag} size={15} baseClass="project-tag" />
+                ))}
+              </div>
+
+              <div className="modal-links">
+                {selectedProject.link ? (
+                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="modal-link-btn">
+                    <ExternalLink size={15} aria-hidden="true" /> {messages.projects.visitSite}
+                  </a>
+                ) : (
+                  <span className="project-internal-badge">
+                    <Lock size={12} aria-hidden="true" /> {messages.projects.internalApp}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </>
   );
 }
