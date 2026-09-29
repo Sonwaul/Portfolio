@@ -77,6 +77,17 @@ const reviewsData: Review[] = [
     siteUrl: "https://batisec.fr/",
     logo: "/projects/batisec.png",
   },
+  {
+    id: "rev7",
+    author: "Julien Faure",
+    role: "Avis Google · huggii.com",
+    rating: 5,
+    text: "Nous sommes ravis d'avoir confié la refonte de notre site internet Julien Faure à l'agence HUGGII.\n\nMalgré la distance géographique, nous nous sommes sentis parfaitement compris et accompagnés tout au long du projet. Les équipes ont su être à l'écoute de nos besoins, force de proposition et très réactives, ce qui a permis de mener cette refonte avec beaucoup de fluidité et de sérénité.\n\nLe projet était ambitieux pour nous, puisqu'il s'agissait non seulement de refondre notre site, mais aussi d'accompagner notre passage vers une activité davantage orientée B2C. Sur ce type de projet, certains sujets très opérationnels — paramétrages, parcours clients, règles de livraison, implications comptables ou fiscales — mériteraient selon nous une phase de cadrage et de tests encore plus robuste, afin d'identifier plus tôt certaines subtilités.\n\nCela n'enlève rien à la qualité globale de l'accompagnement : nous sommes très satisfaits du résultat.\n\nUn grand merci à Guillaume, Elliot et tout le reste de l'équipe pour leur disponibilité, leur professionnalisme et leur précieux accompagnement. C'est un nouveau chapitre pour notre marque que nous sommes fiers de partager à leurs côtés.\n\nNous recommandons l'agence HUGGII pour leur qualité d'écoute, leur réactivité et leur capacité à accompagner un projet digital avec sérieux et engagement !",
+    date: "2026-07",
+    url: "https://share.google/erpsHFJX85uvlsP7v",
+    siteUrl: "https://julien-faure.fr/",
+    logo: "/projects/julien-faure.png",
+  },
 ];
 
 // Plus récent en premier
