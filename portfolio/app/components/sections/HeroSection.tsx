@@ -24,7 +24,7 @@ export default function HeroSection() {
         <div className="hero-photo-wrapper">
           <div className="hero-photo-blob">
             <Image
-              src="/elliot-infelta-corse.jpg"
+              src="/elliot-infelta-pro.png"
               alt="Elliot Infelta"
               width={420}
               height={600}
